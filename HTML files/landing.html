@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="/CSS files/style.css">
+    <link rel="stylesheet" href="/CSS files/landingStyle.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
         <div class="container flex">
             <img src="/Images/Landing images/Logo-nav-bar.svg" alt="Logo navigation bar" class="logo-nav">
             <nav>
-                <ul>
+                <ul class="menu-links">
                     <li><a href=#acasa>Acasa</a></li>
                     <li><a href=#functionalitati>Functionalitati</a></li>
                     <li><a href=#despre-noi>Despre noi</a></li>
@@ -30,13 +30,13 @@
         </div>
     </div>
 
-    <section id="acasa" class="hero-section">
+    <section id="acasa" class="hero-section flex">
         <!-- Continut pentru Acasa -->
         <div class="container grid">
             <div class="hero-section-text">
                 <h1>Devină expert în SQL rapid și ușor!</h1>
-                <p>Descoperă și explorează posibilitățile nelimitate ale SQL-ului în 
-                    propriul tău ritm, prin lecții captivante și exerciții practice, 
+                <p>Descoperă și explorează posibilitățile nelimitate ale SQL-ului în
+                    propriul tău ritm, prin lecții captivante și exerciții practice,
                     adaptate nevoilor tale individuale de învățare.
                 </p>
                 <a href="signup.html" class="btn btn-primary">Conecteaza-te</a>
@@ -48,13 +48,129 @@
         </div>
     </section>
 
-    <section id="functionalitati">
+    <section id="functionalitati" class="functionalitati flex">
         <!-- Continut pentru Functionalitati -->
+        <!-- Text box -->
+        <!--  -->
+
+        <div class="container grid">
+            <div class="text-with-buttons flex grid">
+                <div class="text-box2">
+                    <h2>Descoperă ce poți face în SQL-TWO.</h2>
+                    <p>Aici vei găsi o listă cuprinzătoare a funcționalităților oferite de aplicația noastră, concepute
+                        special
+                        pentru
+                        a-ți facilita învățarea limbajului SQL.</p>
+                </div>
+                <div class="arrows-with-progres flex ">
+                    <img class="arrow-left" src="/Images/Landing images/fi-rr-angle-left.svg" alt="Left Arrow">
+                    <div class="view-pages-cards flex">
+                        <div class="contor-pages ">
+                            <p>1</p>
+                        </div>
+                        <p>/</p>
+                        <div class="total-pages">
+                            <p>3</p>
+                        </div>
+                    </div>
+                    <img class="arrow-left" src="/Images/Landing images/fi-rr-angle-right.svg" alt="Rigth Arrow">
+                </div>
+            </div>
+            <!-- Carousel -->
+            <div class="cards-frame ">
+
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="icon">
+                        <img class="icon-card" src="/Images/Landing images/fi-rr-file-add.svg" alt="">
+                    </div>
+                    <div class="text-card">
+                        <h4>Vezi lista de probleme</h4>
+                        <p>Vezi o listă detaliată a întrebărilor SQL disponibile pentru rezolvare. Explorează
+                            diferitele niveluri de dificultate, urmărește numărul de încercări și verifică starea
+                            rezolvării.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="icon">
+                        <img class="icon-card" src="/Images/Landing images/fi-rr-file-add.svg" alt="">
+                    </div>
+                    <div class="text-card">
+                        <h4>Vezi lista de probleme</h4>
+                        <p>Vezi o listă detaliată a întrebărilor SQL disponibile pentru rezolvare. Explorează
+                            diferitele niveluri de dificultate, urmărește numărul de încercări și verifică starea
+                            rezolvării.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="icon">
+                        <img class="icon-card" src="/Images/Landing images/fi-rr-file-add.svg" alt="">
+                    </div>
+                    <div class="text-card">
+                        <h4>Vezi lista de probleme</h4>
+                        <p>Vezi o listă detaliată a întrebărilor SQL disponibile pentru rezolvare. Explorează
+                            diferitele niveluri de dificultate, urmărește numărul de încercări și verifică starea
+                            rezolvării.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--  -->
+
     </section>
 
-    <section id="despre-noi">
+    <section id="despre-noi" class="despre-noi-section flex">
         <!-- Continut pentru Despre noi -->
+        <div class="container grid">
+            <div class="image-box">
+                <img class="ilustratie-despre-noi"
+                    src="/Images/Landing images/Ilustratie-despre-noi-section-landing.svg"
+                    alt="ilustratie-hero-section">
+            </div>
+            <div class="text-box3">
+                <h2>Cei din spatele scenei</h2>
+                <p>Suntem doi studenți din anul al doilea de la Facultatea de Informatică din cadrul Universității din
+                    Iași
+                    și
+                    suntem mândri să vă prezentăm acest proiect pe care l-am realizat cu pasiune și determinare. Ne-am
+                    unit
+                    forțele
+                    pentru a dezvolta o aplicație web menită să ușureze procesul de învățare a limbajului SQL pentru
+                    începători.
+                </p>
+                <p>Fiecare linie de cod și fiecare caracteristică au fost create cu atenție și dedicare pentru a oferi o
+                    experiență educațională de calitate. Ne dorim să împărtășim munca noastră și să contribuim la
+                    creșterea
+                    cunoștințelor în domeniul informaticii, oferind o platformă interactivă și accesibilă pentru toți
+                    cei
+                    interesați
+                    să învețe SQL. </p>
+            </div>
+        </div>
+
     </section>
+
+
+    <footer class="footer ">
+        <div class="container flex">
+            <ul class="footer-links flex">
+                <li><a href="#" class="hover-links">Acasa</a></li>
+                <li><a href="#" class="hover-links">Funcționalități</a></li>
+                <li><a href="#" class="hover-links">Despre noi</a></li>
+            </ul>
+            <img class="logo-footer" src="/Images/Landing images/LogoWhiteFooter.svg">
+            <div class="small-body-text">
+                <small-body-text>
+                    Copyright © 2024 SQL-TWO. All Rights Reserved.
+                </small-body-text>
+            </div>
+        </div>
+
+    </footer>
+    <script src="/JS files/script.js"></script>
 </body>
 
 </html>
