@@ -41,6 +41,7 @@ h2 {
     font-size: 36px;
     font-weight: 600;
     line-height: 130%;
+    margin-bottom: 24px;
 }
 
 h3 {
@@ -128,6 +129,10 @@ img {
     height: auto;
 }
 
+.nav-bar .hamburger-menu {
+    display: block;
+}
+
 .buttons-nav {
     gap: 16px;
     display: flex;
@@ -137,6 +142,7 @@ img {
     padding-bottom: 12px;
     color: var(--accent-color);
 }
+
 
 .buttons-nav a.btn-primary{
     color: var(--heading-on-blue);
@@ -148,6 +154,7 @@ img {
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
+    display: inline-block;
 }
 
 .btn-primary{
@@ -228,17 +235,8 @@ img {
     justify-content: end;
 }
 
-.arrows-with-progres {
-    gap: 24px;
-}
-
-.arrows-with-progres p {
-    margin: 0;
-}
-
-.view-pages-cards .flex {
-    align-items: center;
-    flex-direction: row;
+.arrows-cards {
+    gap: 28px;
 }
 
 .cards-frame {
@@ -259,13 +257,13 @@ img {
 .card .icon {
     background-color: var(--accent-color);
     border-radius: 8px;
-    width: 60px;
+    width: 48px;
     margin-bottom: 24px;
 }
 
 .card .icon-card {
     width: 24px;
-    margin: 18px;
+    margin: 12px;
 }
 
 .card .text-card h4 {
@@ -275,6 +273,7 @@ img {
 
 .card .text-card p {
     color: var(--body-color);
+    margin-bottom: 0;
 }
 
 .arrow-left {
@@ -303,7 +302,7 @@ img {
     height: auto;
 }
 .despre-noi-section .grid {
-    grid-template-columns: 50% 45%;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .despre-noi-section .container {
@@ -366,11 +365,104 @@ img {
 
 .grid {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
+/* ----------------------------MEDIA QUERIES-------------------------------- */
+/* -------------------Large tablets and small laptops------------------------*/
+@media (max-width: 1199px) and (min-width: 768px) {
+    h1 {
+        font-size: 40px;
+    }
 
-/*  */
-@media (max-width: 768px) {
+    h2 {
+        font-size: 32px;
+    }
+
+    h4 {
+        font-size: 22px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .small-body-text {
+        font-size: 14px;
+    }
+
+    a {
+        font-size: 16px;
+    }
+
+    .grid,
+    .hero-section .grid,
+    .functionalitati .grid, 
+    .despre-noi-section .grid,
+    .footer .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .container {
+        max-width: 728px;
+    }
+
+    .hero-section {
+        margin-top: 90px;
+        height: auto;
+    }
+
+    .hero-section .container {
+        text-align: center;
+    }
+    .hero-section-text {
+        text-align: center;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .nav-bar .menu-links {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+    }
+
+    .functionalitati {
+        padding-top: 90px;
+        padding-bottom: 90px;
+        margin-top: 90px;
+        margin-bottom: 90px;
+    }
+
+    .functionalitati .text-with-buttons {
+        align-items: baseline;
+    }
+
+    .functionalitati .text-with-buttons .grid {
+        gap: 0px;
+    }
+
+    .functionalitati .text-box2 {
+        width: 60%;
+    }
+
+    .functionalitati .card {
+        padding: 20px;
+    }
+    
+    .footer .flex{
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+/* -----------------------------Tablet screen------------------------------- */
+@media (max-width: 767px) {
     h1 {
         font-size: 36px;
     }
@@ -380,7 +472,7 @@ img {
     }
 
     h4 {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     body {
@@ -395,17 +487,80 @@ img {
         font-size: 16px;
     }
 
+    .nav-bar .menu-links {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+    }
+
     .grid,
     .hero-section .grid {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
     }
 
+    .container {
+        max-width: 728px;
+    }
+
     .hero-section {
+        margin-top: 90px;
         height: auto;
     }
     .hero-section-text {
         text-align: center;
     }
 
+}
+/* ---------------Mobile screen------------------------------------ */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .small-body-text {
+        font-size: 12px;
+    }
+
+    a {
+        font-size: 1px;
+    }
+
+    .nav-bar .menu-links {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+    }
+
+    .nav-bar .buttons-nav {
+        display: none;
+    }
+
+    .grid,
+    .hero-section .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .container {
+        max-width: 320px;
+    }
 }
