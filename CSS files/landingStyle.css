@@ -20,6 +20,11 @@
     --padding-inline-section: 20px;
 }
 
+body {
+    background-color: var(--background-color);
+    
+}
+
 /* Fonts */
 h1,
 h2,
