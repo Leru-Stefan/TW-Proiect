@@ -88,9 +88,13 @@ a{
     font-size: 18px;
 }
 body {
+    transition: opacity 0.5s ease;
     display: flex;
     margin: 0;
     padding: 0;
+}
+body.fade-out {
+    opacity: 0;
 }
 
 .grid-container{
@@ -103,18 +107,18 @@ body {
     padding: 20px;
 }
 .column:nth-child(1) {
-    width: 256px;
+    width: 220px;
     padding: 0;
 } 
 
 .column:nth-child(2) {
     width: -webkit-fill-available;
-    margin-left: 304px;
-    margin-right: 423px;
+    margin-left: 256px;
+    margin-right: 332px;
 }
 
 .column:nth-child(3) {
-    width: 375px;
+    width: 300px;
     padding: 16px 0;
 }
 
@@ -172,16 +176,15 @@ body {
     margin-right: 12px;
 }
 
-.menu-link:not(.active) {
-    background-color: transparent;
+.icon-menu .svg .rect{
+    fill: var(--accent-color);
 }
-
 .menu-link:not(.active) a {
     color: var(--accent-color);
 }
 
-.menu-link:not(.active) .icon-menu{
-    color: var(--accent-color);
+.menu-link:not(.active) .icon-menu {
+    fill: var(--accent-color)
 }
 
 .menu-link.active {
@@ -189,7 +192,7 @@ body {
 }
 
 .menu-link.active .icon-menu {
-    color: var(--details-on-blue);
+    fill: var(--details-on-blue);
 }
 
 .menu-link.active a {
@@ -216,32 +219,104 @@ body {
 }
 
 .search input[type="text"] {
-    width: calc(100% - 20px);
+    width: calc(100% - 24px);
     padding: 10px;
     border: 1px solid var(--slider-background);
     border-radius: 8px;
-    margin-bottom: 32px;
+    margin-bottom: 44px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
 }
 
-.cards-probleme {
+.greeting {
     display: flex;
-    flex-direction: column;
-    gap: 32px;
+    flex-direction: row;
+    background-color: var(--accent-color);
+    border-radius: 20px;
+    margin-bottom: 24px;
+    position: relative;
+}
+.greeting .text-box {
+    margin: 32px;
+    height: auto;
+    flex-grow: 1;
+    max-width: calc(50% - 64px);
+}
+.greeting .text-box h3{
+    color: var(--heading-on-blue);
+    margin-bottom: 24px;
 }
 
-.card {
+.greeting .text-box p {
+    color: var(--body-on-blue);
+}
+
+.greeting-img {
+    height: 140%;
+    width: auto;
+    position: absolute;
+    top: -62px;
+    right: 32px;
+}
+.statistics {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.statistics .card {
     padding: 28px;
+    text-align: center;
     background-color: var(--section-login-color);
     border-radius: 20px;
 }
 
-.text-problem h4 {
-    margin-bottom: 24px;
+.statistics .card h1 {
+    color: var(--accent-color);
+    margin-bottom: 8px;
 }
 
-.text-problem p {
+.statistics .card h4 {
+    color: var(--headings-color);
+    margin-bottom: 20px;
+}
+
+.statistics .card p {
+    width: auto;
+}
+
+.probleme-mele {
+
+}
+
+.top-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 28px;
+}
+
+.top-carousel .arrows {
+    display: flex;
+    gap: 24px;
+}
+
+.carousel {
+    display: flex;
+    width: auto;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.card {
+    padding: 20px;
+    background-color: var(--section-login-color);
+    border-radius: 20px;
+}
+
+.card h5 {
+    margin-bottom: 20px;
 }
 /* ----------------------------Right side--------------------- */
 .right-side {
@@ -285,15 +360,8 @@ body {
     width:auto;
 }
 
-.winner {
+.top-student.winner {
     background-color: var(--accent-color);
-}
-
-.winner .user-data .img {
-    color: var(--details-on-blue);
-}
-.winner .user-data .h5 {
-    color: var(--heading-on-blue);
 }
 
 .table-heading {
@@ -302,7 +370,6 @@ body {
     margin-bottom: 28px;
     gap: 10px;
 }
-
 .user-data h5 {
     color: var(--headings-color);
 }
@@ -321,7 +388,6 @@ body {
 
 .leader-icon {
     width: 24px;
-    color: var(--accent-color);
 }
 .quote {
     background-color: var(--accent-color);
@@ -336,4 +402,14 @@ body {
 }
 .quote p {
     color: var(--body-on-blue);
+}
+
+@media only screen and (max-width: 992px) {
+    .right-side {
+        display: none;
+    }
+
+    .column:nth-child(2) {
+        margin-right: 0; /* Elimină marginea dreapta când dispare right side */
+    }
 }

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Two-Sql | Profil </title>
+    <link rel="stylesheet" href="/CSS files/profile.css">
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- <div class="column"> -->
+        <div class="side-bar column">
+            <img src="/Images/Landing images/Logo-nav-bar.svg" alt="Logo navigation bar" class="logo-nav">
+            <nav>
+                <ul class="menu-links ">
+                    <div class="menu-link ">
+                        <img src="/Images/Icons-black/fi-rr-document-signed.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/probleme.html" onclick="navigateToPage('/HTML files/probleme.html')">Probleme</a></li>
+                    </div>
+                    <div class="menu-link active">
+                        <img src="/Images/Icons-white/fi-rr-user.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/profile.html" id="goToProfil">Profil</a></li>
+                    </div>
+                    <div class="menu-link">
+                        <img src="/Images/Icons-black/fi-rr-settings.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/setari.html" id="goToSetari">Setari</a></li>
+                    </div>
+                    <div class="menu-link">
+                        <img src="/Images/Icons-black/fi-rr-hand-holding-heart.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/ajutor.html" id="goToAjutor">Ajutor</a></li>
+                    </div>
+                    <div class="menu-link">
+                        <img src="/Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/Login.html" id="goToLogIn">Log out</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <!-- </div> -->
+        <div class="column main-content">
+            <div class="search">
+                <!-- <img src="/Images/Problems images/fi-rr-search.svg" alt="" class="search-icon"> -->
+                <input type="text" placeholder="Cauta">
+            </div>
+            <div class="greeting">
+                <div class="text-box">
+                    <h3>Buna, user!</h3>
+                    <p>Ai rezolvat abia 3 probleme.  Au ramas foarte multe probleme nerezolvate, deci hai sa ne apucam de treaba!</p>
+                </div>
+                <img src="/Images/Profile images/learning-animate 1.svg" class="greeting-img">
+            </div>
+            <div class="statistics">
+                <div class="card" id="1">
+                    <h1>42</h1>
+                    <h4>Probleme rezolvate</h4>
+                    <p>Devina expert in SQL prin rezolvarea a cat mai multe probleme posibil</p>
+                </div>
+                <div class="card" id="2">
+                    <h1>2</h1>
+                    <h4>Probleme adaugate</h4>
+                    <p>La fiecare 20 probleme rezolvate ai posibilitatea sa scrii problema ta.</p>
+                </div>
+            </div>
+            <div class="problemele-mele">
+                <div class="top-carousel">
+                    <h4>Problemele mele</h4>
+                    <div class="arrows">
+                        <img src="/Images/Icons-black/fi-rr-angle-left.svg" alt="">
+                        <img src="/Images/Icons-black/fi-rr-angle-right.svg" alt="">
+                    </div>
+                </div>
+                <div class="carousel">
+                    <div class="card" id="1">
+                        <h5>Problema 1</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="2">
+                        <h5>Problema 2</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="3">
+                        <h5>Problema 3</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="probleme-rezolvate">
+                <div class="top-carousel">
+                    <h4>Problemele rezolvate</h4>
+                    <div class="arrows">
+                        <img src="/Images/Icons-black/fi-rr-angle-left.svg" alt="">
+                        <img src="/Images/Icons-black/fi-rr-angle-right.svg" alt="">
+                    </div>
+                </div>
+                <div class="carousel">
+                    <div class="card" id="1">
+                        <h5>Problema 1</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="2">
+                        <h5>Problema 2</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="3">
+                        <h5>Problema 3</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="column right-side">
+            <div class="leaderboard">
+                <div class="text-box">
+                    <div class="table-heading">
+                        <img src="/Images/Icons-black/fi-rr-badge.svg" alt="" class="leader-icon">
+                        <h3>Leaderboard</h3>
+                    </div>
+                    <p>Vezi cine a rezolvat cele mai multe probleme si apuca-te de invatat ca sa ti vezi si numele
+                        tau aici.
+                    </p>
+                </div>
+                <div class="list-top5">
+                    <div class="top-student winner" id="1">
+                        <div class="user-data">
+                            <img src="/Images/Icons-white/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>118</h4>
+                    </div>
+                    <div class="top-student " id="2">
+                        <div class="user-data">
+                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>116</h4>
+                    </div>
+                    <div class="top-student " id="3">
+                        <div class="user-data">
+                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>114</h4>
+                    </div>
+                    <div class="top-student " id="4">
+                        <div class="user-data">
+                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>113</h4>
+                    </div>
+                    <div class="top-student " id="5">
+                        <div class="user-data">
+                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>110</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="quote">
+                <h5>“The great aim of education is not knowledge but action.”</h5>
+                <p>-Herbert Spencer</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function navigateToPage(url) {
+            window.location.href = url;
+        }
+        document.addEventListener('DOMContentLoaded', function () 
+        {
+            window.setTimeout(document.querySelector('svg').classList.add('animated'),1000);
+        })
+    </script>
+</body>
+
+</html>
