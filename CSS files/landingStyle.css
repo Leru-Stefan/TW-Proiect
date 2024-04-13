@@ -252,12 +252,17 @@ img {
 }
 
 .card {
+    flex: 0 0 calc(33.33% - 20px);
     background-color: var(--details-on-blue);
     border-radius: 20px;
     padding: 24px;
     display: flex;
     flex-direction: column;
 }
+
+.card:not(.active) {
+    display: none;
+  }
 
 .card .icon {
     background-color: var(--accent-color);

@@ -52,12 +52,12 @@
                 <img src="/Images/Profile images/learning-animate 1.svg" class="greeting-img">
             </div>
             <div class="statistics">
-                <div class="card" id="1">
+                <div class="stat" id="1">
                     <h1>42</h1>
                     <h4>Probleme rezolvate</h4>
                     <p>Devina expert in SQL prin rezolvarea a cat mai multe probleme posibil</p>
                 </div>
-                <div class="card" id="2">
+                <div class="stat" id="2">
                     <h1>2</h1>
                     <h4>Probleme adaugate</h4>
                     <p>La fiecare 20 probleme rezolvate ai posibilitatea sa scrii problema ta.</p>
@@ -67,21 +67,33 @@
                 <div class="top-carousel">
                     <h4>Problemele mele</h4>
                     <div class="arrows">
-                        <img src="/Images/Icons-black/fi-rr-angle-left.svg" alt="">
-                        <img src="/Images/Icons-black/fi-rr-angle-right.svg" alt="">
+                        <img class="arrow-left" src="/Images/Icons-black/fi-rr-angle-left.svg" alt="" >
+                        <img class="arrow-right" src="/Images/Icons-black/fi-rr-angle-right.svg" alt="">
                     </div>
                 </div>
                 <div class="carousel">
-                    <div class="card" id="1">
+                    <div class="card active" id="1">
                         <h5>Problema 1</h5>
                         <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
-                    <div class="card" id="2">
+                    <div class="card active" id="2">
                         <h5>Problema 2</h5>
                         <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
-                    <div class="card" id="3">
+                    <div class="card active" id="3">
                         <h5>Problema 3</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="4">
+                        <h5>Problema 4</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="5">
+                        <h5>Problema 5</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="6">
+                        <h5>Problema 6</h5>
                         <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
                 </div>
@@ -91,21 +103,33 @@
                 <div class="top-carousel">
                     <h4>Problemele rezolvate</h4>
                     <div class="arrows">
-                        <img src="/Images/Icons-black/fi-rr-angle-left.svg" alt="">
-                        <img src="/Images/Icons-black/fi-rr-angle-right.svg" alt="">
-                    </div>
+                        <img class="arrow-left" src="/Images/Icons-black/fi-rr-angle-left.svg" alt="" >
+                        <img class="arrow-right" src="/Images/Icons-black/fi-rr-angle-right.svg" alt="" >
+                    </div>                 
                 </div>
                 <div class="carousel">
-                    <div class="card" id="1">
-                        <h5>Problema 1</h5>
+                    <div class="card active" id="1">
+                        <h5>Probl 1</h5>
                         <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
-                    <div class="card" id="2">
-                        <h5>Problema 2</h5>
+                    <div class="card active" id="2">
+                        <h5>Probl 2</h5>
                         <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
-                    <div class="card" id="3">
-                        <h5>Problema 3</h5>
+                    <div class="card active" id="3">
+                        <h5>Probl 3</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="4">
+                        <h5>Probl 4</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="5">
+                        <h5>Probl 5</h5>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="6">
+                        <h5>Probl 6</h5>
                         <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
                 </div>
@@ -167,15 +191,7 @@
             </div>
         </div>
     </div>
-    <script>
-        function navigateToPage(url) {
-            window.location.href = url;
-        }
-        document.addEventListener('DOMContentLoaded', function () 
-        {
-            window.setTimeout(document.querySelector('svg').classList.add('animated'),1000);
-        })
-    </script>
+    <script src="/JS files/profile.js"></script>
 </body>
 
 </html>

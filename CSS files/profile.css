@@ -113,12 +113,12 @@ body.fade-out {
 
 .column:nth-child(2) {
     width: -webkit-fill-available;
-    margin-left: 256px;
-    margin-right: 332px;
+    margin-left: 252px;
+    margin-right: 382px;
 }
 
 .column:nth-child(3) {
-    width: 300px;
+    width: 350px;
     padding: 16px 0;
 }
 
@@ -265,29 +265,30 @@ body.fade-out {
     margin-bottom: 60px;
 }
 
-.statistics .card {
+.statistics .stat {
     padding: 28px;
     text-align: center;
     background-color: var(--section-login-color);
     border-radius: 20px;
 }
 
-.statistics .card h1 {
+.statistics .stat h1 {
     color: var(--accent-color);
     margin-bottom: 8px;
 }
 
-.statistics .card h4 {
+.statistics .stat h4 {
     color: var(--headings-color);
     margin-bottom: 20px;
 }
 
-.statistics .card p {
+.statistics .stat p {
     width: auto;
 }
 
-.probleme-mele {
-
+.probleme-mele,
+.probleme-rezolvate {
+    width: 100%;
 }
 
 .top-carousel {
@@ -301,12 +302,31 @@ body.fade-out {
     display: flex;
     gap: 24px;
 }
-
+.arrow-left {
+    width: 24px;
+    top: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+}
+.arrow-right {
+    width: 24px;
+    top: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+}
 .carousel {
     display: flex;
     width: auto;
     gap: 24px;
     margin-bottom: 60px;
+    overflow-x: hidden;
+    transition: transform 0.5s ease;
 }
 
 .card {
@@ -317,6 +337,10 @@ body.fade-out {
 
 .card h5 {
     margin-bottom: 20px;
+}
+
+.card:not(.active) {
+    display: none;
 }
 /* ----------------------------Right side--------------------- */
 .right-side {
