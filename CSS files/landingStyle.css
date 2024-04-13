@@ -164,7 +164,8 @@ img {
 
 .btn-primary{
     background-color: var(--accent-color);
-    color: var(--heading-on-blue)
+    color: var(--heading-on-blue);
+    border: 1px solid transparent;
 }
 
 .btn-secondary{

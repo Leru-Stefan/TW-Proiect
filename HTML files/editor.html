@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Two-Sql | Profil </title>
+    <link rel="stylesheet" href="/CSS files/editor.css">
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- <div class="column"> -->
+        <div class="side-bar column">
+            <img src="/Images/Landing images/Logo-nav-bar.svg" alt="Logo navigation bar" class="logo-nav">
+            <nav>
+                <ul class="menu-links ">
+                    <div class="menu-link active">
+                        <img src="/Images/Icons-white/fi-rr-document-signed.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/probleme.html" id="goToProbleme">Probleme</a></li>
+                    </div>
+                    <div class="menu-link">
+                        <img src="/Images/Icons-black/fi-rr-user.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/profile.html" id="goToProfil">Profil</a></li>
+                    </div>
+                    <div class="menu-link">
+                        <img src="/Images/Icons-black/fi-rr-settings.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/setari.html" id="goToSetari">Setari</a></li>
+                    </div>
+                    <div class="menu-link">
+                        <img src="/Images/Icons-black/fi-rr-hand-holding-heart.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/ajutor.html" id="goToAjutor">Ajutor</a></li>
+                    </div>
+                    <div class="menu-link">
+                        <img src="/Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
+                        <li><a href="/HTML files/Login.html" id="goToLogIn">Log out</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <!-- </div> -->
+        <div class="column main-content">
+            <div class="card" id="1">
+                <div class="text-problem">
+                    <div class="denumire-dropdown">
+                        <h4>Denumirea problemei 5</h4>
+                        <img src="/Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="menu-dots" onclick="afiseazaDropdown(this)">
+                        <div class="dropdown-content">
+                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă XML</a>
+                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă JSON</a>
+                        </div>
+            
+                    </div>
+                    <p>Aici ar trebui sa fie continutul problemei. Dupa ce rezolva problema, studentul va
+                        avea posibilitatea sa vada outputul in partea dreapta si daca raspunsul este corect, va
+                        aparea un pop-up cu felicitari, contrat mesaj de eroare.
+                        Dupa ce studentul a rezolvat aceasta problema, va avea posibilitatea sa noteze aceasta
+                        problema dupa dificultate conform criteriilor din dreapta jos. </p>
+                </div>
+            </div>
+            <div class="editor">
+                <div class="live-editor">
+                    <div class="input">
+                        <pre class="editable" contenteditable="true">Introdu aici rezolvarea ta</pre>
+                    </div>
+                    <div class="result">
+                        <pre class="editable" contenteditable="false">Aici va fi rezultatul interogarii tale</pre>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <a id="resetBtn" class="btn btn-secondary" href="#">Reseteaza</a>
+                    <a id="verifyBtn" class="btn btn-primary" href="#">Verifica acum</a>
+                </div>
+            </div>
+            <div class="popup" id="popupCorect">
+                <img src="/Images/Editor images/Enthusiastic-rafiki.svg" alt="">
+                <h3>Raspuns corect!</h3>
+                <p>Felicitari! Ai rezolvat interogarea corect. 
+                    Te rugam sa notezi dificultatea problemei rezolvate
+                </p>
+                <div class="dificultate-options">
+                    <button class="dificultate-button" data-dificultate="usor">Ușor</button>
+                    <button class="dificultate-button" data-dificultate="mediu">Mediu</button>
+                    <button class="dificultate-button" data-dificultate="greu">Greu</button>
+                    <button class="dificultate-button" data-dificultate="gresit">Greșit</button>
+                </div>
+            </div>
+            <div class="popup" id="popupGresit">
+                <img src="/Images/Editor images/Writer's block-rafiki.svg" alt="">
+                <h3>Raspuns gresit!</h3>
+                <p>Te rugam sa incerci inca o data. Rezultatul obtinut nu satisface conditia problemei.</p>
+            </div>
+        </div>
+        <div class="column right-side">
+            <div class="leaderboard">
+                <div class="text-box">
+                    <div class="table-heading">
+                        <img src="/Images/Icons-black/fi-rr-badge.svg" alt="" class="leader-icon">
+                        <h3>Leaderboard</h3>
+                    </div>
+                    <p>Vezi cine a rezolvat cele mai multe probleme si apuca-te de invatat ca sa ti vezi si numele
+                        tau aici.
+                    </p>
+                </div>
+                <div class="list-top5">
+                    <div class="top-student winner" id="1">
+                        <div class="user-data">
+                            <img src="/Images/Icons-white/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>118</h4>
+                    </div>
+                    <div class="top-student " id="2">
+                        <div class="user-data">
+                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>116</h4>
+                    </div>
+                    <div class="top-student " id="3">
+                        <div class="user-data">
+                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>114</h4>
+                    </div>
+                    <div class="top-student " id="4">
+                        <div class="user-data">
+                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>113</h4>
+                    </div>
+                    <div class="top-student " id="5">
+                        <div class="user-data">
+                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
+                            <h5>Nume prenume</h5>
+                        </div>
+                        <h4>110</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="quote">
+                <h5>“The great aim of education is not knowledge but action.”</h5>
+                <p>-Herbert Spencer</p>
+            </div>
+        </div>
+    </div>
+    <script src="/JS files/editor.js"></script>
+</body>
+
+</html>
