@@ -9,20 +9,38 @@
 <body>
     <div class="container">
         <div class="left-half">
-            <h1>Sign Up</h1>
+            <div class="upper-text">
+                <cap-text>Inregistreaza-te acum</cap-text>
+                <h1>Învață SQL cu noi.</h1>
+                <p>Ai deja un account? <a href="/HTML%20files/Login.html">Login</a></p>
+            </div>
             <form action="#" method="post">
-                <input type="text" name="fullname" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                <h5>Nume</h5>
+                <input type="text" name="fullname" placeholder="Stirbu Ion" required>
+                <h5>Email</h5>
+                <input type="email" name="email" placeholder="stirbu.ion@mail.com" required>
+                <h5>Parola</h5>
+                <input type="password" name="password" placeholder="*******" required>
+                <h5>Confirma parola</h5>
+                <input type="password" name="confirm_password" placeholder="********" required>
                 <input type="submit" value="Sign Up">
             </form>
-            <p>Already have an account? <a href="/HTML%20files/Login.html">Login</a></p>
         </div>
-        <div class="right-half">
-            <img src="/Images/Sign-up%20image/Sign-up.svg" alt="Sign Up Image">
+        <div class="right-half" id="gotoleft">
+            <img src="/Images/Login%20image/Logo.svg" alt="" class="logo-login">
+            <img src="/Images/Sign-up%20image/Sign-up.svg" alt="Login Image" class="login-img">
+            <div class="content" id="tablet-mobile">
+                <div class="text">
+                    <h1>Ne bucuram sa te vedem aici</h1>
+                    <p>Bine ai venit pe platforma noastra. Te rugam sa te loghezi si continua sa devii din ce in ce mai bun in SQL.</p>
+                </div>
+                <div class="buttons">
+                    <button class="primary">Log in</button>
+                    <button class="secondary">Sign up</button>
+                </div>
+            </div>
         </div>
-        
     </div>
+    <script src="/JS%20files/signup.js"></script>
 </body>
 </html>

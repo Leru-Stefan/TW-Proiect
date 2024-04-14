@@ -5,6 +5,7 @@ html, body {
     padding: 0;
     background-color: var(--background-color);
     overflow: hidden;
+    font-family: "Montserrat", sans-serif;
 }
 
 :root {
@@ -28,7 +29,6 @@ h2,
 h3,
 h4,
 h5, caption {
-    font-family: "Montserrat", sans-serif;
     color: var(--headings-color);
     margin: 0;
 }
@@ -74,13 +74,23 @@ p {
     color: var(--body-color);
 }
 
-.small-body-text {
+small-body-text {
     font-family: "Montserrat", sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 150%;
     margin: 0;
-    color: var(--body-on-blue);
+    color: var(--body-color);
+}
+
+cap-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 150%;
+    margin: 0;
+    color: var(--body-color);
+    text-transform: uppercase;
 }
 
 .caption {
@@ -88,6 +98,27 @@ p {
     font-size: 14px;
     font-weight: 700;
     font-variant: uppercase;
+    margin-bottom: 12px;
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+    padding: 14px 32px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.primary {
+    background-color: var(--accent-color);
+    border: 1px solid transparent;
+    color: var(--heading-on-blue);
+}
+
+.secondary {
+    background-color: var(--details-on-blue);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
 }
 
 body::-webkit-scrollbar {
@@ -104,18 +135,45 @@ body::-webkit-scrollbar {
 }
 
 .left-half {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--section-login-color);
     background-position: center;
-    /* ar trebui sa facem la acest background un corner raidus de 20px la drep sus si drep jos */
+    border-radius: 0 20px 20px 0;
 }
+.content {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.text {
+    width: auto;
+}
+.buttons {
+    gap: 20px;
+    flex-direction: column;
+    width: 400px;
+    display: flex;
+    align-items: center;
+}
+
 .logo-login {
-    margin: 48px;
+    position: absolute;
+    height: 55px;
+    top: 32px;
+    left: 32px;
 }
 
 .login-img {
-    width: 100%; 
-    height: 100%;
-    /* Sa o pozitionam la centru dupa axa y */
+    position: relative;
+    width: 80%; 
+    margin: auto;
+    align-self: center;
+    justify-self: center;
+
 }
 
 .right-half {
@@ -126,8 +184,20 @@ body::-webkit-scrollbar {
     align-items: center;
 }
 
-h1 {
-    margin-bottom: 10px;
+.upper-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h5 {
+    margin-bottom: 12px;
 }
 
 form {
@@ -136,30 +206,34 @@ form {
 }
 
 input[type="text"], input[type="password"] {
-    width: 100%; /* Adjust input width for padding */
-    padding: 10px;
-    margin-bottom: 10px;
+    width: 100%; 
+    padding: 14px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
 }
 
 input[type="submit"] {
     width: 100%;
-    padding: 10px;
+    padding: 14px;
     border: none;
     border-radius: 8px;
     background-color: var(--accent-color);
-    color: #fff;
+    color: var(--body-on-blue);
     cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-top: 32px;
 }
 
 p {
     margin-top: 20px;
-    text-align: center;
 }
 
-p a {
+a {
     color: var(--accent-color);
     text-decoration: none;
 }
@@ -169,24 +243,117 @@ p a:hover {
 }
 
 /* Media Query for tablets */
-@media (max-width: 900px) {
+@media (max-width: 992px) {
+    h1 {font-size: 36px;}
+    h2 {font-size: 28px;}
+    h3 {font-size: 24px;}
+    h4 {font-size: 22px;}
+    h5 {font-size: 20px;}
+    p {font-size: 14px;}
+    small-body-text {font-size: 10px;}
     .container {
         flex-direction: column;
     }
+
     .left-half {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo-login {
+        position: absolute;
+        height: 55px;
+        margin: 0;
+        left: 28px;
+        top: 28px;
+    }
+    .login-img {
+        top: 20px;
+        width: 400px;
+    }
+    .content {
+        display: flex;
+        width: min-content;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .buttons {
+        margin-top: 28px;
+    }
+    .right-half {
         display: none;
+    }
+
+    input[type="text"], input[type="password"] {
+        font-size: 14px;
+    }
+    
+    input[type="submit"] {
+        margin-top: 24px;
+        font-size: 16px;
     }
 }
 
-/* Media Query for phones */
 @media (max-width: 480px) {
+    h1 {font-size: 24px;}
+    h2 {font-size: 22px;}
+    h3 {font-size: 20px;}
+    h4 {font-size: 18px;}
+    h5 {font-size: 16px;}
+    p {font-size: 14px;}
+    small-body-text {font-size: 10px;}
     .right-half {
         padding: 0;
     }
     h1 {
-        margin-top: 20px;
+        margin-top: 14px;
+        margin-bottom: 20px;
+    }
+    p {
+        margin: 0;
+    }
+
+    .upper-text {
+        width: 80%;
     }
     form {
         width: 80%;
+    }
+
+    .left-half {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo-login {
+        margin: 0;
+        height: 30px;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+    .login-img {
+        width: 200px;
+    }
+    .content {
+        display: flex;
+        width: min-content;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .buttons {
+        width: 200px;
+        margin-top: 28px;
+    }
+    .right-half {
+        display: none;
     }
 }
