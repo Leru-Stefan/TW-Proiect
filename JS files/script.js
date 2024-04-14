@@ -1,3 +1,14 @@
+const loginButton = document.getElementById('goToLogin');
+const signupButton = document.getElementById('goToSignUp');
+
+loginButton.addEventListener('click', () => {
+  window.location.href = 'Login.html';
+});
+
+signupButton.addEventListener('click', () => {
+  window.location.href = 'Sign-up.html';
+});
+
 // Get the arrows and the cards
 const arrowLeft = document.querySelector('.arrow-left');
 const arrowRight = document.querySelector('.arrow-right');
@@ -21,7 +32,13 @@ arrowRight.addEventListener('click', () => {
   // Move the cards to the right
   index = Math.min(index + 1, maxIndex);
   moveCards();
+
+  if (index === maxIndex - 1) {
+    cards[maxIndex].classList.add('active');
+  }
 });
+
+
 
 // Move the cards based on the index
 function moveCards() {

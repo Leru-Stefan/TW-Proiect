@@ -28,7 +28,6 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: "Montserrat", sans-serif;
     color: var(--headings-color);
     margin: 0;
 }
@@ -65,7 +64,6 @@ h5 {
 }
 
 p {
-    font-family: "Montserrat", sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
@@ -74,13 +72,12 @@ p {
     color: var(--body-color);
 }
 
-.small-body-text {
-    font-family: "Montserrat", sans-serif;
+small-body-text {
     font-size: 14px;
     font-weight: 400;
     line-height: 150%;
     margin: 0;
-    color: var(--body-on-blue);
+    color: var(--slider-background);
 }
 
 ul {
@@ -94,14 +91,13 @@ a{
     font-size: 18px;
 }
 body {
-    transition: opacity 0.5s ease;
     display: flex;
     margin: 0;
     padding: 0;
+    background-color: var(--background-color);
+    font-family: 'Montserrat', sans-serif;
 }
-body.fade-out {
-    opacity: 0;
-}
+
 
 .grid-container{
     display: flex;
@@ -118,7 +114,7 @@ body.fade-out {
 } 
 
 .column:nth-child(2) {
-    width: 100%;
+    max-width: 100%;
     margin-left: 252px;
     margin-right: 382px;
 }
@@ -166,12 +162,11 @@ body.fade-out {
 .menu-link {
     display: flex;
     flex-direction: row;
-    width: --webkit-fill-available;
+    width: 100%;
     border-radius: 8px;
     padding-left: 16px;
     padding-top: 18px;
     padding-bottom: 18px;
-    transition: var(--background-color) 0.3s ease;
     margin-bottom: 12px;
 }
 
@@ -215,11 +210,18 @@ body.fade-out {
     margin-top: 20px;
 }
 
+.logo-small {
+    display: none;
+    height: 50px;
+    margin-bottom: 40px;
+    margin-left: 8px;
+    margin-top: 16px;
+}
 /* --------------------------MAIN-------------------------- */
 
 .main-content {
     padding: 16px;
-    height: 100%;
+    max-height: 100vh;
 }
 
 .card {
@@ -282,17 +284,24 @@ body.fade-out {
     display: flex;
     flex-direction: column;
     width: auto;
-    height: 100%;
+}
+
+.editable pre {
+    font-size: 12px;
+    line-height: 2.0;
 }
 
 .live-editor {
     display: flex;
-    height: 90%;
+    height: 50vh;
     margin-bottom: 20px;
 }
 
 .editable {
     height: 100%;
+    width: 100%;
+    overflow-x: auto; 
+    white-space: pre-wrap;
 }
 
 .input {
@@ -465,12 +474,174 @@ body.fade-out {
     color: var(--body-on-blue);
 }
 
-@media only screen and (max-width: 992px) {
+@media (max-width:1199px) {
+    .column:nth-child(1) {
+        width: min-content;
+    }
+
+    .column:nth-child(2) {
+        margin-left: 88px;
+    }
+    .logo-nav {
+        display: none;
+    }
+
+    .logo-small {
+        display: block;
+    }
+
+    .side-bar {
+        width: min-content;
+    }
+    .menu-link {
+        cursor: pointer;
+        width: min-content;
+    }
+    .menu-link a {
+        display: none;
+    }
+
+    .icon-menu {
+        margin-right: 16px;
+    }
+
+}
+
+@media (max-width:992px) {
+    h1 {font-size: 36px;}
+    h2 {font-size: 28px;}
+    h3 {font-size: 24px;}
+    h4 {font-size: 20px;}
+    h5 {font-size: 18px;}
+    p {font-size: 14px;}
+    small-body-text {font-size: 10px;}
+    .column:nth-child(2) {
+        margin-left: 74px;
+        margin-right: 324px;
+    }
+    .column:nth-child(3) {
+        width: 300px;
+    }
+
+    .logo-nav {
+        display: none;
+    }
+
+    .logo-small {
+        display: block;
+    }
+
+    .side-bar {
+        width: min-content;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .text-problem h4 {
+        margin-bottom: 16px;
+    }
+
+    .leaderboard .text-box {
+        margin-bottom: 16px;
+    }
+    .table-heading {
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {font-size: 36px;}
+    h2 {font-size: 28px;}
+    h3 {font-size: 24px;}
+    h4 {font-size: 20px;}
+    h5 {font-size: 16px;}
+    p {font-size: 14px;}
+    small-body-text {font-size: 10px;}
+    a {
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+
+    .column:nth-child(2) {
+        margin-right: 0;
+    }
+    
     .right-side {
         display: none;
     }
 
-    .column:nth-child(2) {
-        margin-right: 0; 
+    .denumire-dropdown {
+        margin-bottom: 16px;
     }
+
+    .denumire-dropdown h4 {
+        margin-bottom: 0;
+    }
+
+}
+
+@media (max-width: 600px) {
+    h1 {font-size: 24px;}
+    h2 {font-size: 22px;}
+    h3 {font-size: 20px;}
+    h4 {font-size: 18px;}
+    p {font-size: 14px;}
+    small-body-text {font-size: 10px;}
+    a {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+    .live-editor {
+        flex-direction: column;
+    }
+
+    .editor {
+        height: 80dvh;
+    }
+
+    .input {
+        width: auto;
+        border-radius: 16px 16px 0 0;
+        height: 50%;
+    }
+
+    .result {
+        width: auto;
+        height: 50%;
+        border-radius: 0 0 16px 16px;
+    }
+
+    .card .download-button {
+        width: 20px;
+    }
+
+    .dd-icon {
+        width: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {font-size: 24px;}
+    h2 {font-size: 22px;}
+    h3 {font-size: 20px;}
+    h4 {font-size: 18px;}
+    p {font-size: 14px;}
+    a {font-size: 14px;}
+    small-body-text {font-size: 10px;}
+
+    .card .download-button {
+        width: 18px;
+    }
+
+    .dd-icon {
+        width: 18px;
+    }
+
+    .denumire-dropdown h4 {
+        width: 60%;
+    }
+    
 }

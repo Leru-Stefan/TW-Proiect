@@ -5,60 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sql-Two | Invata SQL cu noi</title>
-    <link rel="stylesheet" href="/CSS files/landingStyle.css">
+    <link rel="stylesheet" href="/CSS%20files/landingStyle.css">
 </head>
 
 <body>
-    <!-- Navigation bar -->
-    <div class="nav-bar">
-        <div class="container flex">
-            <img src="/Images/Landing images/Logo-nav-bar.svg" alt="Logo navigation bar" class="logo-nav">
-            <nav>
-                <ul class="menu-links">
-                    <li><a href=#acasa>Acasa</a></li>
-                    <li><a href=#functionalitati>Functionalitati</a></li>
-                    <li><a href=#despre-noi>Despre noi</a></li>
-                </ul>
-            </nav>
-            <div class="buttons-nav">
-                <a href="login.html" class=" btn btn-secondary">Log In</a>
-                <a href="Sign-up.html" class="btn btn-primary">Sign Up</a>
+    <!-- Nav-bar -->
+    <nav>
+        <div class="container">
+            <img src="/Images/Landing%20images/Logo-nav-bar.svg" alt="" class="nav-logo">
+            <ul class="menu-links">
+                <li><a href="#hero">Acasa</a></li>
+                <li><a href="#functionalitati">Functionalitati</a></li>
+                <li><a href="#despre-noi">Despre noi</a></li>
+            </ul>
+            <div class="buttons">
+                <button class="btn-secondary" id="goToLogin">Log in</button>
+                <button class="btn-primary" id="goToSignUp">Sign up</button>
             </div>
-            <!-- <div class="hamburger-menu">
-                <img src="/Images/Icons-black/fi-rr-lock.svg" alt="burger-menu">
-            </div> -->
+            <img src="/Images/Icons-black/fi-rr-menu-burger.svg" alt="" class="burger-menu">
         </div>
-    </div>
-    <!-- Hero-section -->
-    <section id="acasa" class="hero-section flex">
-        <!-- Continut pentru Acasa -->
-        <div class="container grid">
-            <div class="hero-section-text">
-                <h1>Devină expert în SQL rapid și ușor!</h1>
-                <p>Descoperă și explorează posibilitățile nelimitate ale SQL-ului în
-                    propriul tău ritm, prin lecții captivante și exerciții practice,
-                    adaptate nevoilor tale individuale de învățare.
-                </p>
-                <a href="Sign-up.html" class="btn btn-primary">Conecteaza-te</a>
-            </div>
-
-            <div class="hero-section-img">
-                <img src="/Images/Landing images/Ilustratie hero-section-landing.svg" alt="Prima-sectiune-img">
-            </div>
+    </nav>
+    <!-- Continut -->
+    <section class="hero container" id="hero">
+        <div class="text-box">
+            <h1>Devină expert în SQL rapid și ușor!</h1>
+            <p>Descoperă și explorează posibilitățile nelimitate ale SQL-ului în
+                propriul tău ritm, prin lecții captivante și exerciții practice,
+                adaptate nevoilor tale individuale de învățare.
+            </p>
+            <button class="btn-primary">Conecteaza-te</button>
         </div>
+        <img src="/Images/Landing%20images/Ilustratie%20hero-section-landing.svg" alt="" class="hero-img">
     </section>
-    <!-- Functionalitati-section -->
-    <section id="functionalitati" class="functionalitati flex">
-        <div class="container grid">
-            <div class="text-with-buttons flex grid">
-                <div class="text-box2">
+    <section class="functionalitati" id="functionalitati">
+        <div class="container">
+            <div class="text-arrows">
+                <div class="text-box">
                     <h2>Descoperă ce poți face în SQL-TWO.</h2>
                     <p>Aici vei găsi o listă cuprinzătoare a funcționalităților oferite de aplicația noastră, concepute
                         special
                         pentru
-                        a-ți facilita învățarea limbajului SQL.</p>
+                        a-ți facilita învățarea limbajului SQL.
+                    </p>
                 </div>
-                <div class="arrows-cards flex ">
+                <div class="arrows-cards ">
                     <img class="arrow-left" src="/Images/Icons-white/fi-rr-angle-left.svg" alt="Left Arrow">
                     <img class="arrow-right" src="/Images/Icons-white/fi-rr-angle-right.svg" alt="Rigth Arrow">
                 </div>
@@ -67,9 +57,7 @@
             <div class="cards-frame ">
                 <!-- Card 1 -->
                 <div class="card active" id="1">
-                    <div class="icon">
-                        <img class="icon-card" src="/Images/Icons-white/fi-rr-document-signed.svg" alt="">
-                    </div>
+                    <img class="icon-card" src="/Images/Icons-white/fi-rr-document-signed.svg" alt="">
                     <div class="text-card">
                         <h4>Vezi lista de probleme</h4>
                         <p>Vezi o listă detaliată a întrebărilor SQL disponibile pentru rezolvare. Explorează
@@ -79,20 +67,16 @@
                 </div>
                 <!-- Card 2 -->
                 <div class="card active" id="2">
-                    <div class="icon">
-                        <img class="icon-card" src="/Images/Icons-white/fi-rr-pencil.svg" alt="">
-                    </div>
+                    <img class="icon-card" src="/Images/Icons-white/fi-rr-pencil.svg" alt="">
                     <div class="text-card">
-                        <h4>Rezolvă probleme pe loc</h4>
+                        <h4>Rezolvă pe loc</h4>
                         <p>Utilizează editorul nostru integrat pentru a răspunde la întrebările SQL propuse. Trimite-ți
                             soluțiile și verifică-le pe loc pentru a vedea dacă ai obținut răspunsul corect.</p>
                     </div>
                 </div>
                 <!-- Card 3 -->
                 <div class="card active" id="3">
-                    <div class="icon">
-                        <img class="icon-card" src="/Images/Icons-white/fi-rr-checkbox.svg" alt="">
-                    </div>
+                    <img class="icon-card" src="/Images/Icons-white/fi-rr-checkbox.svg" alt="">
                     <div class="text-card">
                         <h4>Verifică răspunsurile</h4>
                         <p>După ce ai răspuns la o întrebare, poți vedea răspunsul corect alături de propriul tău
@@ -101,9 +85,7 @@
                 </div>
                 <!-- Card 4 -->
                 <div class="card" id="4">
-                    <div class="icon">
-                        <img class="icon-card" src="/Images/Icons-white/fi-rr-chart-histogram.svg" alt="">
-                    </div>
+                    <img class="icon-card" src="/Images/Icons-white/fi-rr-chart-histogram.svg" alt="">
                     <div class="text-card">
                         <h4>Evaluează dificultatea</h4>
                         <p>După ce ai rezolvat o întrebare, poți marca dificultatea și oferi feedback pentru a
@@ -113,91 +95,77 @@
                 </div>
                 <!-- Card 5 -->
                 <div class="card" id="5">
-                    <div class="icon">
-                        <img class="icon-card" src="/Images/Icons-white/fi-rr-file-add.svg" alt="">
-                    </div>
+                    <img class="icon-card" src="/Images/Icons-white/fi-rr-file-add.svg" alt="">
                     <div class="text-card">
                         <h4>Scrie propria problema</h4>
                         <p>După ce ai parcurs un număr de 20 de întrebări și ai dobândit experiență, ai posibilitatea să
-                            creezi și să distribui propria ta problemă SQL pentru a fi rezolvate de ceilalți elevi.</p>
+                            creezi și să distribui propria ta problemă SQL pentru a fi rezolvate de ceilalți.</p>
                     </div>
                 </div>
                 <!-- Card 6 -->
                 <div class="card" id="6">
-                    <div class="icon">
-                        <img class="icon-card" src="/Images/Icons-white/fi-rr-stats.svg">
-                    </div>
+                    <img class="icon-card" src="/Images/Icons-white/fi-rr-stats.svg" alt="icon">
                     <div class="text-card">
-                        <h4>Monitorizează-ți progresul</h4>
+                        <h4>Monitorizează progresul</h4>
                         <p>Urmărește progresul tău în învățarea SQL-ului prin rapoarte și statistici personale. Vezi
-                            scorul total, numărul de întrebări corect rezolvate și alte informații relevante despre
+                            scorul total, numărul de întrebări corect rezolvate și alte informații despre
                             progresul tău</p>
                     </div>
                 </div>
                 <!-- Card 7 -->
                 <div class="card" id="7">
-                    <div class="icon">
-                        <img class="icon-card" src="/Images/Icons-white/fi-rr-download.svg" alt="">
-                    </div>
+                    <img class="icon-card" src="/Images/Icons-white/fi-rr-download.svg" alt="">
                     <div class="text-card">
                         <h4>Salvează problemele</h4>
-                        <p>Exportă sau importă întrebări într-un format deschis, precum XML sau JSON, pentru a le
-                            utiliza offline sau pentru a le împărtăși cu alții. Împărtășește-ți experiențele cu ceilalți
-                            elevi.</p>
+                        <p>Exportă sau importă întrebări într-un format XML sau JSON, pentru a le
+                            utiliza offline sau pentru a le împărtăși cu alții. Împărtășește-ți experiențele cu
+                            ceilalți.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
-    <!-- Despre-noi-section -->
-    <section id="despre-noi" class="despre-noi-section flex">
-        <!-- Continut pentru Despre noi -->
-        <div class="container grid">
-            <div class="image-box">
-                <img class="ilustratie-despre-noi"
-                    src="/Images/Landing images/Ilustratie-despre-noi-section-landing.svg"
-                    alt="ilustratie-hero-section">
-            </div>
-            <div class="text-box3">
-                <h2>Cei din spatele scenei</h2>
-                <p>Suntem doi studenți din anul al doilea de la Facultatea de Informatică din cadrul Universității din
-                    Iași
-                    și
-                    suntem mândri să vă prezentăm acest proiect pe care l-am realizat cu pasiune și determinare. Ne-am
-                    unit
-                    forțele
-                    pentru a dezvolta o aplicație web menită să ușureze procesul de învățare a limbajului SQL pentru
-                    începători.
-                </p>
-                <p>Fiecare linie de cod și fiecare caracteristică au fost create cu atenție și dedicare pentru a oferi o
-                    experiență educațională de calitate. Ne dorim să împărtășim munca noastră și să contribuim la
-                    creșterea
-                    cunoștințelor în domeniul informaticii, oferind o platformă interactivă și accesibilă pentru toți
-                    cei
-                    interesați
-                    să învețe SQL. </p>
-            </div>
-        </div>
 
+    <section class="despre container" id="despre-noi">
+        <div class="text-box">
+            <h2>Cei din spatele scenei</h2>
+            <p>Suntem doi studenți din anul al doilea de la Facultatea de Informatică din cadrul Universității din
+                Iași
+                și
+                suntem mândri să vă prezentăm acest proiect pe care l-am realizat cu pasiune și determinare. Ne-am
+                unit
+                forțele
+                pentru a dezvolta o aplicație web menită să ușureze procesul de învățare a limbajului SQL pentru
+                începători.
+            </p>
+            <p>Fiecare linie de cod și fiecare caracteristică au fost create cu atenție și dedicare pentru a oferi o
+                experiență educațională de calitate. Ne dorim să împărtășim munca noastră și să contribuim la
+                creșterea
+                cunoștințelor în domeniul informaticii, oferind o platformă interactivă și accesibilă pentru toți
+                cei
+                interesați
+                să învețe SQL. </p>
+        </div>
+        <img src="/Images/Landing%20images/Ilustratie-despre-noi-section-landing.svg" alt="" class="despre-img">
     </section>
-    <!-- Footer -->
-    <footer class="footer ">
-        <div class="container flex">
-            <ul class="footer-links flex">
-                <li><a href="#" class="hover-links">Acasa</a></li>
-                <li><a href="#" class="hover-links">Funcționalități</a></li>
-                <li><a href="#" class="hover-links">Despre noi</a></li>
+    <footer>
+        <div class="container">
+            <img src="/Images/Landing%20images/LogoWhiteFooter.svg" alt="" class="footer-logo">
+            <ul class="footer-links">
+                <li><a href="#hero">Acasa</a></li>
+                <li><a href="#functionalitati">Functionalitati</a></li>
+                <li><a href="#despre-noi">Despre noi</a></li>
             </ul>
-            <img class="logo-footer" src="/Images/Landing images/LogoWhiteFooter.svg">
-            <div class="small-body-text">
-                <small-body-text>
-                    Copyright © 2024 SQL-TWO. All Rights Reserved.
-                </small-body-text>
-            </div>
+            <svg class="divider" width="100%" height="auto" viewBox="0 0 322 1" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L321 1" stroke="#8292AA" stroke-linecap="round" stroke-width="1" />
+            </svg>
+            <small-body-text class="copyright">
+                Copyright ©2024 SQL-TWO. All rights reserved.
+            </small-body-text>
         </div>
-
     </footer>
-    <script src="/JS files/script.js"></script>
+    <script src="/JS%20files/script.js"></script>
 </body>
 
 </html>
