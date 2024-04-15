@@ -12,6 +12,11 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+img {
+  max-width: 21cm;
+  border-radius: 20px;
+}
+
 header > h1 {
   margin: 0;
   font-size: 3em;
@@ -49,7 +54,6 @@ h4 {
   font-variant: small-caps;
   margin: 2em 0 0.5em 0;
 }
-
 
 [role="contentinfo"] a {
   text-decoration: none;
