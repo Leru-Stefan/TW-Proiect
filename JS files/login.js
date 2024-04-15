@@ -30,3 +30,23 @@ signUpButton.addEventListener('click', function() {
             console.error('A apărut o eroare:', error);
         });
 });
+
+// Selectează formularul de login
+var loginForm = document.querySelector('form');
+
+// Adaugă eveniment pentru trimiterea formularului
+loginForm.addEventListener('submit', function(event) {
+    // Oprește comportamentul implicit al formularului (trimiterea datelor către un server)
+    event.preventDefault();
+
+    // Obține valorile introduse de utilizator pentru numele de utilizator și parolă
+    var username = loginForm.querySelector('input[name="username"]').value;
+    var password = loginForm.querySelector('input[name="password"]').value;
+
+    if(username != null && password != null) {
+    // Redirecționează utilizatorul către pagina de probleme
+    window.location.href = "/HTML%20files/Probleme.html";
+    } else {
+        console.error("Toate câmpurile trebuie completate.");
+    }
+});

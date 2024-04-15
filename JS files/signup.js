@@ -30,3 +30,26 @@ signUpButton.addEventListener('click', function() {
             console.error('A apărut o eroare:', error);
         });
 });
+
+var signupForm = document.querySelector('form');
+
+signupForm.addEventListener('submit', function(event) {
+    // Oprește comportamentul implicit al formularului (trimiterea datelor către un server)
+    event.preventDefault();
+
+    // Obține valorile introduse de utilizator pentru numele de utilizator, email, parolă și confirmare parolă
+    var username = signupForm.querySelector('input[name="fullname"]').value;
+    var email = signupForm.querySelector('input[name="email"]').value;
+    var password = signupForm.querySelector('input[name="password"]').value;
+    var confirmPassword = signupForm.querySelector('input[name="confirm_password"]').value;
+
+    // Verifică dacă toate câmpurile sunt completate și dacă parolele coincid
+    if (username && email && password && confirmPassword && password === confirmPassword) {
+        // Redirecționează utilizatorul către pagina de probleme
+        window.location.href = "/HTML%20files/Probleme.html";
+    } else {
+        console.error("Toate câmpurile trebuie completate, iar parolele trebuie să coincidă.");
+    }
+});
+
+
