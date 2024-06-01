@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Two-Sql | Probleme </title>
+    <title> SQL-Two | Probleme </title>
     <link rel="stylesheet" href="/CSS%20files/editor.css">
 </head>
 
@@ -34,12 +34,7 @@
                             <a href="/HTML%20files/setari.html">Setari</a>
                         </div>
                     </li>
-                    <li>
-                        <div class="menu-link" id="gotoajutor">
-                            <img src="/Images/Icons-black/fi-rr-hand-holding-heart.svg" alt="" class="icon-menu">
-                            <a href="/HTML%20files/ajutor.html">Ajutor</a>
-                        </div>
-                    </li>
+
                     <li>
                         <div class="menu-link" id="gotologout">
                             <img src="/Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
@@ -55,12 +50,15 @@
                 <div class="text-problem">
                     <div class="denumire-dropdown">
                         <h4>Denumirea problemei 5</h4>
-                        <img src="/Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="menu-dots" onclick="afiseazaDropdown(this)">
+                        <img src="/Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="menu-dots"
+                            onclick="afiseazaDropdown(this)">
                         <div class="dropdown-content">
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă XML</a>
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă JSON</a>
+                            <a href="#" id="downloadXML"><span><img src="/Images/Icons-black/fi-rr-download.svg"
+                                        alt="XML icon"></span>Descarcă XML</a>
+                            <a href="#" id="downloadJSON"><span><img src="/Images/Icons-black/fi-rr-download.svg"
+                                        alt="JSON icon"></span>Descarcă JSON</a>
                         </div>
-            
+
                     </div>
                     <p>Aici ar trebui sa fie continutul problemei. Dupa ce rezolva problema, studentul va
                         avea posibilitatea sa vada outputul in partea dreapta si daca raspunsul este corect, va
@@ -71,35 +69,14 @@
             </div>
             <div class="editor">
                 <div class="live-editor">
-                    <div class="input">
-                        <pre class="editable" contenteditable="true">Introdu aici rezolvarea ta</pre>
-                    </div>
-                    <div class="result">
-                        <pre class="editable" contenteditable="false">Aici va fi rezultatul interogarii tale</pre>
-                    </div>
+                    <textarea id="userInput" class="input" placeholder="Introdu aici rezolvarea ta"></textarea>
+                    <textarea id="result" class="result" placeholder="Aici va fi rezultatul interogarii tale"
+                        readonly></textarea>
                 </div>
                 <div class="buttons">
                     <a id="resetBtn" class="btn btn-secondary" href="#">Reseteaza</a>
                     <a id="verifyBtn" class="btn btn-primary" href="#">Verifica</a>
                 </div>
-            </div>
-            <div class="popup" id="popupCorect">
-                <img src="/Images/Editor%20images/Enthusiastic-rafiki.svg" alt="">
-                <h3>Raspuns corect!</h3>
-                <p>Felicitari! Ai rezolvat interogarea corect. 
-                    Te rugam sa notezi dificultatea problemei rezolvate
-                </p>
-                <div class="dificultate-options">
-                    <button class="dificultate-button" data-dificultate="usor">Ușor</button>
-                    <button class="dificultate-button" data-dificultate="mediu">Mediu</button>
-                    <button class="dificultate-button" data-dificultate="greu">Greu</button>
-                    <button class="dificultate-button" data-dificultate="gresit">Greșit</button>
-                </div>
-            </div>
-            <div class="popup" id="popupGresit">
-                <img src="/Images/Editor%20images/Writer's%20block-rafiki.svg" alt="">
-                <h3>Raspuns gresit!</h3>
-                <p>Te rugam sa incerci inca o data. Rezultatul obtinut nu satisface conditia problemei.</p>
             </div>
         </div>
         <div class="column right-side">
@@ -157,6 +134,30 @@
             </div>
         </div>
     </div>
+    <div class="glass-effect-div" id="glassSolvedTrue" style="display: none;">
+        <div class="popup" id="popupCorect">
+            <img src="/Images/Editor%20images/Enthusiastic-rafiki.svg" alt="">
+            <h3>Raspuns corect!</h3>
+            <p>Felicitari! Ai rezolvat interogarea corect.
+                Te rugam sa notezi dificultatea problemei rezolvate
+            </p>
+            <div class="dificultate-options">
+                <button class="dificultate-button" data-dificultate="usor">Ușor</button>
+                <button class="dificultate-button" data-dificultate="mediu">Mediu</button>
+                <button class="dificultate-button" data-dificultate="greu">Greu</button>
+                <button class="dificultate-button" data-dificultate="gresit">Greșit</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-effect-div" id="glassSolvedFalse" style="display: none;">
+        <div class="popup" id="popupGresit">
+            <img src="/Images/Editor%20images/Writer's%20block-rafiki.svg" alt="">
+            <h3>Raspuns gresit!</h3>
+            <p>Te rugam sa incerci inca o data. Rezultatul obtinut nu satisface conditia problemei.</p>
+        </div>
+    </div>
+
     <script src="/JS%20files/editor.js"></script>
 </body>
 

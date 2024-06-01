@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Two-Sql | Ajutor </title>
+    <title> SQL-Two | Setari </title>
     <link rel="stylesheet" href="/CSS%20files/setari.css">
 </head>
 
@@ -35,12 +35,6 @@
                         </div>
                     </li>
                     <li>
-                        <div class="menu-link " id="gotoajutor">
-                            <img src="/Images/Icons-black/fi-rr-hand-holding-heart.svg" alt="" class="icon-menu">
-                            <a href="/HTML%20files/ajutor.html">Ajutor</a>
-                        </div>
-                    </li>
-                    <li>
                         <div class="menu-link" id="gotologout">
                             <img src="/Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
                             <a href="/HTML%20files/Login.html">Log out</a>
@@ -50,70 +44,63 @@
             </nav>
         </div>
         <!-- </div> -->
-        <div class="column main-content">
-            <div class="search">
-                <!-- <img src="/Images/Problems images/fi-rr-search.svg" alt="" class="search-icon"> -->
-                <input type="text" placeholder="Cauta">
-            </div>
-            <h1>Aici trebuie sa fie setarile</h1>
-        </div>
-        <!--  -->
-        <div class="column right-side">
-            <div class="leaderboard">
-                <div class="text-box">
-                    <div class="table-heading">
-                        <img src="/Images/Icons-black/fi-rr-badge.svg" alt="" class="leader-icon">
-                        <h3>Leaderboard</h3>
-                    </div>
-
-                    <p>Vezi cine a rezolvat cele mai multe probleme si apuca-te de invatat ca sa ti vezi si numele
-                        tau aici.
-                    </p>
+        <div class="column main-content-setari">
+            <!-- <h1>Aici trebuie sa fie setarile</h1> -->
+            <div class="settings-page-content-options">
+                <div class="settins-option-item">
+                    <h2 class="h3-as-h2">Setari</h2>
                 </div>
-                <div class="list-top5">
-                    <div class="top-student winner" id="top-student-1">
-                        <div class="user-data">
-                            <img src="/Images/Icons-white/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                <div class="setting-item-functions">
+                    <h4>Setarile profilului</h4>
+                    <div class="setting-preferences">
+                        <div class="settings-item-function-container">
+                            <div class="setting-option-line">
+                                <div class="setting-item">Schimba parola</div>
+                                <a class="button-change-language" id="changePassBtn">Schimba</a>
+                            </div>
+                            <div class="reset-password-container" style="display: none;">
+                                <div class="setting-option-line input-forms-password">
+                                    <form class="password-input-reset">
+                                        <label for="current-password">Parola curenta</label>
+                                        <input type="password" id="curr-password" name="password">
+                                    </form>
+                                    <form class="password-input-reset">
+                                        <label for="new-password">Parola noua</label>
+                                        <input type="password" id="new-password" name="password">
+                                    </form>
+                                </div>
+                                <div class="setting-option-line">
+                                    <div class="reset-password-line-link">Nu iti amintesti parola? 
+                                        <a class="link-to-reset-page" href="/settings">Resteaza parola</a>
+                                    </div>
+                                </div>
+                                <div class="setting-option-line">
+                                    <a class="button-change-password">Salveaza parola</a>
+                                </div>
+                            </div>
+                            <div class="setting-option-line">
+                                <div class="setting-item">Sterge profilul</div>
+                                <a class="button-delete-account" href="/"> Sterge</a>
+                            </div>
                         </div>
-                        <h4>118</h4>
                     </div>
-                    <div class="top-student " id="top-student-2">
-                        <div class="user-data">
-                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                </div>
+                <div class="setting-item-functions">
+                    <h4>Setarile limbii</h4>
+                    <div class="setting-preferences">
+                        <div class="settings-item-function-container">
+                            <div class="setting-option-line">
+                                <div>Afiseaza limba</div>
+                                <a class="button-change-language" >Schimba limba</a>
+                            </div>
                         </div>
-                        <h4>116</h4>
-                    </div>
-                    <div class="top-student " id="top-student-3">
-                        <div class="user-data">
-                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
-                        </div>
-                        <h4>114</h4>
-                    </div>
-                    <div class="top-student " id="top-student-4">
-                        <div class="user-data">
-                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
-                        </div>
-                        <h4>113</h4>
-                    </div>
-                    <div class="top-student " id="top-student-5">
-                        <div class="user-data">
-                            <img src="/Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
-                        </div>
-                        <h4>110</h4>
                     </div>
                 </div>
             </div>
-            <div class="quote">
-                <h5>“The great aim of education is not knowledge but action.”</h5>
-                <p>-Herbert Spencer</p>
-            </div>
         </div>
+        
     </div>
+    <script src="/JS%20files/setari.js"></script>
 </body>
 
 </html>

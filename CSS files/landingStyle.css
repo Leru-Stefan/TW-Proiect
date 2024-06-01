@@ -24,11 +24,14 @@
     --valid-stroke: rgba(184, 234, 177, 1);
     --error-bg: rgba(255, 242, 242, 1);
     --error-stroke: rgba(255, 202, 202, 1);
+    --dark-accent : #102C79;
+
 }
 body {
     background-color: var(--background-color);
     font-family: 'Montserrat', sans-serif;
     margin: 0;
+    position: relative;
 }
 
 /* Fonts */
@@ -111,22 +114,47 @@ img {
 
 button {
     font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
     padding: 14px 32px;
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
 }
 
-.btn-primary {
-    background-color: var(--accent-color);
-    border: 1px solid transparent;
-    color: var(--heading-on-blue);
+.btn{
+    padding: 14px 32px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.btn-secondary {
-    background-color: var(--details-on-blue);
+.btn-primary{
+    background-color: var(--accent-color);
+    color: var(--heading-on-blue);
+    border: 1px solid transparent;
+    transition: ease 0.4s;
+
+}
+
+.btn-secondary{
     border: 1px solid var(--accent-color);
+    background-color: var(--background-color);
     color: var(--accent-color);
+    transition: ease 0.4s;
+
+}
+
+.btn-secondary:hover {
+    border: 1px solid var(--accent-color);
+    background-color: var(--accent-color);
+    color: var(--heading-on-blue);
+
+}
+
+.btn-primary:hover{
+    background-color: var(--dark-accent);
 }
 
 /* Navigation bar */
@@ -195,17 +223,43 @@ nav a:hover::before {
 }
 
 .text-box h1 {
+    color: var(--headings-color);
     margin-bottom: 28px;
 }
 
 .text-box p {
+    color: var(--body-color);
     margin-bottom: 38px;
 }
 
+/* Functionalitati */
 .functionalitati {
     padding: 128px 0;
     background-color: var(--accent-color);
     width: 100vw;
+}
+
+.grid-60-40 .text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1;
+}
+
+.grid-60-40 .text-box h2 {
+    color: var(--heading-on-blue);
+}
+
+.grid-60-40 .text-box p {
+    color: var(--body-on-blue);
+}
+
+.card .text-box h2 {
+    color: var(--heading-on-blue);
+}
+
+.card .text-box p {
+    color: var(--body-on-blue);
 }
 
 .functionalitati .container {
@@ -213,81 +267,67 @@ nav a:hover::before {
     flex-direction: column;
 }
 
-.text-arrows {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-}
-.functionalitati .container .text-box {
-    width: 50%;
+.grid-60-40 {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    gap: 32px;
 }
 
-.functionalitati .container .text-box h2 {
-    color: var(--heading-on-blue);
-}
-
-.functionalitati .container .text-box p {
-    color: var(--body-on-blue);
-    margin-bottom: 0;
-}
-.arrows-cards {
-    right: 0;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-.arrow-left {
-    order: 1;
-    width: 24px;
-    cursor: pointer;
-}
-.arrow-right {
-    order: 2;
-    width: 24px;
-    cursor: pointer;
-}
-
-.cards-frame {
-    display: flex;
-    flex-direction: row;
-    margin-top: 60px;
-    justify-content: space-between;
-    height: max-content;
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 24px;
 }
 
 .card {
-    flex: 0 0 calc(33.33% - 16px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     background-color: var(--details-on-blue);
     border-radius: 20px;
     padding: 24px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    max-height: 300px;
+    transition: 0.3s ease-out;
 }
 
-.card:not(.active) {
-    display: none;
-  }
+.card:hover {
+    background-color: var(--headings-color);
+    transition: 0.3s ease-out;
+    color: var(--heading-on-blue);
+}
 
-.card .icon-card {
-    background-color: var(--accent-color);
-    border-radius: 8px;
-    padding: 10px;
-    width: 36px;
-    margin-bottom: 12px;
+.card:hover .text-card h4
+{
+    color: white;
+}
+
+.card:hover  p {
+    color: var(--body-on-blue);
 }
 
 .card .text-card h4 {
     color: var(--headings-color);
-    margin-bottom: 20px;
+    text-wrap: wrap;
 }
 
-.card .text-card p {
+.card p {
     color: var(--body-color);
     margin-bottom: 0;
 }
+
+
+.icon-card {
+    width: 64px;
+}
+
+.text-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+  
 
 /* Despre noi */
 .despre {
@@ -295,7 +335,7 @@ nav a:hover::before {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    gap: 32px;
+    gap: 80px;
     justify-content: space-between;
     margin-bottom: 128px;
 }
@@ -356,17 +396,25 @@ footer a {
         display: none;
     }
 
-    .cards-frame {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        overflow: hidden;
-        gap: 16px;
-    }
-
     .card {
         flex: 1 0 calc(40% - 20px);
-        overflow: hidden;
+    }
+
+
+    .grid-60-40 {
+        grid-template-columns: 1fr;
+        grid-row: 0.4fr 1fr;
+        align-items: center;
+    }
+
+    .grid-60-40 .text-box {
+        order: -1;
+        width: 90%;
+        display: flex;
+        text-align: center;
+        margin: 0 auto; /* Centrează text-box-ul orizontal în grid */
+
+
     }
 
     footer a {
@@ -413,20 +461,15 @@ footer a {
     }
 
     .functionalitati .container .text-box {
-        width: 70%;
-    }
-
-    .cards-frame {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        overflow: hidden;
-        gap: 16px;
+        width: 90%;
     }
 
     .card {
         flex: 1 0 calc(50% - 20px);
     }
+
+
+
     .despre {
         margin-top: 90px;
         margin-bottom: 90px;
@@ -510,33 +553,9 @@ footer a {
         padding: 60px 0;
     }
 
-    .functionalitati .container .text-box {
-        width: 60%;
-    }
 
-    .arrow-left, 
-    .arrow-right {
-        width: 20px;
-    }
-    .cards-frame {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        overflow: hidden;
-        gap: 16px;
-    }
-    
-    .card .icon-card {
-        width: 36px;
-        padding: 8px;
-    }
-    
-    .card .text-card h4 {
-        margin-bottom: 16px;
-    }
-
-    .card {
-        flex: 1 0 calc(60% - 20px);
+    .grid-2x2 {
+        grid-template-columns: 1fr;
     }
     .despre {
         margin-top: 90px;
@@ -619,26 +638,6 @@ footer a {
 
     .functionalitati {
         padding: 90px 0;
-    }
-
-    .cards-frame {
-        display: inline-flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        overflow-y: scroll;
-        gap: 16px;
-    }
-
-    .card {
-        flex: 0 0 calc(70% - 20px);
-        margin-right: 0;
-        width: 100%;
-    }
-
-    .card .icon-card {
-        width: 24px;
-        padding: 4px;
-        border-radius: 4px
     }
     
     .card .text-card h4 {

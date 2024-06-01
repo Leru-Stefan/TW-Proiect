@@ -1,92 +1,150 @@
+document.addEventListener('DOMContentLoaded', function () {
+
 const logoutButton = document.getElementById('gotologout');
 const problemeButton = document.getElementById('gotoprobleme');
 const profilButton = document.getElementById('gotoprofil');
 const setariButton = document.getElementById('gotosetari');
 const ajutorButton = document.getElementById('gotoajutor');
 
-logoutButton.addEventListener('click', () => {
-    window.location.href = 'Login.html';
-});
-
-problemeButton.addEventListener('click', () => {
-    window.location.href = 'probleme.html';
-});
-
-profilButton.addEventListener('click', () => {
-    window.location.href = 'profile.html';
-});
-
-setariButton.addEventListener('click', () => {
-    window.location.href = 'setari.html';
-});
-
-ajutorButton.addEventListener('click', () => {
-    window.location.href = 'ajutor.html';
-});
-
-
-// Get the arrows and the cards for the first carousel
-const arrowLeft1 = document.querySelector('.problemele-mele .arrow-left');
-const arrowRight1 = document.querySelector('.problemele-mele .arrow-right');
-const cards1 = document.querySelectorAll('.problemele-mele .card');
-
-// Get the arrows and the cards for the second carousel
-const arrowLeft2 = document.querySelector('.probleme-rezolvate .arrow-left');
-const arrowRight2 = document.querySelector('.probleme-rezolvate .arrow-right');
-const cards2 = document.querySelectorAll('.probleme-rezolvate .card');
-
-// Set the initial index for each carousel
-let index1 = 0;
-let index2 = 0;
-
-// Set the maximum index for each carousel
-const maxIndex1 = cards1.length - 3;
-const maxIndex2 = cards2.length - 3;
-
-// Add event listeners to the arrows for the first carousel
-arrowLeft1.addEventListener('click', () => {
-    if (cards1.length > 0) {
-        index1 = Math.max(index1 - 1, 0);
-        moveCards(cards1, index1);
-    }
-});
-
-arrowRight1.addEventListener('click', () => {
-    if (cards1.length > 0) {
-        index1 = Math.min(index1 + 1, maxIndex1);
-        moveCards(cards1, index1);
-    }
-});
-
-// Add event listeners to the arrows for the second carousel
-arrowLeft2.addEventListener('click', () => {
-    if (cards2.length > 0) {
-        index2 = Math.max(index2 - 1, 0);
-        moveCards(cards2, index2);
-    }
-});
-
-arrowRight2.addEventListener('click', () => {
-    if (cards2.length > 0) {
-        index2 = Math.min(index2 + 1, maxIndex2);
-        moveCards(cards2, index2);
-    }
-});
-
-
-// Move the cards based on the index for each carousel
-function moveCards(cards, index) {
-  // Hide all cards
-  cards.forEach(card => {
-    card.style.display = 'none';
-    card.style.transition = 'transform 0.5s ease';
-    card.style.transform = 'translateX(-100%)';
-});
-
-  // Show the next three cards based on the index
-  for (let i = index; i < index + 3 && i < cards.length; i++) {
-    cards[i].style.display = 'block';
-    cards[i].style.transform = 'translateX(0)';
-  }
+if (logoutButton) {
+    logoutButton.addEventListener('click', () => {
+        window.location.href = 'Login.html';
+    });
 }
 
+if (problemeButton) {
+    problemeButton.addEventListener('click', () => {
+        window.location.href = 'probleme.html';
+    });
+}
+
+if (profilButton) {
+    profilButton.addEventListener('click', () => {
+        window.location.href = 'profile.html';
+    });
+}
+
+if (setariButton) {
+    setariButton.addEventListener('click', () => {
+        window.location.href = 'setari.html';
+    });
+}
+
+if (ajutorButton) {
+    ajutorButton.addEventListener('click', () => {
+        window.location.href = 'ajutor.html';
+    });
+}
+
+
+async function fetchQuotes() {
+    try {
+        const response = await fetch('https://api.quotable.io/quotes?tags=inspirational');
+        const data = await response.json();
+        displayQuote(data.results);
+    } catch (error) {
+        console.error('Eroare la obținerea citatelor:', error);
+    }
+}
+
+function displayQuote(quotes) {
+    const container = document.getElementById('quote-container');
+    if (!container) {
+        console.error('Elementul "quote-container" nu a fost găsit.');
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const quote = quotes[randomIndex];
+
+    const quoteElement = document.createElement('div');
+    quoteElement.classList.add('quote');
+    quoteElement.innerHTML = `
+        <h5>${quote.content}</h5>
+        <p class="author">- ${quote.author}</p>
+    `;
+    container.appendChild(quoteElement);
+}
+
+fetchQuotes();
+
+function numarProblemeRezolvate() {
+    // Hardcodare pentru testare
+    return 19; // Modifica acest numar pentru testare
+}
+
+// Functie pentru a afisa popup-ul corespunzator
+function afiseazaPopup() {
+    const glassAddTrue = document.getElementById('glassAddTrue');
+    const glassAddFalse = document.getElementById('glassAddFalse');
+
+    // Ascunde ambele popup-uri initial
+    glassAddTrue.style.display = 'none';
+    glassAddFalse.style.display = 'none';
+
+    // Verifica numarul de probleme rezolvate
+    if (numarProblemeRezolvate() >= 20) {
+        glassAddTrue.style.display = 'flex';
+    } else {
+        glassAddFalse.style.display = 'flex';
+    }
+}
+
+// Adauga eveniment pentru div-ul add-problem
+const addProblemDiv = document.getElementById('add-problem');
+if (addProblemDiv) {
+    addProblemDiv.addEventListener('click', afiseazaPopup);
+}
+
+// Adauga eveniment pentru butonul de import JSON
+const importJsonButton = document.getElementById('importJsonButton');
+if (importJsonButton) {
+    importJsonButton.addEventListener('click', function () {
+        const jsonFileInput = document.getElementById('jsonFileInput');
+        if (jsonFileInput) {
+            jsonFileInput.click();
+        }
+    });
+}
+
+// Adauga eveniment pentru input-ul de tip file
+const jsonFileInput = document.getElementById('jsonFileInput');
+if (jsonFileInput) {
+    jsonFileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const jsonData = JSON.parse(e.target.result);
+                    console.log('JSON data loaded:', jsonData);
+                    // Aici poți adăuga logica pentru a procesa datele încărcate
+                    handleJsonData(jsonData);
+                } catch (error) {
+                    console.error('Eroare la citirea fișierului JSON:', error);
+                }
+            };
+            reader.readAsText(file);
+        }
+    });
+}
+
+function handleJsonData(data) {
+    // Adaugă logica pentru a procesa datele încărcate din fișierul JSON
+    console.log('Procesare date JSON:', data);
+}
+
+function hidePopup(event) {
+    const glassAddTrue = document.getElementById('glassAddTrue');
+    const glassAddFalse = document.getElementById('glassAddFalse');
+
+    if (glassAddTrue.style.display === 'flex' && !document.getElementById('addTrue').contains(event.target) && !document.getElementById('add-problem').contains(event.target)) {
+        glassAddTrue.style.display = 'none';
+    }
+    if (glassAddFalse.style.display === 'flex' && !document.getElementById('addFalse').contains(event.target) && !document.getElementById('add-problem').contains(event.target)) {
+        glassAddFalse.style.display = 'none';
+    }
+}
+
+document.addEventListener('click', hidePopup);
+});

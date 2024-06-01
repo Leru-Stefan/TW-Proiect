@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Two-Sql | Probleme </title>
+    <title> SQL-Two | Probleme </title>
     <link rel="stylesheet" href="/CSS%20files/problemeStyle.css">
 </head>
 
@@ -34,12 +34,7 @@
                             <a href="/HTML%20files/setari.html">Setari</a>
                         </div>
                     </li>
-                    <li>
-                        <div class="menu-link" id="gotoajutor">
-                            <img src="/Images/Icons-black/fi-rr-hand-holding-heart.svg" alt="" class="icon-menu">
-                            <a href="/HTML%20files/ajutor.html">Ajutor</a>
-                        </div>
-                    </li>
+
                     <li>
                         <div class="menu-link" id="gotologout">
                             <img src="/Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
@@ -47,14 +42,20 @@
                         </div>
                     </li>
                 </ul>
-                
+
             </nav>
         </div>
         <!-- </div> -->
         <div class="column main-content">
             <div class="search">
-                <!-- <img src="/Images/Problems images/fi-rr-search.svg" alt="" class="search-icon"> -->
-                <input type="text" placeholder="Cauta">
+                <img src="/Images/Icons-black/fi-rr-search.svg" alt="" class="search-icon">
+                <input type="text" placeholder="Cauta...">
+            </div>
+            <div class="add-problem-container" id="add-problem">
+                <div class="inner-content">
+                    <img src="/Images/Icons-white/add.svg" alt="addIcon">
+                    <p>Adauga o problema</p>
+                </div>
             </div>
 
             <div class="cards-probleme">
@@ -69,10 +70,16 @@
                     </div>
                     <div class="cta-buttons">
                         <a href="editor.html" class="btn btn-primary">Rezolvă</a>
-                        <img class="download-button" src="/Images/Icons-black/fi-rr-download.svg" alt="" onclick="afiseazaDropdown(this)">
-                        <div class="dropdown-content">
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă XML</a>
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă JSON</a>
+                        <div class="download-button" onclick="afiseazaDropdown(this)">
+                            <img src="/Images/Icons-black/fi-rr-download.svg" alt="Download">
+                        </div>
+                        <div class="dropdown-content" id="dropdown-content-problema-1">
+                            <a href="#" id="downloadXML" data-id="problema-1"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă
+                                XML</a>
+                            <a href="#" id="downloadJSON" data-id="problema-1"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă
+                                JSON</a>
                         </div>
                     </div>
                 </div>
@@ -87,10 +94,16 @@
                     </div>
                     <div class="cta-buttons">
                         <a href="editor.html" class="btn btn-primary">Rezolvă</a>
-                        <img class="download-button" src="/Images/Icons-black/fi-rr-download.svg" alt="" onclick="afiseazaDropdown(this)">
-                        <div class="dropdown-content">
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă XML</a>
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă JSON</a>
+                        <div class="download-button" onclick="afiseazaDropdown(this)">
+                            <img src="/Images/Icons-black/fi-rr-download.svg" alt="Download">
+                        </div>
+                        <div class="dropdown-content" id="dropdown-content-problema-2">
+                            <a href="#" id="downloadXML" data-id="problema-2"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă
+                                XML</a>
+                            <a href="#" id="downloadJSON" data-id="problema-2"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă
+                                JSON</a>
                         </div>
                     </div>
                 </div>
@@ -105,10 +118,16 @@
                     </div>
                     <div class="cta-buttons">
                         <a href="editor.html" class="btn btn-primary">Rezolvă</a>
-                        <img class="download-button" src="/Images/Icons-black/fi-rr-download.svg" alt="" onclick="afiseazaDropdown(this)">
-                        <div class="dropdown-content">
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă XML</a>
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă JSON</a>
+                        <div class="download-button" onclick="afiseazaDropdown(this)">
+                            <img src="/Images/Icons-black/fi-rr-download.svg" alt="Download">
+                        </div>
+                        <div class="dropdown-content" id="dropdown-content-problema-3">
+                            <a href="#" id="downloadXML" data-id="problema-3"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă
+                                XML</a>
+                            <a href="#" id="downloadJSON" data-id="problema-3"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă
+                                JSON</a>
                         </div>
                     </div>
                 </div>
@@ -123,10 +142,16 @@
                     </div>
                     <div class="cta-buttons">
                         <a href="editor.html" class="btn btn-primary">Rezolvă</a>
-                        <img class="download-button" src="/Images/Icons-black/fi-rr-download.svg" alt="" onclick="afiseazaDropdown(this)">
-                        <div class="dropdown-content">
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă XML</a>
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă JSON</a>
+                        <div class="download-button" onclick="afiseazaDropdown(this)">
+                            <img src="/Images/Icons-black/fi-rr-download.svg" alt="Download">
+                        </div>
+                        <div class="dropdown-content" id="dropdown-content-problema-4">
+                            <a href="#" id="downloadXML" data-id="problema-4"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă
+                                XML</a>
+                            <a href="#" id="downloadJSON" data-id="problema-4"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă
+                                JSON</a>
                         </div>
                     </div>
                 </div>
@@ -141,10 +166,16 @@
                     </div>
                     <div class="cta-buttons">
                         <a href="editor.html" class="btn btn-primary">Rezolvă</a>
-                        <img class="download-button" src="/Images/Icons-black/fi-rr-download.svg" alt="" onclick="afiseazaDropdown(this)">
-                        <div class="dropdown-content">
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon" class="dd-icon"></span>Descarcă XML</a>
-                            <a href="#"><span><img src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon" class="dd-icon"></span>Descarcă JSON</a>
+                        <div class="download-button" onclick="afiseazaDropdown(this)">
+                            <img src="/Images/Icons-black/fi-rr-download.svg" alt="Download">
+                        </div>
+                        <div class="dropdown-content" id="dropdown-content-problema-5">
+                            <a href="#" id="downloadXML" data-id="problema-5"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă
+                                XML</a>
+                            <a href="#" id="downloadJSON" data-id="problema-5"><span><img
+                                        src="/Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă
+                                JSON</a>
                         </div>
                     </div>
                 </div>
@@ -158,8 +189,7 @@
                         <h3>Leaderboard</h3>
                     </div>
 
-                    <p>Vezi cine a rezolvat cele mai multe probleme si apuca-te de invatat ca sa ti vezi si numele
-                        tau aici.
+                    <p>Vrei numele tău pe lista celor care rezolvă cele mai multe probleme? Începe să înveți și să rezolvi!
                     </p>
                 </div>
                 <div class="list-top5">
@@ -200,9 +230,29 @@
                     </div>
                 </div>
             </div>
-            <div class="quote">
-                <h5>“The great aim of education is not knowledge but action.”</h5>
-                <p>-Herbert Spencer</p>
+            <div class="quote-container" id="quote-container"></div>
+
+        </div>
+    </div>
+    <div class="glass-effect-div" id="glassAddTrue" style="display: none;">
+        <div class="popup-add" id="addTrue">
+            <img class="image-popup" src="/Images/Profile images/celebration.svg" alt="Congrats">
+            <div class="text-wrapper">
+                <h2>Felicitari!</h2>
+                <p>Ai rezolvat cu succes 20 de probleme. Te rugăm să încarci problema ta pe platforma noastră în format JSON.</p>
+            </div>
+            <a class="btn btn-primary" id="importJsonButton">Import JSON</a>
+            <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
+        </div>
+    </div>
+
+    <div class="glass-effect-div" id="glassAddFalse" style="display: none;">
+
+        <div class="popup-add" id="addFalse">
+            <img class="image-popup" src="/Images/Profile images/sad.svg" alt="Congrats">
+            <div class="text-wrapper">
+                <h2>Ne pare rau!</h2>
+                <p>Încă nu ai rezolvat 20 de probleme pentru a putea adăuga propria ta problemă. Te rugăm să continui să lucrezi la probleme.</p>
             </div>
         </div>
     </div>

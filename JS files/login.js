@@ -47,6 +47,5 @@ loginForm.addEventListener('submit', function(event) {
     // Redirecționează utilizatorul către pagina de probleme
     window.location.href = "/HTML%20files/Probleme.html";
     } else {
-        console.error("Toate câmpurile trebuie completate.");
     }
 });

@@ -14,6 +14,8 @@
     --padding-inline-section: 20px;
     --border-color: rgba(197, 210, 247, 1);
     --section-login-color: rgba(240, 244, 253, 1);
+    --dark-accent : #102C79;
+
 }
 
 /* Fonts */
@@ -242,6 +244,7 @@ body.fade-out {
     border-radius: 20px;
     margin-bottom: 24px;
     position: relative;
+    margin-top: 40px;
 }
 .greeting .text-box {
     margin: 32px;
@@ -260,10 +263,12 @@ body.fade-out {
 
 .greeting-img {
     height: 140%;
+    max-height: 230px;
     width: auto;
     position: absolute;
-    top: -62px;
+    /* top: -62px; */
     right: 32px;
+    bottom: 10px;
 }
 .statistics {
     display: flex;
@@ -292,64 +297,98 @@ body.fade-out {
 .statistics .stat p {
     width: auto;
 }
-
-.probleme-mele,
-.probleme-rezolvate {
-    width: 100%;
+.problemele-mele {
+    margin-top: 40px;
+}
+.grid-problems-admin {
+    margin-top: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    display: grid;
+    gap: 20px;
+    overflow: scroll;
+    overflow-y: auto; /* Permite derularea verticală */
+    max-height: calc(2 * (200px + 20px)); /* Limitează înălțimea containerului */
 }
 
-.top-carousel {
+
+.add-problem-card {
+    background-color: var(--accent-color);
+    border-radius: 20px;
+    padding: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
-}
-
-.top-carousel .arrows {
-    display: flex;
-    gap: 24px;
-}
-.arrow-left {
-    width: 24px;
-    top: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-    cursor: pointer;
-}
-.arrow-right {
-    width: 24px;
-    top: 80%;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    z-index: 1;
+    text-align: center;
+    gap: 12px;
     cursor: pointer;
+    transition: 0.3s ease-in;
 }
-.carousel {
+
+.add-problem-card:hover {
+    background-color: var(--dark-accent);
+}
+
+.glass-effect-div {
+    top: 0;
+    left: 0;
     display: flex;
-    width: auto;
-    gap: 24px;
-    margin-bottom: 60px;
-    overflow-x: hidden;
-    transition: transform 0.5s ease;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 24, 30, 0.3);
+    backdrop-filter: blur(3px);
+    z-index: 999;
+}
+
+.popup-add {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: var(--background-color);
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+}
+.image-popup {
+    width: 70%;
+}
+
+.text-wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+
+.add-problem-card p {
+    font-size: 16x;
+    font-weight: 500;
+    color: var(--background-color);
+    width: 60%;
 }
 
 .card {
-    flex: 0 0 calc(33.33% - 16px);
     padding: 20px;
     background-color: var(--section-login-color);
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 160px;
 }
 
 .card h5 {
     margin-bottom: 20px;
 }
 
-.card:not(.active) {
-    display: none;
-}
+
 /* ----------------------------Right side--------------------- */
 .right-side {
     position: fixed;
@@ -421,7 +460,7 @@ body.fade-out {
 .leader-icon {
     width: 24px;
 }
-.quote {
+.quote-container {
     background-color: var(--accent-color);
     padding: 28px;
     border-radius: 20px;
@@ -523,8 +562,8 @@ body.fade-out {
     
     .greeting-img {
         height: 120%;
-        top: -42px;
-        right: 10px;
+        right: 20px;
+        bottom: 10px;
     }
     .right-side {
         display: none;
@@ -562,8 +601,7 @@ body.fade-out {
 
     .greeting-img {
         height: 100%;
-        top: -32px;
-        right: -10px;
+        bottom: 10px;
     }
 
 
@@ -577,9 +615,5 @@ body.fade-out {
     p {font-size: 14px;}
     a {font-size: 14px;}
     small-body-text {font-size: 10px;}
-
-    .greeting-img {
-        right: -20px;
-    }
 
 }

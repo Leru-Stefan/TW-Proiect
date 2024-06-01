@@ -20,6 +20,8 @@
     --valid-stroke: rgba(184, 234, 177, 1);
     --error-bg: rgba(255, 242, 242, 1);
     --error-stroke: rgba(255, 202, 202, 1);
+    --dark-accent : #102C79;
+
 }
 
 /* Fonts */
@@ -137,17 +139,26 @@ body {
     background-color: var(--accent-color);
     color: var(--heading-on-blue);
     border: 1px solid transparent;
+    transition: ease 0.4s;
+
 }
 
 .btn-secondary{
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
+    transition: ease 0.4s;
+
 }
 
 .btn-secondary:hover {
     border: 1px solid var(--accent-color);
     background-color: var(--accent-color);
     color: var(--heading-on-blue);
+
+}
+
+.btn-primary:hover{
+    background-color: var(--dark-accent);
 }
 
 /* -------------SIDEBAR------------------------ */
@@ -223,21 +234,117 @@ body {
 .main-content {
     padding: 16px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .search {
     width: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid var(--small-body-color);
+    border-radius: 8px;
+}
+
+.search-icon {
+    width: 24px;
+}
+
+/* .relative-parrent {
+    position: relative;
+    height: auto;
+    width: auto;
+    
+} */
+
+.glass-effect-div {
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 24, 30, 0.3);
+    backdrop-filter: blur(3px);
+    z-index: 999;
+}
+
+.popup-add {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: var(--background-color);
+    border-radius: 20px;
+    align-items: center;
+    width: 50%;
+    text-align: center;
+}
+.image-popup {
+    width: 70%;
+}
+
+.text-wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-bottom: 12px;
 }
 
 .search input[type="text"] {
     width: calc(100% - 24px);
-    padding: 10px;
-    border: 1px solid var(--slider-background);
-    border-radius: 8px;
-    margin-bottom: 32px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--headings-color);
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
+    font: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
+
+.search input[type="text"]::placeholder {
+    color: var(--small-body-color);
+}
+
+.add-problem-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    height: 80px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+
+.add-problem-container:hover {
+    background-color: #102C79;
+}
+
+.inner-content {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-content p {
+    color: var(--background-color);
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+
+}
+
 
 .cards-probleme {
     display: flex;
@@ -259,7 +366,17 @@ body {
 }
 
 .download-button {
+    background-color: var(--section-login-color);
     cursor: pointer;
+    display: inline-block;
+    padding: 10px 12px;
+    border-radius: 100px;
+    transition: 0.3s ease-in;
+}
+
+.download-button:hover {
+    background-color: var(--small-body-color);
+
 }
 
 .dropdown-content {
@@ -316,6 +433,9 @@ body {
     height: 100%;
     overflow-y: auto;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 .leaderboard {
     border: 1px solid var(--border-color);
@@ -388,18 +508,22 @@ body {
     width: 24px;
     color: var(--accent-color);
 }
-.quote {
+.quote-container {
     background-color: var(--accent-color);
     padding: 28px;
     border-radius: 20px;
     text-align: center;
+    margin-bottom: 20px;
+    max-height: 180px;
+
 }
 
-.quote h5 {
+.quote-container h5 {
     color: var(--heading-on-blue);
-    margin-bottom: 27px;
+    font-size: 16px;
 }
 .quote p {
+    margin-top: 8px;
     color: var(--body-on-blue);
 }
 
