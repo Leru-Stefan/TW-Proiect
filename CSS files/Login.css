@@ -236,10 +236,12 @@ p {
 a {
     color: var(--accent-color);
     text-decoration: none;
+    cursor: pointer;
 }
 
 p a:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 /* Media Query for tablets */

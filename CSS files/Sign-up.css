@@ -240,6 +240,7 @@ a {
 
 p a:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 /* Media Query for tablets */

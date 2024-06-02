@@ -1,3 +1,20 @@
+document.addEventListener('DOMContentLoaded', function () {
+
+    const signupButton = document.getElementById('goToSignUp');
+    const signupLink = document.getElementById('goToSignUpLink');
+
+    if (signupButton) {
+        signupButton.addEventListener('click', () => {
+            window.location.href = 'index.php?page=Sign-up';
+        });
+    }
+
+    if (signupLink) {
+        signupLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.location.href = 'index.php?page=Sign-up';
+        });
+    }
 // Selectează butoanele de login și sign up
 var loginButton = document.querySelector('.primary');
 var signUpButton = document.querySelector('.secondary');
@@ -45,7 +62,9 @@ loginForm.addEventListener('submit', function(event) {
 
     if(username != null && password != null) {
     // Redirecționează utilizatorul către pagina de probleme
-    window.location.href = "/HTML%20files/Probleme.html";
+    window.location.href = 'index.php?page=probleme';
     } else {
     }
+});
+
 });

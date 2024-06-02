@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL-Two | Login</title>
-    <link rel="stylesheet" href="/CSS%20files/Login.css">
+    <link rel="stylesheet" href="./CSS%20files/Login.css">
+    <script src="./JS%20files/login.js"></script>
+
 </head>
 <body>
     <div class="container">
         <div class="left-half" id="gotoright">
-            <img src="/Images/Login%20image/Logo.svg" alt="" class="logo-login">
-            <img src="/Images/Login%20image/Login.svg" alt="Login Image" class="login-img">
+            <img src="./Images/Login%20image/Logo.svg" alt="" class="logo-login">
+            <img src="./Images/Login%20image/Login.svg" alt="Login Image" class="login-img">
             <div class="content" id="tablet-mobile">
                 <div class="text">
                     <h1>Ne bucuram sa te vedem aici</h1>
                     <p>Bine ai venit pe platforma noastra. Te rugam sa te loghezi si continua sa devii din ce in ce mai bun in SQL.</p>
                 </div>
                 <div class="buttons">
-                    <button class="primary">Log in</button>
-                    <button class="secondary">Sign up</button>
+                    <button class="primary" id="goToLogin">Log in</button>
+                    <button class="secondary" id="goToSignUp">Sign up</button>
                 </div>
             </div>
         </div>
@@ -28,7 +30,7 @@
                     Incepe calatoria
                 </cap-text>
                 <h1>Bine ai revenit</h1>
-                <p>Inca nu ai un account? <a href="/HTML%20files/Sign-up.html">Sign up</a></p>
+                <p>Inca nu ai un account? <a id="goToSignUpLink">Sign up</a></p>
             </div>
             <form action="#" method="post">
                 <h5>Email</h5>
@@ -39,6 +41,5 @@
             </form>
         </div>
     </div>
-    <script src="/JS%20files/login.js"></script>
 </body>
 </html>

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL-Two | Sign up </title>
-    <link rel="stylesheet" href="/CSS%20files/Sign-up.css">
+    <link rel="stylesheet" href="./CSS%20files/Sign-up.css">
+    <script src="./JS%20files/signup.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -12,7 +14,7 @@
             <div class="upper-text">
                 <cap-text>Inregistreaza-te acum</cap-text>
                 <h1>Învață SQL cu noi.</h1>
-                <p>Ai deja un account? <a href="/HTML%20files/Login.html">Login</a></p>
+                <p>Ai deja un account? <a id="goToLoginLink">Login</a></p>
             </div>
             <form action="#" method="post">
                 <h5>Nume</h5>
@@ -27,20 +29,19 @@
             </form>
         </div>
         <div class="right-half" id="gotoleft">
-            <img src="/Images/Login%20image/Logo.svg" alt="" class="logo-login">
-            <img src="/Images/Sign-up%20image/Sign-up.svg" alt="Login Image" class="login-img">
+            <img src="./Images/Login%20image/Logo.svg" alt="" class="logo-login">
+            <img src="./Images/Sign-up%20image/Sign-up.svg" alt="Login Image" class="login-img">
             <div class="content" id="tablet-mobile">
                 <div class="text">
                     <h1>Ne bucuram sa te vedem aici</h1>
                     <p>Bine ai venit pe platforma noastra. Te rugam sa te loghezi si continua sa devii din ce in ce mai bun in SQL.</p>
                 </div>
                 <div class="buttons">
-                    <button class="primary">Log in</button>
-                    <button class="secondary">Sign up</button>
+                    <button class="primary" id="goToLogin">Log in</button>
+                    <button class="secondary" id="goToSignUp">Sign up</button>
                 </div>
             </div>
         </div>
     </div>
-    <script src="/JS%20files/signup.js"></script>
 </body>
 </html>
