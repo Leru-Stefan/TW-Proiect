@@ -5,40 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> SQL-Two | Profil </title>
-    <link rel="stylesheet" href="../CSS%20files/profile.css">
+    <link rel="stylesheet" href="./CSS%20files/profile.css">
+    <script defer src="./JS%20files/profile.js"></script>
+
 </head>
 
 <body>
     <div class="grid-container">
         <!-- <div class="column"> -->
         <div class="side-bar column">
-            <img src="../Images/Landing%20images/Logo-nav-bar.svg" alt="Logo navigation bar" class="logo-nav">
-            <img src="../Images/Profile%20images/Logo-small.svg" alt="" class="logo-small">
+            <img src="./Images/Landing%20images/Logo-nav-bar.svg" alt="Logo navigation bar" class="logo-nav">
+            <img src="./Images/Profile%20images/Logo-small.svg" alt="" class="logo-small">
             <nav>
                 <ul class="menu-links">
                     <li>
                         <div class="menu-link" id="gotoprobleme">
-                            <img src="../Images/Icons-black/fi-rr-document-signed.svg" alt="" class="icon-menu">
-                            <a href="../HTML%20files/probleme.html">Probleme</a>
+                            <img src="./Images/Icons-black/fi-rr-document-signed.svg" alt="" class="icon-menu">
+                            <a id="gotoprobleme">Probleme</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-link active" id="gotoprofil">
-                            <img src="../Images/Icons-white/fi-rr-user.svg" alt="" class="icon-menu">
-                            <a href="../HTML%20files/profile.html">Profil</a>
+                            <img src="./Images/Icons-white/fi-rr-user.svg" alt="" class="icon-menu">
+                            <a id="gotoprofil">Profil</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-link" id="gotosetari">
-                            <img src="../Images/Icons-black/fi-rr-settings.svg" alt="" class="icon-menu">
-                            <a href="../HTML%20files/setari.html">Setari</a>
+                            <img src="./Images/Icons-black/fi-rr-settings.svg" alt="" class="icon-menu">
+                            <a id="gotosetari">Setari</a>
                         </div>
                     </li>
                 
                     <li>
                         <div class="menu-link" id="gotologout">
-                            <img src="../Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
-                            <a href="../HTML%20files/Login.html">Log out</a>
+                            <img src="./Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
+                            <a id="gotologout">Log out</a>
                         </div>
                     </li>
                 </ul>
@@ -51,7 +53,7 @@
                     <h3>Buna, user!</h3>
                     <p>Ai rezolvat doar 3 probleme. Mai avem multe de rezolvat, deci hai să trecem la treabă!</p>
                 </div>
-                <img src="../Images/Profile%20images/learning-animate%201.svg" class="greeting-img" alt="">
+                <img src="./Images/Profile%20images/learning-animate%201.svg" class="greeting-img" alt="">
             </div>
             <div class="statistics">
                 <div class="stat" id="stat-1">
@@ -69,7 +71,7 @@
                 <h4>Problemele mele</h4>
                 <div class="grid-problems-admin">
                     <div class="add-problem-card" id="add-problem">
-                        <img src="../Images/Icons-white/add.svg" alt="">
+                        <img src="./Images/Icons-white/add.svg" alt="">
                         <p>Adauga problema</p>
                     </div>
                     <div class="card" id="prbm-1">
@@ -135,7 +137,7 @@
             <div class="leaderboard">
                 <div class="text-box">
                     <div class="table-heading">
-                        <img src="../Images/Icons-black/fi-rr-badge.svg" alt="" class="leader-icon">
+                        <img src="./Images/Icons-black/fi-rr-badge.svg" alt="" class="leader-icon">
                         <h3>Leaderboard</h3>
                     </div>
                     <p>Vrei numele tău pe lista celor care rezolvă cele mai multe probleme? Începe să înveți și să rezolvi!
@@ -144,35 +146,35 @@
                 <div class="list-top5">
                     <div class="top-student winner" id="top-student-1">
                         <div class="user-data">
-                            <img src="../Images/Icons-white/fi-rr-user.svg" alt="">
+                            <img src="./Images/Icons-white/fi-rr-user.svg" alt="">
                             <h5>Nume prenume</h5>
                         </div>
                         <h4>118</h4>
                     </div>
                     <div class="top-student " id="top-student-2">
                         <div class="user-data">
-                            <img src="../Images/Icons-black/fi-rr-user.svg" alt="">
+                            <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
                             <h5>Nume prenume</h5>
                         </div>
                         <h4>116</h4>
                     </div>
                     <div class="top-student " id="top-student-3">
                         <div class="user-data">
-                            <img src="../Images/Icons-black/fi-rr-user.svg" alt="">
+                            <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
                             <h5>Nume prenume</h5>
                         </div>
                         <h4>114</h4>
                     </div>
                     <div class="top-student " id="top-student-4">
                         <div class="user-data">
-                            <img src="../Images/Icons-black/fi-rr-user.svg" alt="">
+                            <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
                             <h5>Nume prenume</h5>
                         </div>
                         <h4>113</h4>
                     </div>
                     <div class="top-student " id="top-student-5">
                         <div class="user-data">
-                            <img src="../Images/Icons-black/fi-rr-user.svg" alt="">
+                            <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
                             <h5>Nume prenume</h5>
                         </div>
                         <h4>110</h4>
@@ -185,7 +187,7 @@
     </div>
     <div class="glass-effect-div" id="glassAddTrue" style="display: none;">
         <div class="popup-add" id="addTrue">
-            <img class="image-popup" src="../Images/Profile images/celebration.svg" alt="Congrats">
+            <img class="image-popup" src="./Images/Profile images/celebration.svg" alt="Congrats">
             <div class="text-wrapper">
                 <h2>Felicitari!</h2>
                 <p>Ai rezolvat cu succes 20 de probleme. Te rugăm să încarci problema ta pe platforma noastră în format JSON.</p>
@@ -198,14 +200,13 @@
     <div class="glass-effect-div" id="glassAddFalse" style="display: none;">
 
         <div class="popup-add" id="addFalse">
-            <img class="image-popup" src="../Images/Profile images/sad.svg" alt="Congrats">
+            <img class="image-popup" src="./Images/Profile images/sad.svg" alt="Congrats">
             <div class="text-wrapper">
                 <h2>Ne pare rau!</h2>
                 <p>Încă nu ai rezolvat 20 de probleme pentru a putea adăuga propria ta problemă. Te rugăm să continui să lucrezi la probleme.</p>
             </div>
         </div>
     </div>
-    <script src="../JS%20files/profile.js"></script>
 </body>
 
 </html>

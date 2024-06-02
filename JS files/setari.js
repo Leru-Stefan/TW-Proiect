@@ -1,4 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const logoutButton = document.getElementById('gotologout');
+    const problemeButton = document.getElementById('gotoprobleme');
+    const profilButton = document.getElementById('gotoprofil');
+    const setariButton = document.getElementById('gotosetari');
+
+    if (logoutButton) {
+        logoutButton.addEventListener('click', () => {
+            window.location.href = 'index.php?page=Login';
+        });
+    }
+
+    if (problemeButton) {
+        problemeButton.addEventListener('click', () => {
+            window.location.href = 'index.php?page=probleme';
+        });
+    }
+
+    if (profilButton) {
+        profilButton.addEventListener('click', () => {
+            window.location.href = 'index.php?page=profile';
+        });
+    }
+
+    if (setariButton) {
+        setariButton.addEventListener('click', () => {
+            window.location.href = 'index.php?page=setari';
+        });
+    }
     // Selectăm butonul
     var changePassBtn = document.getElementById('changePassBtn');
 

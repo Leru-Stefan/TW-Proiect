@@ -17,25 +17,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
-            window.location.href = 'Login.html';
+            window.location.href = 'index.php?page=Login';
         });
     }
 
     if (problemeButton) {
         problemeButton.addEventListener('click', () => {
-            window.location.href = 'probleme.html';
+            window.location.href = 'index.php?page=probleme';
         });
     }
 
     if (profilButton) {
         profilButton.addEventListener('click', () => {
-            window.location.href = 'profile.html';
+            window.location.href = 'index.php?page=profile';
         });
     }
 
     if (setariButton) {
         setariButton.addEventListener('click', () => {
-            window.location.href = 'setari.html';
+            window.location.href = 'index.php?page=setari';
         });
     }
 

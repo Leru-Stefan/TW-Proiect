@@ -7,35 +7,36 @@ document.addEventListener('DOMContentLoaded', function () {
     const downloadButton = document.querySelector('.download-button');
     const downloadJson = document.getElementById('downloadJSON');
     const downloadXmlBtn = document.getElementById('downloadXML');
+    const editorButton = document.getElementById('gotoeditor');
 
 
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
-            window.location.href = 'Login.html';
+            window.location.href = 'index.php?page=Login';
         });
     }
 
     if (problemeButton) {
         problemeButton.addEventListener('click', () => {
-            window.location.href = 'probleme.html';
+            window.location.href = 'index.php?page=probleme';
         });
     }
 
     if (profilButton) {
         profilButton.addEventListener('click', () => {
-            window.location.href = 'profile.html';
+            window.location.href = 'index.php?page=profile';
         });
     }
 
     if (setariButton) {
         setariButton.addEventListener('click', () => {
-            window.location.href = 'setari.html';
+            window.location.href = 'index.php?page=setari';
         });
     }
 
-    if (ajutorButton) {
-        ajutorButton.addEventListener('click', () => {
-            window.location.href = 'ajutor.html';
+    if (editorButton) {
+        editorButton.addEventListener('click', () => {
+            window.location.href = 'index.php?page=editor';
         });
     }
 
