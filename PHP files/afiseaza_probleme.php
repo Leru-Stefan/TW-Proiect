@@ -19,21 +19,15 @@ $result = $conn->query($sql);
 
 $problems = array();
 
-if ($result) {
-    if ($result->num_rows > 0) {
-        // Fetch each problem
-        while ($row = $result->fetch_assoc()) {
-            $problems[] = array(
-                'id' => $row['question_id'],
-                'title' => $row['question_title'],
-                'description' => $row['description']
-            );
-        }
+if ($result->num_rows > 0) {
+    // Afișează fiecare problemă
+    while($row = $result->fetch_assoc()) {
+        $problems[] = array(
+            'id' => $row['question_id'],
+            'title' => $row['question_title'],
+            'description' => $row['description']
+        );
     }
-    $result->free(); // Free result set
-} else {
-    // Log error if query fails (optional)
-    error_log("Database query failed: " . $conn->error);
 }
 
 // Close connection

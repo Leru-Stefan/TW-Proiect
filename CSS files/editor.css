@@ -116,7 +116,7 @@ body {
 } 
 
 .column:nth-child(2) {
-    max-width: 100%;
+    width: 100%;
     margin-left: 252px;
     margin-right: 382px;
 }
@@ -232,7 +232,10 @@ body {
 
 .main-content {
     padding: 16px;
-    max-height: 100vh;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .card {
@@ -241,6 +244,8 @@ body {
     background-color: var(--section-login-color);
     border-radius: 20px;
     margin-bottom: 24px;
+    /* max-width: 1000px; */
+        /* min-width: 100%; */
 }
 
 .denumire-dropdown {
@@ -274,6 +279,12 @@ body {
     border-radius: 12px;
 }
 
+.text-problem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 
 .dropdown-content a span {
     margin-right: 8px;
@@ -294,7 +305,6 @@ body {
 .editor {
     display: flex;
     flex-direction: column;
-    width: auto;
 }
 /* 
 .editable pre {
@@ -337,7 +347,6 @@ input {
 .live-editor {
     display: flex;
     flex-direction: row;
-    width: 100%;
     margin-bottom: 20px;
     height: 50vh;
     max-height: 60vh;
@@ -353,7 +362,6 @@ input {
     text-align: left; /* Horizontal alignment */
     line-height: 1.5;
     overflow: auto;
-    resize: none; /* Prevent resizing */
     vertical-align: top;
 }
 

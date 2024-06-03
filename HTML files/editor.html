@@ -78,38 +78,39 @@
         </div>
         <!-- </div> -->
         <div class="column main-content">
-            <div class="card" id="prb-1">
-                <!-- <div class="text-problem">
-                    <h4 id="problem-title"></h4>
-                    <p id="problem-description"></p>
-                </div> -->
-                <div class="text-problem">
-                    <div class="denumire-dropdown">
+                <div class="card" id="prb-1">
+                    <!-- <div class="text-problem">
                         <h4 id="problem-title"></h4>
-                        <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="menu-dots"
-                            onclick="afiseazaDropdown(this)">
-                        <div class="dropdown-content">
-                            <a href="#" id="downloadXML"><span><img src="./Images/Icons-black/fi-rr-download.svg"
-                                        alt="XML icon"></span>Descarcă XML</a>
-                            <a href="#" id="downloadJSON"><span><img src="./Images/Icons-black/fi-rr-download.svg"
-                                        alt="JSON icon"></span>Descarcă JSON</a>
+                        <p id="problem-description"></p>
+                    </div> -->
+                    <div class="text-problem">
+                        <div class="denumire-dropdown">
+                            <h4 id="problem-title"></h4>
+                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="menu-dots"
+                                onclick="afiseazaDropdown(this)">
+                            <div class="dropdown-content">
+                                <a href="#" id="downloadXML"><span><img src="./Images/Icons-black/fi-rr-download.svg"
+                                            alt="XML icon"></span>Descarcă XML</a>
+                                <a href="#" id="downloadJSON"><span><img src="./Images/Icons-black/fi-rr-download.svg"
+                                            alt="JSON icon"></span>Descarcă JSON</a>
+                            </div>
+    
                         </div>
-
+                        <p id="problem-description"></p>
                     </div>
-                    <p id="problem-description"></p>
                 </div>
+                <div class="editor">
+                    <div class="live-editor">
+                        <textarea id="userInput" class="input" placeholder="Introdu aici rezolvarea ta"></textarea>
+                        <textarea id="result" class="result" placeholder="Aici va fi rezultatul interogarii tale"
+                            readonly></textarea>
+                    </div>
+                    <div class="buttons">
+                        <a id="resetBtn" class="btn btn-secondary" href="#">Reseteaza</a>
+                        <a id="verifyBtn" class="btn btn-primary" href="#">Verifica</a>
+                    </div>
             </div>
-            <div class="editor">
-                <div class="live-editor">
-                    <textarea id="userInput" class="input" placeholder="Introdu aici rezolvarea ta"></textarea>
-                    <textarea id="result" class="result" placeholder="Aici va fi rezultatul interogarii tale"
-                        readonly></textarea>
-                </div>
-                <div class="buttons">
-                    <a id="resetBtn" class="btn btn-secondary" href="#">Reseteaza</a>
-                    <a id="verifyBtn" class="btn btn-primary" href="#">Verifica</a>
-                </div>
-            </div>
+            
         </div>
         <div class="column right-side">
             <div class="leaderboard">
