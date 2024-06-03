@@ -1,26 +1,39 @@
 <?php
-include 'db_connection.php';
-?>
+// Configuration
+$db_host = 'localhost';
+$db_username = 'root';
+$db_password = '';
+$db_name = 'sql_two';
 
-<?php
-// Interogare pentru a prelua datele din tabela 'questions'
+// Create connection
+$conn = new mysqli($db_host, $db_username, $db_password, $db_name);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: ". $conn->connect_error);
+}
+
+// Retrieve problems from database
 $sql = "SELECT * FROM questions";
 $result = $conn->query($sql);
 
-// Verificarea dacă s-au găsit rezultate
+$problems = array();
+
 if ($result->num_rows > 0) {
     // Afișează fiecare problemă
     while($row = $result->fetch_assoc()) {
-        echo "<div class='card'>";
-        echo "<h2>" . $row['question_title'] . "</h2>";
-        echo "<p>" . $row['description'] . "</p>";
-        echo "</div>";
+        $problems[] = array(
+            'id' => $row['id'],
+            'title' => $row['question_title'],
+            'description' => $row['description']
+        );
     }
-} else {
-    echo "Nu s-au găsit întrebări în baza de date.";
 }
 
-// Închiderea conexiunii la baza de date
+// Close connection
 $conn->close();
-?>
 
+// Output problems in JSON format
+header('Content-Type: application/json');               
+echo json_encode($problems);
+?>

@@ -7,6 +7,88 @@
     <title> SQL-Two | Probleme </title>
     <link rel="stylesheet" href="./CSS%20files/problemeStyle.css">
     <script defer src="./JS%20files/problem.js"></script>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', './PHP%20files/afiseaza_probleme.php', true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var problems = JSON.parse(xhr.responseText);
+                // Loop through the problems and display them on the page
+                for (var i = 0; i < problems.length; i++) {
+                    var problem = problems[i];
+                    // Create a new card element for each problem
+                    var card = document.createElement('div');
+                    card.className = 'card';
+                    card.id = 'problema-' + problem.id;                    
+
+                    // Add the problem details to the card
+                    var textProblem = document.createElement('div');
+                    textProblem.className = 'text-problem';
+                    textProblem.innerHTML = '<h4>' + problem.title + '</h4><p>' + problem.description + '</p>';
+                    card.appendChild(textProblem);
+
+                    // Add the CTA buttons to the card
+                    var ctaButtons = document.createElement('div');
+                    ctaButtons.className = 'cta-buttons';
+
+                    var rezolvaBtn = document.createElement('a');
+                    rezolvaBtn.id = 'gotoeditor';
+                    rezolvaBtn.className = 'btn btn-primary';
+                    rezolvaBtn.innerHTML = 'Rezolvă';
+                    ctaButtons.appendChild(rezolvaBtn);
+                    // Update the href attribute to include the problem ID
+                    rezolvaBtn.href = 'editor.html?id=' + problem.id;
+                    ctaButtons.appendChild(rezolvaBtn);
+
+                    var downloadBtn = document.createElement('div');
+                    downloadBtn.className = 'download-button';
+                    downloadBtn.onclick = function () {
+                        afiseazaDropdown(this);
+                    };
+                    var downloadImg = document.createElement('img');
+                    downloadImg.src = './Images/Icons-black/fi-rr-download.svg';
+                    downloadImg.alt = 'Download';
+                    downloadBtn.appendChild(downloadImg);
+                    ctaButtons.appendChild(downloadBtn);
+
+                    var dropdownContent = document.createElement('div');
+                    dropdownContent.className = 'dropdown-content';
+                    dropdownContent.id = 'dropdown-content-problema-' + problem.id;
+
+                    var downloadXMLLink = document.createElement('a');
+                    downloadXMLLink.href = '#';
+                    downloadXMLLink.id = 'downloadXML';
+                    downloadXMLLink.dataset.id = problem.id;
+                    var downloadXMLImg = document.createElement('img');
+                    downloadXMLImg.src = './Images/Icons-black/fi-rr-download.svg';
+                    downloadXMLImg.alt = 'XML icon';
+                    downloadXMLLink.appendChild(downloadXMLImg);
+                    downloadXMLLink.appendChild(document.createTextNode('Descarcă XML'));
+                    dropdownContent.appendChild(downloadXMLLink);
+
+                    var downloadJSONLink = document.createElement('a');
+                    downloadJSONLink.href = '#';
+                    downloadJSONLink.id = 'downloadJSON';
+                    downloadJSONLink.dataset.id = problem.id;
+                    var downloadJSONImg = document.createElement('img');
+                    downloadJSONImg.src = './Images/Icons-black/fi-rr-download.svg';
+                    downloadJSONImg.alt = 'JSON icon';
+                    downloadJSONLink.appendChild(downloadJSONImg);
+                    downloadJSONLink.appendChild(document.createTextNode('Descarcă JSON'));
+                    dropdownContent.appendChild(downloadJSONLink);
+
+                    ctaButtons.appendChild(dropdownContent);
+
+                    card.appendChild(ctaButtons);
+
+                    // Add the card to the page
+                    document.getElementById('cards-probleme').appendChild(card);
+                }
+            }
+        };
+        xhr.send();
+    </script>
+
 
 </head>
 
@@ -60,57 +142,8 @@
                 </div>
             </div>
 
-            <div class="cards-probleme">
-                <?php include 'afiseaza_probleme.php'; ?>
-                <div class="card" id="problema-1">
-                    <div class="text-problem">
-                        <h4>Denumirea problemei 1</h4>
-                        <p>Aici ar trebui sa fie continutul problemei. Ar trebui sa descrie ce ar trebui sa faca
-                            utilizatorul si ar fi o conditie destul de lunga. Dupa ce citeste aceasta condtitie,
-                            utilizatorul ar apasa butonul de mai jos si ar intra in editorul live de pe site ca sa
-                            rezolve aceasta problema. Tot acolo, el ar putea vedea direct dupa rezolvare rapsunsul
-                            corect si dupa sa noteze problema ca grea, medie sau usoara.</p>
-                    </div>
-                    <div class="cta-buttons">
-                        <a id="gotoeditor" class="btn btn-primary">Rezolvă</a>
-                        <div class="download-button" onclick="afiseazaDropdown(this)">
-                            <img src="./Images/Icons-black/fi-rr-download.svg" alt="Download">
-                        </div>
-                        <div class="dropdown-content" id="dropdown-content-problema-1">
-                            <a href="#" id="downloadXML" data-id="problema-1"><span><img
-                                        src="./Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă
-                                XML</a>
-                            <a href="#" id="downloadJSON" data-id="problema-1"><span><img
-                                        src="./Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă
-                                JSON</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="card" id="problema-2">
-                    <div class="text-problem">
-                        <h4>Denumirea problemei 2</h4>
-                        <p>Aici ar trebui sa fie continutul problemei. Ar trebui sa descrie ce ar trebui sa faca
-                            utilizatorul si ar fi o conditie destul de lunga. Dupa ce citeste aceasta condtitie,
-                            utilizatorul ar apasa butonul de mai jos si ar intra in editorul live de pe site ca sa
-                            rezolve aceasta problema. Tot acolo, el ar putea vedea direct dupa rezolvare rapsunsul
-                            corect si dupa sa noteze problema ca grea, medie sau usoara.</p>
-                    </div>
-                    <div class="cta-buttons">
-                        <a href="editor.html" class="btn btn-primary">Rezolvă</a>
-                        <div class="download-button" onclick="afiseazaDropdown(this)">
-                            <img src="../Images/Icons-black/fi-rr-download.svg" alt="Download">
-                        </div>
-                        <div class="dropdown-content" id="dropdown-content-problema-2">
-                            <a href="#" id="downloadXML" data-id="problema-2"><span><img
-                                        src="../Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă
-                                XML</a>
-                            <a href="#" id="downloadJSON" data-id="problema-2"><span><img
-                                        src="../Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă
-                                JSON</a>
-                        </div>
-                    </div>
-                </div> -->
-                
+            <div class="cards-probleme" id="cards-probleme">
+
             </div>
         </div>
         <div class="column right-side">
@@ -121,7 +154,8 @@
                         <h3>Leaderboard</h3>
                     </div>
 
-                    <p>Vrei numele tău pe lista celor care rezolvă cele mai multe probleme? Începe să înveți și să rezolvi!
+                    <p>Vrei numele tău pe lista celor care rezolvă cele mai multe probleme? Începe să înveți și să
+                        rezolvi!
                     </p>
                 </div>
                 <div class="list-top5">
@@ -171,7 +205,8 @@
             <img class="image-popup" src="./Images/Profile images/celebration.svg" alt="Congrats">
             <div class="text-wrapper">
                 <h2>Felicitari!</h2>
-                <p>Ai rezolvat cu succes 20 de probleme. Te rugăm să încarci problema ta pe platforma noastră în format JSON.</p>
+                <p>Ai rezolvat cu succes 20 de probleme. Te rugăm să încarci problema ta pe platforma noastră în format
+                    JSON.</p>
             </div>
             <a class="btn btn-primary" id="importJsonButton">Import JSON</a>
             <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
@@ -184,7 +219,8 @@
             <img class="image-popup" src="./Images/Profile images/sad.svg" alt="Congrats">
             <div class="text-wrapper">
                 <h2>Ne pare rau!</h2>
-                <p>Încă nu ai rezolvat 20 de probleme pentru a putea adăuga propria ta problemă. Te rugăm să continui să lucrezi la probleme.</p>
+                <p>Încă nu ai rezolvat 20 de probleme pentru a putea adăuga propria ta problemă. Te rugăm să continui să
+                    lucrezi la probleme.</p>
             </div>
         </div>
     </div>
