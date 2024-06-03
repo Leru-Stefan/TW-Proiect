@@ -2,8 +2,8 @@
 // index.php
 $page = isset($_GET['page']) ? $_GET['page'] : 'landing';
 $content_file = 'HTML files/' . $page . '.html';
-$js_file = 'JS files/' . $page . '.js';
-$css_file = 'CSS files/' . $page . '.css';
+$js_file = './JS files/' . $page . '.js';
+$css_file = './CSS files/' . $page . '.css';
 
 if (!file_exists($content_file)) {
     $content_file = 'HTML files/404.html';

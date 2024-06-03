@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL-Two | Sign up </title>
     <link rel="stylesheet" href="./CSS%20files/Sign-up.css">
-    <script src="./JS%20files/signup.js"></script>
-
+    <script src="./JS%20files/signup.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -16,7 +15,7 @@
                 <h1>Învață SQL cu noi.</h1>
                 <p>Ai deja un account? <a id="goToLoginLink">Login</a></p>
             </div>
-            <form action="#" method="post">
+            <form id="signupForm">
                 <h5>Nume</h5>
                 <input type="text" name="fullname" placeholder="Stirbu Ion" required>
                 <h5>Email</h5>
@@ -27,6 +26,7 @@
                 <input type="password" name="confirm_password" placeholder="********" required>
                 <input type="submit" value="Sign Up">
             </form>
+            <div id="response"></div>
         </div>
         <div class="right-half" id="gotoleft">
             <img src="./Images/Login%20image/Logo.svg" alt="" class="logo-login">
