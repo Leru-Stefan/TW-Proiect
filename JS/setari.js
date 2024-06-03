@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
-            window.location.href = 'index.php?page=Login';
+            window.location.href = 'index.php?page=login';
         });
     }
 

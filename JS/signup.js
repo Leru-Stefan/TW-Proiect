@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (loginLink) {
         loginLink.addEventListener('click', (event) => {
             event.preventDefault();
-            window.location.href = 'index.php?page=Login';
+            window.location.href = 'index.php?page=login';
         });
     }
 

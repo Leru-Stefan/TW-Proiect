@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL-Two | Login</title>
-    <link rel="stylesheet" href="./CSS%20files/Login.css">
-    <script src="./JS%20files/login.js"></script>
+    <link rel="stylesheet" href="./CSS/Login.css">
+    <script src="./JS/login.js"></script>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
                 <input type="text" name="username" placeholder="Username" required>
                 <h5>Parola</h5>
                 <input type="password" name="password" placeholder="Password" required>
-                <input type="submit" value="Login">
+                <input type="submit" value="Login" id='goToProbleme'>
             </form>
         </div>
     </div>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL-Two | Sign up </title>
-    <link rel="stylesheet" href="./CSS%20files/Sign-up.css">
-    <script src="./JS%20files/signup.js" defer></script>
+    <link rel="stylesheet" href="./CSS/Sign-up.css">
+    <script src="./JS/signup.js" defer></script>
 </head>
 <body>
     <div class="container">

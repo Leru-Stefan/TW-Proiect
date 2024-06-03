@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> SQL-Two | Invata SQL cu noi</title>
-    <link rel="stylesheet" href="./CSS%20files/landingStyle.css">
-    <script src="./JS files/landing.js"></script>
+    <link rel="stylesheet" href="./CSS/landingStyle.css">
+    <script src="./JS/landing.js"></script>
 
 </head>
 
@@ -35,7 +35,7 @@
                 propriul tău ritm, prin lecții captivante și exerciții practice,
                 adaptate nevoilor tale individuale de învățare.
             </p>
-            <button class="btn-primary">Conecteaza-te</button>
+            <button class="btn-primary" id="goToLogin2">Conecteaza-te</button>
         </div>
         <img src="./Images/Landing%20images/Ilustratie%20hero-section-landing.svg" alt="" class="hero-img">
     </section>

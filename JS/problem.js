@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
-            window.location.href = 'index.php?page=Login';
+            window.location.href = 'index.php?page=login';
         });
     }
 
@@ -51,112 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Afișează sau ascunde meniul derulant curent
         dropdownButton.nextElementSibling.classList.toggle('show');
     }
-
-
-    if (downloadJson) {
-        downloadJson.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default link behavior
-
-            console.log('Download JSON button clicked');
-
-            // Sample JSON data
-            const problemData = {
-                title: "Example Problem",
-                description: "This is an example problem description.",
-                input: "Example input",
-            };
-
-            const jsonData = JSON.stringify(problemData, null, 2); // Convert the problem data to a JSON string
-            const blob = new Blob([jsonData], { type: 'application/json' }); // Create a Blob from the JSON string
-            const url = URL.createObjectURL(blob); // Create a URL for the Blob
-
-            // Create a temporary link element and set its attributes for downloading the JSON file
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'problem.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url); // Clean up the URL object
-
-            console.log('JSON file download triggered');
-        });
-    }
-
-    if (downloadXmlBtn) {
-        downloadXmlBtn.addEventListener('click', function (event) {
-            event.preventDefault(); // Oprire acțiune implicită de navigare
-            console.log('Download XML button clicked');
-    
-            // Sample XML data
-            const problemData = `
-                <problem>
-                    <title>Example Problem</title>
-                    <description>This is an example problem description.</description>
-                    <input>Example input</input>
-                    <output>Example output</output>
-                </problem>
-            `;
-    
-            const blob = new Blob([problemData], { type: 'application/xml' }); // Create a Blob from the XML string
-            const url = URL.createObjectURL(blob); // Create a URL for the Blob
-    
-            // Create a temporary link element and set its attributes for downloading the XML file
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'problem.xml';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url); // Clean up the URL object
-    
-            console.log('XML file download triggered');
-        });
-    }
-
-    // --------------------------------------------CAND SE FACE BAZA DE DATE---------------------------------------------------------
-
-    // document.querySelectorAll('.download-json').forEach(function (downloadJsonButton) {
-    //     downloadJsonButton.addEventListener('click', function (event) {
-    //         event.preventDefault(); // Oprire acțiune implicită de navigare
-    //         const problemId = downloadJsonButton.dataset.id;
-    //         const problemData = getProblemData(problemId);
-    //         if (!problemData) {
-    //             console.error('Nu s-au putut obține datele pentru problema cu ID-ul', problemId);
-    //             return;
-    //         }
-    //         downloadJSON(problemData, problemId);
-    //     });
-    // });
-    
-    // document.querySelectorAll('.download-xml').forEach(function (downloadXmlButton) {
-    //     downloadXmlButton.addEventListener('click', function (event) {
-    //         event.preventDefault(); // Oprire acțiune implicită de navigare
-    //         const problemId = downloadXmlButton.dataset.id;
-    //         const problemData = getProblemData(problemId);
-    //         if (!problemData) {
-    //             console.error('Nu s-au putut obține datele pentru problema cu ID-ul', problemId);
-    //             return;
-    //         }
-    //         downloadXML(problemData, problemId);
-    //     });
-    // });
-    
-    // function getProblemData(problemId) {
-    //     // Implementează logica pentru a obține datele problemei în funcție de problemId
-    //     // Returnează datele problemei sau null dacă nu sunt disponibile
-    // }
-    
-    // function downloadJSON(problemData, problemId) {
-    //     // Implementează descărcarea pentru formatul JSON folosind datele problemei și ID-ul problemei
-    // }
-    
-    // function downloadXML(problemData, problemId) {
-    //     // Implementează descărcarea pentru formatul XML folosind datele problemei și ID-ul problemei
-    // }
-    
-
-    // --------------------------------------------CAND SE FACE BAZA DE DATE---------------------------------------------------------
 
 
     // Închide dropdown-ul dacă utilizatorul face clic în afara acestuia
@@ -340,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
 xhr.send();
 
 });
+
 
 
 

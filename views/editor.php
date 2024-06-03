@@ -4,40 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SQL-Two | Probleme </title>
-    <link rel="stylesheet" href="./CSS%20files/editor.css">
-    <script defer src="./JS%20files/editor.js"></script>
-
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Preluăm ID-ul problemei din query string
-            const urlParams = new URLSearchParams(window.location.search);
-            const problemId = urlParams.get('id');
-
-            // Funcția pentru a încărca detaliile problemei
-            function loadProblemDetails(id) {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', './PHP%20files/get_problem_details.php?id=' + id, true);
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        var problem = JSON.parse(xhr.responseText);
-                        document.getElementById('problem-title').textContent = problem.titlu;
-                        document.getElementById('problem-description').textContent = problem.descriere;
-                    }
-                };
-                xhr.send();
-            }
-
-            // Verificăm dacă există un ID valid și încărcăm detaliile problemei
-            if (problemId) {
-                loadProblemDetails(problemId);
-            } else {
-                document.getElementById('problem-title').textContent = 'Problemă indisponibilă';
-                document.getElementById('problem-description').textContent = 'ID-ul problemei nu este valid.';
-            }
-        });
-    </script> -->
-
+    <title> SQL-Two | Editor </title>
+    <link rel="stylesheet" href="./CSS/editor.css">
+    <script defer src="./JS/editor.js"></script>
 </head>
 
 <body>

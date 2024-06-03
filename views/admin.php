@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> SQL-Two | Profil </title>
-    <link rel="stylesheet" href="./CSS%20files/profile.css">
-    <script defer src="./JS%20files/profile.js"></script>
+    <link rel="stylesheet" href="./CSS/admin.css">
+    <script defer src="./JS/admin.js"></script>
 
 </head>
 
@@ -21,26 +21,26 @@
                     <li>
                         <div class="menu-link" id="gotoprobleme">
                             <img src="./Images/Icons-black/fi-rr-document-signed.svg" alt="" class="icon-menu">
-                            <a id="gotoprobleme">Probleme</a>
+                            <a href="./HTML%20files/probleme.html">Probleme</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-link active" id="gotoprofil">
                             <img src="./Images/Icons-white/fi-rr-user.svg" alt="" class="icon-menu">
-                            <a id="gotoprofil">Profil</a>
+                            <a href="./HTML%20files/profile.html">Profil</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-link" id="gotosetari">
                             <img src="./Images/Icons-black/fi-rr-settings.svg" alt="" class="icon-menu">
-                            <a id="gotosetari">Setari</a>
+                            <a href="./HTML%20files/setari.html">Setari</a>
                         </div>
                     </li>
                 
                     <li>
                         <div class="menu-link" id="gotologout">
                             <img src="./Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
-                            <a id="gotologout">Log out</a>
+                            <a href="./HTML%20files/Login.html">Log out</a>
                         </div>
                     </li>
                 </ul>
@@ -48,12 +48,13 @@
         </div>
         <!-- </div> -->
         <div class="column main-content">
+
             <div class="greeting">
                 <div class="text-box">
-                    <h3>Buna, user!</h3>
-                    <p>Ai rezolvat doar 3 probleme. Mai avem multe de rezolvat, deci hai să trecem la treabă!</p>
+                    <h3>Buna, admin!</h3>
+                    <p>Din aceasta pagina poti sa urmaresti ce probleme ai adaugat tu! Totodata, poti sa si stergi problemele care le consideri invechite</p>
+                    <img src="./Images/Profile images/admin.svg" alt="admin" class="greeting-img">
                 </div>
-                <img src="./Images/Profile%20images/learning-animate%201.svg" class="greeting-img" alt="">
             </div>
             <div class="statistics">
                 <div class="stat" id="stat-1">
@@ -75,28 +76,81 @@
                         <p>Adauga problema</p>
                     </div>
                     <div class="card" id="prbm-1">
-                        <h5>Problema 1</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                        <div class="name-delete" >
+                            <h5>Problema 1</h5>
+                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
+                            <div class="dropdown-content">
+                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
+                                    alt="delete icon"></span>Sterge</a>
+                            </div>
+                        </div>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
                     <div class="card" id="prbm-2">
-                        <h5>Problema 2</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                        <div class="name-delete" >
+                            <h5>Problema 2</h5>
+                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
+                            <div class="dropdown-content">
+                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
+                                    alt="delete icon"></span>Sterge</a>
+                            </div>
+                        </div>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
                     <div class="card" id="prbm-3">
-                        <h5>Problema 3</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                        <div class="name-delete" >
+                            <h5>Problema 3</h5>
+                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
+                            <div class="dropdown-content">
+                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
+                                    alt="delete icon"></span>Sterge</a>
+                            </div>
+                        </div>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
                     <div class="card" id="prbm-4">
-                        <h5>Problema 4</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                        <div class="name-delete" >
+                            <h5>Problema 4</h5>
+                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
+                            <div class="dropdown-content">
+                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
+                                    alt="delete icon"></span>Sterge</a>
+                            </div>
+                        </div>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
                     <div class="card" id="prbm-5">
-                        <h5>Problema 5</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                        <div class="name-delete" >
+                            <h5>Problema 5</h5>
+                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
+                            <div class="dropdown-content">
+                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
+                                    alt="delete icon"></span>Sterge</a>
+                            </div>
+                        </div>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
                     <div class="card" id="prbm-6">
-                        <h5>Problema 6</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                        <div class="name-delete" >
+                            <h5>Problema 6</h5>
+                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
+                            <div class="dropdown-content">
+                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
+                                    alt="delete icon"></span>Sterge</a>
+                            </div>
+                        </div>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
+                    </div>
+                    <div class="card" id="prbm-7">
+                        <div class="name-delete" >
+                            <h5>Problema 7</h5>
+                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
+                            <div class="dropdown-content">
+                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
+                                    alt="delete icon"></span>Sterge</a>
+                            </div>
+                        </div>
+                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
                 </div>
                     
@@ -140,8 +194,9 @@
                         <img src="./Images/Icons-black/fi-rr-badge.svg" alt="" class="leader-icon">
                         <h3>Leaderboard</h3>
                     </div>
-                    <p>Vrei numele tău pe lista celor care rezolvă cele mai multe probleme? Începe să înveți și să rezolvi!
-
+                    <p>Vezi cine a rezolvat cele mai multe probleme si apuca-te de invatat ca sa ti vezi si numele
+                        tau aici.
+                    </p>
                 </div>
                 <div class="list-top5">
                     <div class="top-student winner" id="top-student-1">
@@ -187,26 +242,30 @@
     </div>
     <div class="glass-effect-div" id="glassAddTrue" style="display: none;">
         <div class="popup-add" id="addTrue">
-            <img class="image-popup" src="./Images/Profile images/celebration.svg" alt="Congrats">
+            <img class="image-popup" src="./Images/Profile%20images/upload.svg" alt="Congrats">
             <div class="text-wrapper">
-                <h2>Felicitari!</h2>
-                <p>Ai rezolvat cu succes 20 de probleme. Te rugăm să încarci problema ta pe platforma noastră în format JSON.</p>
+                <h2>Incarca problema!</h2>
+                <p>Va rugam sa adaugati problema intr un format JSON</p>
             </div>
             <a class="btn btn-primary" id="importJsonButton">Import JSON</a>
             <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
         </div>
     </div>
 
-    <div class="glass-effect-div" id="glassAddFalse" style="display: none;">
-
-        <div class="popup-add" id="addFalse">
-            <img class="image-popup" src="./Images/Profile images/sad.svg" alt="Congrats">
+    <div class="glass-effect-div" id="glassDelete" style="display: none;">
+        <div class="popup-add" id="deleteTrue">
+            <img class="image-popup" src="./Images/Profile%20images/delete.svg" alt="Delete">
             <div class="text-wrapper">
-                <h2>Ne pare rau!</h2>
-                <p>Încă nu ai rezolvat 20 de probleme pentru a putea adăuga propria ta problemă. Te rugăm să continui să lucrezi la probleme.</p>
+                <h2>Stergi problema?</h2>
+                <p>Esti sigur ca vrei sa stergi aceasta problema de pe platforma?</p>
+            </div>
+            <div class="buttons">
+                <a class="btn btn-secondary" id="cancelButton">Anuleaza</a>
+                <a class="btn btn-primary" id="confirmDeleteButton">Sterge</a>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
