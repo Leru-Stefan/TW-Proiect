@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
     // Afișează fiecare problemă
     while($row = $result->fetch_assoc()) {
         $problems[] = array(
-            'id' => $row['id'],
+            'id' => $row['question_id'],
             'title' => $row['question_title'],
             'description' => $row['description']
         );
