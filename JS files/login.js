@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const signupButton = document.getElementById('goToSignUp');
     const signupLink = document.getElementById('goToSignUpLink');
 
@@ -15,56 +14,44 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = 'index.php?page=Sign-up';
         });
     }
-// Selectează butoanele de login și sign up
-var loginButton = document.querySelector('.primary');
-var signUpButton = document.querySelector('.secondary');
 
-// Selectează partea stângă și partea dreaptă
-var leftHalf = document.querySelector('.left-half');
-var rightHalf = document.querySelector('.right-half');
+    const loginForm = document.getElementById('LoginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const email = loginForm.querySelector('input[name="username"]').value;
+            const password = loginForm.querySelector('input[name="password"]').value;
 
-// Adaugă eveniment pentru butonul de login
-loginButton.addEventListener('click', function() {
-    // Ascunde partea dreaptă și afișează partea stângă
-    leftHalf.style.display = 'none';
-    rightHalf.style.display = 'flex';
-});
+            // Verificarea câmpurilor de email și parolă
+            if (!email || !password) {
+                console.error("Toate câmpurile trebuie completate.");
+                return; // Oprire dacă nu sunt completate ambele câmpuri
+            }
 
-// Adaugă eveniment pentru butonul de sign up
-signUpButton.addEventListener('click', function() {
-    // Ascunde partea stângă și afișează partea dreaptă
-    leftHalf.style.display = 'none';
-    rightHalf.style.display = 'block';
+            // Trimite datele către server
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', './PHP%20files/Login.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    // Folosește metoda fetch pentru a încărca conținutul paginii Sign-up.html
-    fetch('/HTML%20files/Sign-up.html')
-        .then(response => response.text())
-        .then(data => {
-            // Încarcă conținutul paginii în div-ul right-half
-            rightHalf.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('A apărut o eroare:', error);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('response').innerText = xhr.responseText;
+                    if (xhr.responseText.includes("Login reușit")) {
+                        window.location.href = 'index.php?page=probleme';
+                    }
+                } else {
+                    document.getElementById('response').innerText = 'An error occurred. Please try again.';
+                }
+            };
+
+            var formData = new FormData(loginForm);
+            var data = new URLSearchParams();
+            for (var pair of formData.entries()) {
+                data.append(pair[0], pair[1]);
+            }
+
+            xhr.send(data);
         });
-});
-
-// Selectează formularul de login
-var loginForm = document.querySelector('form');
-
-// Adaugă eveniment pentru trimiterea formularului
-loginForm.addEventListener('submit', function(event) {
-    // Oprește comportamentul implicit al formularului (trimiterea datelor către un server)
-    event.preventDefault();
-
-    // Obține valorile introduse de utilizator pentru numele de utilizator și parolă
-    var username = loginForm.querySelector('input[name="username"]').value;
-    var password = loginForm.querySelector('input[name="password"]').value;
-
-    if(username != null && password != null) {
-    // Redirecționează utilizatorul către pagina de probleme
-    window.location.href = 'index.php?page=probleme';
-    } else {
     }
-});
-
 });

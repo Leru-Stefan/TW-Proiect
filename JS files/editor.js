@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
         xhr.onload = function () {
             if (xhr.status === 200) {
                 var problem = JSON.parse(xhr.responseText);
-                document.getElementById('problem-title').textContent = problem.title;
+                document.getElementById('problem-title').textContent = problem.question_title;
                 document.getElementById('problem-description').textContent = problem.description;
             }
         };

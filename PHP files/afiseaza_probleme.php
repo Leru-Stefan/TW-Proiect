@@ -10,7 +10,7 @@ $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: ". $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 // Retrieve problems from database
@@ -19,15 +19,21 @@ $result = $conn->query($sql);
 
 $problems = array();
 
-if ($result->num_rows > 0) {
-    // Afișează fiecare problemă
-    while($row = $result->fetch_assoc()) {
-        $problems[] = array(
-            'id' => $row['id'],
-            'title' => $row['question_title'],
-            'description' => $row['description']
-        );
+if ($result) {
+    if ($result->num_rows > 0) {
+        // Fetch each problem
+        while ($row = $result->fetch_assoc()) {
+            $problems[] = array(
+                'id' => $row['question_id'],
+                'title' => $row['question_title'],
+                'description' => $row['description']
+            );
+        }
     }
+    $result->free(); // Free result set
+} else {
+    // Log error if query fails (optional)
+    error_log("Database query failed: " . $conn->error);
 }
 
 // Close connection
@@ -37,3 +43,4 @@ $conn->close();
 header('Content-Type: application/json');               
 echo json_encode($problems);
 ?>
+

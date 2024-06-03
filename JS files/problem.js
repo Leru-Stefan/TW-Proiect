@@ -280,6 +280,95 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.addEventListener('click', hidePopup);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', './PHP%20files/afiseaza_probleme.php', true);
+    xhr.onload = function () {
+    if (xhr.status === 200) {
+        try {
+            var problems = JSON.parse(xhr.responseText);
+            // Loop through the problems and display them on the page
+            for (var i = 0; i < problems.length; i++) {
+                var problem = problems[i];
+                // Create a new card element for each problem
+                var card = document.createElement('div');
+                card.className = 'card';
+                card.id = 'problema-' + problem.id;                    
+
+                // Add the problem details to the card
+                var textProblem = document.createElement('div');
+                textProblem.className = 'text-problem';
+                textProblem.innerHTML = '<h4>' + problem.title + '</h4><p>' + problem.description + '</p>';
+                card.appendChild(textProblem);
+
+                // Add the CTA buttons to the card
+                var ctaButtons = document.createElement('div');
+                ctaButtons.className = 'cta-buttons';
+
+                var rezolvaBtn = document.createElement('a');
+                rezolvaBtn.id = 'gotoeditor';
+                rezolvaBtn.className = 'btn btn-primary';
+                rezolvaBtn.innerHTML = 'Rezolvă';
+                ctaButtons.appendChild(rezolvaBtn);
+                
+                // Update the href attribute to include the problem ID
+                rezolvaBtn.href = 'index.php?page=editor&id=' + problem.id;
+                ctaButtons.appendChild(rezolvaBtn);
+
+                var downloadBtn = document.createElement('div');
+                downloadBtn.className = 'download-button';
+                downloadBtn.onclick = function () {
+                    afiseazaDropdown(this);
+                };
+                var downloadImg = document.createElement('img');
+                downloadImg.src = './Images/Icons-black/fi-rr-download.svg';
+                downloadImg.alt = 'Download';
+                downloadBtn.appendChild(downloadImg);
+                ctaButtons.appendChild(downloadBtn);
+
+                var dropdownContent = document.createElement('div');
+                dropdownContent.className = 'dropdown-content';
+                dropdownContent.id = 'dropdown-content-problema-' + problem.id;
+
+                var downloadXMLLink = document.createElement('a');
+                downloadXMLLink.href = '#';
+                downloadXMLLink.id = 'downloadXML';
+                downloadXMLLink.dataset.id = problem.id;
+                var downloadXMLImg = document.createElement('img');
+                downloadXMLImg.src = './Images/Icons-black/fi-rr-download.svg';
+                downloadXMLImg.alt = 'XML icon';
+                downloadXMLLink.appendChild(downloadXMLImg);
+                downloadXMLLink.appendChild(document.createTextNode('Descarcă XML'));
+                dropdownContent.appendChild(downloadXMLLink);
+
+                var downloadJSONLink = document.createElement('a');
+                downloadJSONLink.href = '#';
+                downloadJSONLink.id = 'downloadJSON';
+                downloadJSONLink.dataset.id = problem.id;
+                var downloadJSONImg = document.createElement('img');
+                downloadJSONImg.src = './Images/Icons-black/fi-rr-download.svg';
+                downloadJSONImg.alt = 'JSON icon';
+                downloadJSONLink.appendChild(downloadJSONImg);
+                downloadJSONLink.appendChild(document.createTextNode('Descarcă JSON'));
+                dropdownContent.appendChild(downloadJSONLink);
+
+                ctaButtons.appendChild(dropdownContent);
+
+                card.appendChild(ctaButtons);
+
+                // Add the card to the page
+                document.getElementById('cards-probleme').appendChild(card);
+            }
+        } catch (e) {
+            console.error('Error parsing JSON:', e);
+            console.log('Response:', xhr.responseText);
+        }
+    } else {
+        console.error('Failed to load problems. Status:', xhr.status);
+    }
+};
+xhr.send();
+
 });
 
 
