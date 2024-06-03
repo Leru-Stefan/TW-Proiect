@@ -291,12 +291,12 @@ body {
 }
 
 
-/* .editor {
+.editor {
     display: flex;
     flex-direction: column;
     width: auto;
 }
-
+/* 
 .editable pre {
     font-size: 12px;
     line-height: 2.0;

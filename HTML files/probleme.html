@@ -36,8 +36,9 @@
                     rezolvaBtn.className = 'btn btn-primary';
                     rezolvaBtn.innerHTML = 'Rezolvă';
                     ctaButtons.appendChild(rezolvaBtn);
+                    
                     // Update the href attribute to include the problem ID
-                    rezolvaBtn.href = 'editor.html?id=' + problem.id;
+                    rezolvaBtn.href = 'index.php?page=editor&id=' + problem.id;
                     ctaButtons.appendChild(rezolvaBtn);
 
                     var downloadBtn = document.createElement('div');

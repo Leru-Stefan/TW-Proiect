@@ -165,6 +165,66 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Popup greșit ascuns');
         }
     });
+
+    async function fetchQuotes() {
+        try {
+            const response = await fetch('https://api.quotable.io/quotes?tags=inspirational');
+            const data = await response.json();
+            displayQuote(data.results);
+        } catch (error) {
+            console.error('Eroare la obținerea citatelor:', error);
+        }
+    }
+
+    function displayQuote(quotes) {
+        const container = document.getElementById('quote-container');
+        if (!container) {
+            console.error('Elementul "quote-container" nu a fost găsit.');
+            return;
+        }
+
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const quote = quotes[randomIndex];
+
+        const quoteElement = document.createElement('div');
+        quoteElement.classList.add('quote');
+        quoteElement.innerHTML = `
+            <h5>${quote.content}</h5>
+            <p class="author">- ${quote.author}</p>
+        `;
+        container.appendChild(quoteElement);
+    }
+
+    fetchQuotes();
+
+
+    // Preluăm ID-ul problemei din query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const problemId = urlParams.get('id');
+
+    // Funcția pentru a încărca detaliile problemei
+    function loadProblemDetails(id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', './PHP%20files/get_problem_details.php?id=' + id, true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var problem = JSON.parse(xhr.responseText);
+                document.getElementById('problem-title').textContent = problem.title;
+                document.getElementById('problem-description').textContent = problem.description;
+            }
+        };
+        xhr.send();
+    }
+
+    // Verificăm dacă există un ID valid și încărcăm detaliile problemei
+    if (problemId) {
+        loadProblemDetails(problemId);
+    } else {
+        document.getElementById('problem-title').textContent = 'Problemă indisponibilă';
+        document.getElementById('problem-description').textContent = 'ID-ul problemei nu este valid.';
+    }
+
+
 });
 
 

@@ -8,6 +8,36 @@
     <link rel="stylesheet" href="./CSS%20files/editor.css">
     <script defer src="./JS%20files/editor.js"></script>
 
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preluăm ID-ul problemei din query string
+            const urlParams = new URLSearchParams(window.location.search);
+            const problemId = urlParams.get('id');
+
+            // Funcția pentru a încărca detaliile problemei
+            function loadProblemDetails(id) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', './PHP%20files/get_problem_details.php?id=' + id, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var problem = JSON.parse(xhr.responseText);
+                        document.getElementById('problem-title').textContent = problem.titlu;
+                        document.getElementById('problem-description').textContent = problem.descriere;
+                    }
+                };
+                xhr.send();
+            }
+
+            // Verificăm dacă există un ID valid și încărcăm detaliile problemei
+            if (problemId) {
+                loadProblemDetails(problemId);
+            } else {
+                document.getElementById('problem-title').textContent = 'Problemă indisponibilă';
+                document.getElementById('problem-description').textContent = 'ID-ul problemei nu este valid.';
+            }
+        });
+    </script> -->
+
 </head>
 
 <body>
@@ -49,9 +79,13 @@
         <!-- </div> -->
         <div class="column main-content">
             <div class="card" id="prb-1">
+                <!-- <div class="text-problem">
+                    <h4 id="problem-title"></h4>
+                    <p id="problem-description"></p>
+                </div> -->
                 <div class="text-problem">
                     <div class="denumire-dropdown">
-                        <h4>Denumirea problemei 5</h4>
+                        <h4 id="problem-title"></h4>
                         <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="menu-dots"
                             onclick="afiseazaDropdown(this)">
                         <div class="dropdown-content">
@@ -62,11 +96,7 @@
                         </div>
 
                     </div>
-                    <p>Aici ar trebui sa fie continutul problemei. Dupa ce rezolva problema, studentul va
-                        avea posibilitatea sa vada outputul in partea dreapta si daca raspunsul este corect, va
-                        aparea un pop-up cu felicitari, contrat mesaj de eroare.
-                        Dupa ce studentul a rezolvat aceasta problema, va avea posibilitatea sa noteze aceasta
-                        problema dupa dificultate conform criteriilor din dreapta jos. </p>
+                    <p id="problem-description"></p>
                 </div>
             </div>
             <div class="editor">
@@ -130,10 +160,7 @@
                     </div>
                 </div>
             </div>
-            <div class="quote">
-                <h5>“The great aim of education is not knowledge but action.”</h5>
-                <p>-Herbert Spencer</p>
-            </div>
+            <div class="quote" id="quote-container"></div>
         </div>
     </div>
     <div class="glass-effect-div" id="glassSolvedTrue" style="display: none;">
