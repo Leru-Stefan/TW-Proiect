@@ -80,7 +80,9 @@
                             </div>
                             <div class="cta-buttons">
                                 <a href="index.php?page=editor&id=<?php echo $problem['question_id']; ?>" class="btn btn-primary">Rezolvă acum</a>
-                                <img class="download-button" src="./Images/Icons-black/fi-rr-download.svg" alt="" onclick="afiseazaDropdown(this)">
+                                <div class="download-button" onclick="afiseazaDropdown(this)">
+                                    <img class="download-btn" src="./Images/Icons-black/fi-rr-download.svg" alt="" >
+                                </div>
                                 <div class="dropdown-content">
                                     <a href="#" onclick="downloadProblem(<?php echo $problem['question_id']; ?>, 'json')">
                                         <span><img src="./Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă JSON

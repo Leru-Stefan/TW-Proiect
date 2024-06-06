@@ -176,6 +176,7 @@ body {
     padding-top: 18px;
     padding-bottom: 18px;
     margin-bottom: 12px;
+    cursor: pointer;
 }
 
 .menu-links {

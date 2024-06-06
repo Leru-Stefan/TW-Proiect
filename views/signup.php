@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,18 +16,29 @@
                 <h1>Învață SQL cu noi.</h1>
                 <p>Ai deja un account? <a id="goToLoginLink">Login</a></p>
             </div>
-            <form id="signupForm">
-                <h5>Nume</h5>
+            <form action="index.php?page=signup&action=register" method="post">
+                <label>Nume</label>
                 <input type="text" name="fullname" placeholder="Stirbu Ion" required>
-                <h5>Email</h5>
+                <label>Email</label>
                 <input type="email" name="email" placeholder="stirbu.ion@mail.com" required>
-                <h5>Parola</h5>
+                <label>Parola</label>
                 <input type="password" name="password" placeholder="*******" required>
-                <h5>Confirma parola</h5>
+                <label>Confirma parola</label>
                 <input type="password" name="confirm_password" placeholder="********" required>
                 <input type="submit" value="Sign Up">
             </form>
-            <div id="response"></div>
+            <div id="response">
+                <?php
+                if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
+                    echo '<ul>';
+                    foreach ($_SESSION['errors'] as $error) {
+                        echo '<li>' . htmlspecialchars($error) . '</li>';
+                    }
+                    echo '</ul>';
+                    unset($_SESSION['errors']);
+                }
+                ?>
+            </div>
         </div>
         <div class="right-half" id="gotoleft">
             <img src="./Images/Login%20image/Logo.svg" alt="" class="logo-login">

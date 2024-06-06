@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function numarProblemeRezolvate() {
         // Hardcodare pentru testare
-        return 19; // Modifica acest numar pentru testare
+        return 20; // Modifica acest numar pentru testare
     }
 
     // Functie pentru a afisa popup-ul corespunzator

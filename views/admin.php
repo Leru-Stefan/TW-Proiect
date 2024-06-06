@@ -21,26 +21,26 @@
                     <li>
                         <div class="menu-link" id="gotoprobleme">
                             <img src="./Images/Icons-black/fi-rr-document-signed.svg" alt="" class="icon-menu">
-                            <a href="./HTML%20files/probleme.html">Probleme</a>
+                            <a id="gotoprobleme">Probleme</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-link active" id="gotoprofil">
                             <img src="./Images/Icons-white/fi-rr-user.svg" alt="" class="icon-menu">
-                            <a href="./HTML%20files/profile.html">Profil</a>
+                            <a id="gotoprofil">Profil</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-link" id="gotosetari">
                             <img src="./Images/Icons-black/fi-rr-settings.svg" alt="" class="icon-menu">
-                            <a href="./HTML%20files/setari.html">Setari</a>
+                            <a id="gotosetari">Setari</a>
                         </div>
                     </li>
                 
                     <li>
                         <div class="menu-link" id="gotologout">
                             <img src="./Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
-                            <a href="./HTML%20files/Login.html">Log out</a>
+                            <a id="gotologout">Log out</a>
                         </div>
                     </li>
                 </ul>

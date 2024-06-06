@@ -104,34 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }); 
 
-
-    // Preluăm ID-ul problemei din query string
-    const urlParams = new URLSearchParams(window.location.search);
-    const problemId = urlParams.get('id');
-
-    // Funcția pentru a încărca detaliile problemei
-    function loadProblemDetails(id) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', './PHP%20files/get_problem_details.php?id=' + id, true);
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                var problem = JSON.parse(xhr.responseText);
-                document.getElementById('problem-title').textContent = problem.question_title;
-                document.getElementById('problem-description').textContent = problem.description;
-            }
-        };
-        xhr.send();
-    }
-
-    // Verificăm dacă există un ID valid și încărcăm detaliile problemei
-    if (problemId) {
-        loadProblemDetails(problemId);
-    } else {
-        document.getElementById('problem-title').textContent = 'Problemă indisponibilă';
-        document.getElementById('problem-description').textContent = 'ID-ul problemei nu este valid.';
-    }
-
-
 });
 
 
