@@ -32,13 +32,26 @@
                 <h1>Bine ai revenit</h1>
                 <p>Inca nu ai un account? <a id="goToSignUpLink">Sign up</a></p>
             </div>
-            <form id="loginForm"  action="#" method="post">
+            <form action="index.php?page=login&action=authenticate" method="post">
                 <h5>Email</h5>
                 <input type="text" name="username" placeholder="Username" required>
                 <h5>Parola</h5>
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="submit" value="Login" id='goToProbleme'>
             </form>
+
+            <div id="response">
+                <?php
+                if (isset($_SESSION['login_errors']) && !empty($_SESSION['login_errors'])) {
+                    echo '<ul>';
+                    foreach ($_SESSION['login_errors'] as $error) {
+                        echo '<li>' . htmlspecialchars($error) . '</li>';
+                    }
+                    echo '</ul>';
+                    unset($_SESSION['login_errors']);
+                }
+                ?>
+            </div>
         </div>
     </div>
 </body>

@@ -30,6 +30,17 @@ class UserModel {
 
         return $stmt->num_rows > 0;
     }
+
+    public function findByEmail($email) {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("SELECT id, fullname, email, password FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc();
+    }
 }
 ?>
 
