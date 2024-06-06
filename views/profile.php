@@ -50,7 +50,7 @@
         <div class="column main-content">
             <div class="greeting">
                 <div class="text-box">
-                    <h3>Buna, user!</h3>
+                    <h3>Buna,  !</h3>
                     <p>Ai rezolvat doar 3 probleme. Mai avem multe de rezolvat, deci hai să trecem la treabă!</p>
                 </div>
                 <img src="./Images/Profile%20images/learning-animate%201.svg" class="greeting-img" alt="">

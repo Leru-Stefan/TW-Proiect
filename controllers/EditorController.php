@@ -4,6 +4,8 @@ require_once 'models/ProblemModel.php';
 
 class EditorController extends BaseController {
     public function indexAction() {
+        $this->checkAuthentication();
+        
         if (!isset($_GET['id'])) {
             die("ID-ul problemei nu a fost specificat.");
         }

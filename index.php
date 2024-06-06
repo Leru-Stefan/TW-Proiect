@@ -1,6 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // public/index.php
-session_start();
+session_start(); // Inițializăm sesiunea la început
 require_once './controllers/BaseController.php';
 require_once './models/Database.php';
 
@@ -24,5 +27,6 @@ if (file_exists($controllerFile)) {
     echo "Controlerul nu există: " . $controllerFile;
 }
 ?>
+
 
 

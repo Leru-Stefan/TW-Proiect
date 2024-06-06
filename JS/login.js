@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    if (goToProbleme) {
-        goToProbleme.addEventListener('click', (event) => {
-            event.preventDefault();
-            window.location.href = 'index.php?page=probleme';
-        });
-    }
+    // if (goToProbleme) {
+    //     goToProbleme.addEventListener('click', (event) => {
+    //         event.preventDefault();
+    //         window.location.href = 'index.php?page=probleme';
+    //     });
+    // }
 
 });

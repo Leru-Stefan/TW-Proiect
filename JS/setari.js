@@ -27,6 +27,41 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'index.php?page=setari';
         });
     }
+
+    // Adauga eveniment pentru butonul deleteProfile
+    const deleteProfile = document.getElementById('deleteBtn');
+    if (deleteProfile) {
+        deleteProfile.addEventListener('click', afiseazaPopup);
+    }
+
+    document.getElementById("cancel").addEventListener("click", function() {
+        document.getElementById("glassDelete").style.display = "none";
+    });
+
+    document.getElementById("confirm").addEventListener("click", function() {
+        // Aici poți face o cerere către server pentru a executa acțiunea de ștergere a contului
+        // După ce operația este completă cu succes, poți redirecționa utilizatorul către o altă pagină sau să afișezi un mesaj de confirmare
+        // În caz contrar, poți afișa un mesaj de eroare sau să închizi popup-ul de confirmare
+        // Pentru scopul demo, închidem doar popup-ul de confirmare
+        document.getElementById("glassDelete").style.display = "none";
+    });
+
+    // Functie pentru a afisa popup-ul corespunzator
+    function afiseazaPopup() {
+        const glassDelete = document.getElementById('glassDelete');
+        glassDelete.style.display = 'flex';
+    }
+
+    function hidePopup(event) {
+        const glassDelete = document.getElementById('glassDelete');
+
+        if (glassDelete.style.display === 'flex' && !document.getElementById('deleteBtn').contains(event.target) && !document.getElementById('deletePopup').contains(event.target)) {
+            glassDelete.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('click', hidePopup);
+
     // Selectăm butonul
     var changePassBtn = document.getElementById('changePassBtn');
 

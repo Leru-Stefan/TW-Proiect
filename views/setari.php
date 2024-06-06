@@ -80,8 +80,8 @@
                                 </div>
                             </div>
                             <div class="setting-option-line">
-                                <div class="setting-item">Sterge profilul</div>
-                                <a class="button-delete-account" > Sterge</a>
+                                <div  class="setting-item">Sterge profilul</div>
+                                <a id = "deleteBtn" class="button-delete-account" > Sterge</a>
                             </div>
                         </div>
                     </div>
@@ -100,6 +100,21 @@
             </div>
         </div>
         
+    </div>
+
+    <div class="glass-effect-div" id="glassDelete" style="display: none;">
+
+        <div class="popup-add" id="deletePopup">
+            <img class="image-popup" src="./Images/Profile images/ohno.svg" alt="Sad">
+            <div class="text-wrapper">
+                <h2>Ai decis sa ne parasesti?!</h2>
+                <p>Esti sigur ca vrei sa ti stergi contul? Ne pare rau sa-ti spunem ca progresul tau va fi sters de tot.</p>
+            </div>
+            <div class="buttons-wrapper">
+                <a class="btn btn-secondary" id="cancel">Cancel</a>
+                <a class="btn btn-primary" id="confirm">Confirm</a>
+            </div>
+        </div>
     </div>
 </body>
 

@@ -1,5 +1,6 @@
 <?php
 require_once 'BaseController.php';
+require_once 'models/UserModel.php';
 
 class LoginController extends BaseController {
     public function indexAction() {
@@ -7,34 +8,27 @@ class LoginController extends BaseController {
     }
 
     public function authenticateAction() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $errors = [];
-
-            $user = new UserModel();
-            $userData = $user->findByEmail($email);
-
-            if ($userData && password_verify($password, $userData['password'])) {
-                $_SESSION['user_id'] = $userData['id'];
-                $_SESSION['user_name'] = $userData['fullname'];
-                header('Location: index.php?page=probleme');
-                exit();
-            } else {
-                $errors[] = "Email-ul sau parola sunt incorecte.";
-                $_SESSION['login_errors'] = $errors;
-                header('Location: index.php?page=login');
-                exit();
-            }
-        } else {
-            echo "Cerere invalidă.";
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
-    }
-
-    public function logoutAction() {
-        session_destroy();
-        header('Location: index.php?page=login');
-        exit();
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        
+        $userModel = new UserModel();
+        // Debugging: Verificare email și parola hash-uită
+        var_dump($email, $password);
+        
+        if ($userModel->authenticate($email, $password)) {
+            $_SESSION['user'] = $email; // Sau un ID de utilizator pentru a fi mai sigur
+            var_dump($_SESSION); // Debugging: Verificare sesiune
+            header("Location: index.php?page=probleme");
+            exit;
+        } else {
+            $_SESSION['login_errors'] = ['Email sau parolă incorecte.'];
+            header("Location: index.php?page=login");
+            exit;
+        }
     }
 }
 ?>
+

@@ -33,15 +33,18 @@
                 <p>Inca nu ai un account? <a id="goToSignUpLink">Sign up</a></p>
             </div>
             <form action="index.php?page=login&action=authenticate" method="post">
-                <h5>Email</h5>
-                <input type="text" name="username" placeholder="Username" required>
-                <h5>Parola</h5>
+                <label>Email</label>
+                <input type="text" name="email" placeholder="Username" required>
+                <label>Parola</label>
                 <input type="password" name="password" placeholder="Password" required>
-                <input type="submit" value="Login" id='goToProbleme'>
+                <input type="submit" value="Login">
             </form>
 
             <div id="response">
                 <?php
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
                 if (isset($_SESSION['login_errors']) && !empty($_SESSION['login_errors'])) {
                     echo '<ul>';
                     foreach ($_SESSION['login_errors'] as $error) {
