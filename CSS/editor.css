@@ -306,43 +306,10 @@ body {
     display: flex;
     flex-direction: column;
 }
-/* 
-.editable pre {
-    font-size: 12px;
-    line-height: 2.0;
-}
 
-.live-editor {
-    display: flex;
-    height: 50vh;
-    margin-bottom: 20px;
+textarea {
+    resize: none;
 }
-
-.editable {
-    height: 100%;
-    width: 100%;
-    overflow-x: auto; 
-    white-space: pre-wrap;
-}
-
-input {
-    width: 50%;
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 20px 0 0 20px;
-    display: flex;
-    text-align: left;
-    align-content: top;
-}
-
-.result {
-    width: 50%;
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    background-color: var(--editor-output-color);
-    border-radius: 0 20px 20px 0;
-    color: var(--body-color);
-} */
 
 .live-editor {
     display: flex;
@@ -359,7 +326,8 @@ input {
     border: 1px solid var(--border-color);
     font-size: 16px;
     box-sizing: border-box;
-    text-align: left; /* Horizontal alignment */
+    text-align: left; 
+    text-wrap: wrap;
     line-height: 1.5;
     overflow: auto;
     vertical-align: top;
@@ -371,12 +339,8 @@ input {
 
 .result {
     border-radius: 0 20px 20px 0;
-}
-
-.result {
     background-color: #e9ecef;
 }
-
 .buttons {
     display: flex;
     gap:16px;

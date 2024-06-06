@@ -1,31 +1,28 @@
 <?php
-// index.php
+// public/index.php
 session_start();
-require_once 'controllers/BaseController.php';
-require_once 'models/Database.php';
+require_once './controllers/BaseController.php';
+require_once './models/Database.php';
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'landing';
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
-// Formatează numele controlerului și acțiunii
 $controllerName = ucfirst($page) . 'Controller';
 $controllerFile = 'controllers/' . $controllerName . '.php';
 $actionMethod = $action . 'Action';
 
 if (file_exists($controllerFile)) {
-    // echo "Controller file found.<br>";
     require_once $controllerFile;
     $controller = new $controllerName();
 
     if (method_exists($controller, $actionMethod)) {
-        // echo "Method found.<br>";
         $controller->$actionMethod();
     } else {
         echo "Acțiunea nu există.";
     }
 } else {
-    echo "Controlerul nu există: " . $controllerFile . "<br>";
+    echo "Controlerul nu există: " . $controllerFile;
 }
-
 ?>
+
 

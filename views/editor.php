@@ -4,9 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SQL-Two | Editor </title>
+    <title> SQL-Two | Editor problema </title>
     <link rel="stylesheet" href="./CSS/editor.css">
     <script defer src="./JS/editor.js"></script>
+    <script>
+        function downloadProblem(id, format) {
+            var fileName = 'Problema_' + id + '.' + format;
+            var url = 'index.php?page=download&format=' + format + '&id=' + id;
+        
+            // Deschide URL-ul într-o nouă fereastră sau filă
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            link.target = '_blank';
+            link.click();
+        }
+    </script>
 </head>
 
 <body>
@@ -54,18 +67,20 @@
                     </div> -->
                     <div class="text-problem">
                         <div class="denumire-dropdown">
-                            <h4 id="problem-title"></h4>
+                            <h4 id="problem-title"><?php echo htmlspecialchars($problem['question_title']); ?></h4>
                             <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="menu-dots"
                                 onclick="afiseazaDropdown(this)">
                             <div class="dropdown-content">
-                                <a href="#" id="downloadXML"><span><img src="./Images/Icons-black/fi-rr-download.svg"
-                                            alt="XML icon"></span>Descarcă XML</a>
-                                <a href="#" id="downloadJSON"><span><img src="./Images/Icons-black/fi-rr-download.svg"
-                                            alt="JSON icon"></span>Descarcă JSON</a>
+                                <a href="#" onclick="downloadProblem(<?php echo $problem['question_id']; ?>, 'json')">
+                                        <span><img src="./Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă JSON
+                                    </a>
+                                <a href="#" onclick="downloadProblem(<?php echo $problem['question_id']; ?>, 'xml')">
+                                        <span><img src="./Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă XML
+                                    </a>
                             </div>
     
                         </div>
-                        <p id="problem-description"></p>
+                        <p id="problem-description"><?php echo htmlspecialchars($problem['description']); ?></p>
                     </div>
                 </div>
                 <div class="editor">

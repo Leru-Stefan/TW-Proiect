@@ -308,6 +308,7 @@ body.fade-out {
     gap: 20px;
     overflow: scroll;
     overflow-y: auto; /* Permite derularea verticală */
+    overflow-x: hidden;
     max-height: calc(2 * (200px + 20px)); /* Limitează înălțimea containerului */
 }
 
@@ -395,7 +396,7 @@ body.fade-out {
     align-items: center;
     right: 0;
     height: 100%;
-    overflow-y: auto;
+    overflow-y: hidden;
     z-index: 1;
 }
 .leaderboard {

@@ -1,15 +1,3 @@
-<?php
-error_reporting(E_ALL);
-// Include conexiunea la baza de date și modelul pentru probleme
-// require_once 'models/Database.php';
-// require_once 'models/ProblemModel.php';
-
-// Obține toate problemele din baza de date
-// $problemModel = new ProblemModel();
-// $problems = $problemModel->getProblems();
-
-?>
-
 <!DOCTYPE html>
 <html lang="ro">
 
@@ -19,6 +7,19 @@ error_reporting(E_ALL);
     <title> SQL-Two | Probleme </title>
     <link rel="stylesheet" href="./CSS/problemeStyle.css">
     <script defer src="./JS/problem.js"></script>
+    <script>
+        function downloadProblem(id, format) {
+            var fileName = 'Problema_' + id + '.' + format;
+            var url = 'index.php?page=download&format=' + format + '&id=' + id;
+        
+            // Deschide URL-ul într-o nouă fereastră sau filă
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            link.target = '_blank';
+            link.click();
+        }
+    </script>
 </head>
 
 <body>
@@ -70,7 +71,30 @@ error_reporting(E_ALL);
             </div>
 
             <div class="cards-probleme" id="cards-probleme">
-                
+                <?php if (!empty($problems)): ?>
+                     <?php foreach ($problems as $problem): ?>
+                        <div class="card" id="problema-<?php echo $problem['question_id']; ?>">
+                            <div class="text-problem">
+                                <h4><?php echo htmlspecialchars($problem['question_title']); ?></h4>
+                                <p><?php echo htmlspecialchars($problem['description']); ?></p>
+                            </div>
+                            <div class="cta-buttons">
+                                <a href="index.php?page=editor&id=<?php echo $problem['question_id']; ?>" class="btn btn-primary">Rezolvă acum</a>
+                                <img class="download-button" src="./Images/Icons-black/fi-rr-download.svg" alt="" onclick="afiseazaDropdown(this)">
+                                <div class="dropdown-content">
+                                    <a href="#" onclick="downloadProblem(<?php echo $problem['question_id']; ?>, 'json')">
+                                        <span><img src="./Images/Icons-black/fi-rr-download.svg" alt="JSON icon"></span>Descarcă JSON
+                                    </a>
+                                    <a href="#" onclick="downloadProblem(<?php echo $problem['question_id']; ?>, 'xml')">
+                                        <span><img src="./Images/Icons-black/fi-rr-download.svg" alt="XML icon"></span>Descarcă XML
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No problems found.</p>
+                <?php endif; ?>
             </div>
 
         </div>

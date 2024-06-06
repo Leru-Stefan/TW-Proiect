@@ -45,69 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
         dropdownContent.classList.toggle("show");
     }
 
-    if (downloadJson) {
-        downloadJson.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default link behavior
-
-            console.log('Download JSON button clicked');
-
-            // Sample JSON data
-            const problemData = {
-                title: "Example Problem",
-                description: "This is an example problem description.",
-                input: "Example input",
-            };
-
-            const jsonData = JSON.stringify(problemData, null, 2); // Convert the problem data to a JSON string
-            const blob = new Blob([jsonData], { type: 'application/json' }); // Create a Blob from the JSON string
-            const url = URL.createObjectURL(blob); // Create a URL for the Blob
-
-            // Create a temporary link element and set its attributes for downloading the JSON file
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'problem.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url); // Clean up the URL object
-
-            console.log('JSON file download triggered');
-            alert('JSON file download has started');
-        });
-    }
-
-    if (downloadXmlBtn) {
-        downloadXmlBtn.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default link behavior
-
-            console.log('Download XML button clicked');
-
-            // Sample XML data
-            const problemData = `
-                <problem>
-                    <title>Example Problem</title>
-                    <description>This is an example problem description.</description>
-                    <input>Example input</input>
-                    <output>Example output</output>
-                </problem>
-            `;
-
-            const blob = new Blob([problemData], { type: 'application/xml' }); // Create a Blob from the XML string
-            const url = URL.createObjectURL(blob); // Create a URL for the Blob
-
-            // Create a temporary link element and set its attributes for downloading the XML file
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'problem.xml';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url); // Clean up the URL object
-
-            console.log('XML file download triggered');
-            alert('XML file download has started');
-        });
-    }
 
     // Close the dropdown if the user clicks outside of it
     window.onclick = function (event) {
