@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 
@@ -57,14 +58,16 @@
             </div>
             <div class="statistics">
                 <div class="stat" id="stat-1">
-                    <h1>42</h1>
+                    <h2><?php echo $solvedProblemsCount; ?></h2>
                     <h4>Probleme rezolvate</h4>
-                    <p>Devina expert in SQL prin rezolvarea a cat mai multe probleme posibil</p>
                 </div>
                 <div class="stat" id="stat-2">
-                    <h1>2</h1>
+                    <h2><?php echo $addedProblemsCount; ?></h2>
                     <h4>Probleme adaugate</h4>
-                    <p>La fiecare 20 probleme rezolvate ai posibilitatea sa scrii problema ta.</p>
+                </div>
+                <div class="stat" id="stat-3">
+                    <h2><?php echo $accuracy; ?>%</h2>
+                    <h4>Acuratetea rezolvarilor</h4>
                 </div>
             </div>
             <div class="problemele-mele">

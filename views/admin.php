@@ -51,21 +51,25 @@
 
             <div class="greeting">
                 <div class="text-box">
-                    <h3>Buna, admin!</h3>
+                    <h3>Buna, <?php echo htmlspecialchars($_SESSION['user']); ?>!</h3>
                     <p>Din aceasta pagina poti sa urmaresti ce probleme ai adaugat tu! Totodata, poti sa si stergi problemele care le consideri invechite</p>
                     <img src="./Images/Profile images/admin.svg" alt="admin" class="greeting-img">
                 </div>
             </div>
             <div class="statistics">
-                <div class="stat" id="stat-1">
-                    <h1>42</h1>
+            <div class="stat" id="stat-1">
+                    <h2><?php echo $solvedProblemsCount; ?></h2>
                     <h4>Probleme rezolvate</h4>
-                    <p>Devina expert in SQL prin rezolvarea a cat mai multe probleme posibil</p>
+
                 </div>
                 <div class="stat" id="stat-2">
-                    <h1>2</h1>
+                    <h2><?php echo $addedProblemsCount; ?></h2>
                     <h4>Probleme adaugate</h4>
-                    <p>La fiecare 20 probleme rezolvate ai posibilitatea sa scrii problema ta.</p>
+
+                </div>
+                <div class="stat" id="stat-3">
+                    <h2><?php echo $accuracy; ?>%</h2>
+                    <h4>Acuratetea rezolvarilor</h4>
                 </div>
             </div>
             <div class="problemele-mele">
@@ -159,7 +163,19 @@
             <div class="problemele-mele">
                 <h4>Problemele rezolvate</h4>
                 <div class="grid-problems-admin">
-                    <div class="card" id="prbm-1">
+                    <?php if (empty($solvedProblems)): ?>
+                        <div class="card">
+                            <p>Nu ai rezolvat nicio problemă până acum. Începe să rezolvi probleme pentru a deveni un expert!</p>
+                        </div>
+                    <?php else: ?>
+                        <?php foreach ($solvedProblems as $problem): ?>
+                            <div class="card" id="prbm-<?php echo htmlspecialchars($problem['question_id']); ?>">
+                                <h5>Problema <?php echo htmlspecialchars($problem['question_id']); ?></h5>
+                                <p><?php echo htmlspecialchars($problem['description']); ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <!-- <div class="card" id="prbm-1">
                         <h5>Problema 1</h5>
                         <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
                     </div>
@@ -182,7 +198,7 @@
                     <div class="card" id="prbm-6">
                         <h5>Problema 6</h5>
                         <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
+                    </div> -->
                 </div>
                     
             </div>

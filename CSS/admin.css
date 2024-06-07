@@ -239,18 +239,19 @@ body.fade-out {
 }
 
 .greeting {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* flex-direction: row; */
     background-color: var(--accent-color);
     border-radius: 20px;
     margin-bottom: 24px;
     position: relative;
+    margin-top: 40px;
 }
 .greeting .text-box {
     margin: 32px;
     height: auto;
     flex-grow: 1;
-    max-width: calc(50% - 64px);
 }
 .greeting .text-box h3{
     color: var(--heading-on-blue);
@@ -285,7 +286,7 @@ body.fade-out {
     border-radius: 20px;
 }
 
-.statistics .stat h1 {
+.statistics .stat h2 {
     color: var(--accent-color);
     margin-bottom: 8px;
 }
@@ -670,6 +671,14 @@ body.fade-out {
         margin-bottom: 0;
     }
 
+    .greeting {
+        grid-template-columns: 1fr; /* Schimbăm la o singură coloană */
+    }
+
+    .greeting img {
+        display: none;
+    }
+
     .greeting .text-box {
         margin: 20px;
     }
@@ -682,10 +691,6 @@ body.fade-out {
         margin-bottom: 0;
     }
 
-    .greeting-img {
-        height: 100%;
-        bottom: 10px;
-    }
 
     .statistics {
         flex-direction: column;

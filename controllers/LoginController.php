@@ -15,12 +15,11 @@ class LoginController extends BaseController {
         $password = $_POST['password'];
         
         $userModel = new UserModel();
-        // Debugging: Verificare email și parola hash-uită
-        var_dump($email, $password);
+        
         
         if ($userModel->authenticate($email, $password)) {
             $_SESSION['user'] = $email; // Sau un ID de utilizator pentru a fi mai sigur
-            var_dump($_SESSION); // Debugging: Verificare sesiune
+            $_SESSION['fullname'] = $userDetails['fullname'];
             header("Location: index.php?page=probleme");
             exit;
         } else {

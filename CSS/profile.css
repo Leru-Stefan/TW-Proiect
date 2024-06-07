@@ -239,8 +239,9 @@ body.fade-out {
 }
 
 .greeting {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* flex-direction: row; */
     background-color: var(--accent-color);
     border-radius: 20px;
     margin-bottom: 24px;
@@ -248,10 +249,9 @@ body.fade-out {
     margin-top: 40px;
 }
 .greeting .text-box {
+    /* position: relative; */
     margin: 32px;
-    height: auto;
-    flex-grow: 1;
-    max-width: calc(50% - 64px);
+    text-wrap: wrap;
 }
 .greeting .text-box h3{
     color: var(--heading-on-blue);
@@ -263,6 +263,7 @@ body.fade-out {
 }
 
 .greeting-img {
+    display: block;
     height: 140%;
     max-height: 230px;
     width: auto;
@@ -285,7 +286,7 @@ body.fade-out {
     border-radius: 20px;
 }
 
-.statistics .stat h1 {
+.statistics .stat h2 {
     color: var(--accent-color);
     margin-bottom: 8px;
 }
@@ -558,6 +559,7 @@ body.fade-out {
         margin-right: 0;
     }
 
+
     .greeting .text-box{
         margin: 24px;
     }
@@ -588,9 +590,12 @@ body.fade-out {
         font-size: 14px;
         margin-bottom: 0;
     }
+    .greeting {
+        grid-template-columns: 1fr; /* Schimbăm la o singură coloană */
+    }
 
-    .greeting .text-box {
-        margin: 20px;
+    .greeting img {
+        display: none;
     }
 
     .greeting .text-box h3 {
@@ -599,11 +604,6 @@ body.fade-out {
 
     .greeting .text-box p {
         margin-bottom: 0;
-    }
-
-    .greeting-img {
-        height: 100%;
-        bottom: 10px;
     }
 
 
@@ -617,5 +617,13 @@ body.fade-out {
     p {font-size: 14px;}
     a {font-size: 14px;}
     small-body-text {font-size: 10px;}
+
+    .statistics {
+        flex-direction: column;
+    }
+
+    .grid-problems-admin {
+        grid-template-columns: 1fr;
+    }
 
 }
