@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
     const logoutButton = document.getElementById('gotologout');
     const problemeButton = document.getElementById('gotoprobleme');
     const profilButton = document.getElementById('gotoprofil');
@@ -103,6 +103,82 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Popup greșit ascuns');
         }
     }); 
+
+    async function fetchQuotes() {
+        try {
+            const response = await fetch('https://api.quotable.io/quotes?tags=inspirational');
+            const data = await response.json();
+            displayQuote(data.results);
+        } catch (error) {
+            console.error('Eroare la obținerea citatelor:', error);
+        }
+    }
+    
+    function displayQuote(quotes) {
+        const container = document.getElementById('quote-container');
+        if (!container) {
+            console.error('Elementul "quote-container" nu a fost găsit.');
+            return;
+        }
+    
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const quote = quotes[randomIndex];
+    
+        const quoteElement = document.createElement('div');
+        quoteElement.classList.add('quote');
+        quoteElement.innerHTML = `
+            <h5>${quote.content}</h5>
+            <p class="author">- ${quote.author}</p>
+        `;
+        container.appendChild(quoteElement);
+    }
+    
+    fetchQuotes();
+
+     // Funcție pentru a obține topul studenților
+     async function getTopStudents() {
+        try {
+            const response = await fetch('./PHP/getTopStudents.php');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const topStudents = await response.json();
+            if (!Array.isArray(topStudents)) {
+                throw new Error('Răspunsul nu este în format JSON valid');
+            }
+            return topStudents;
+        } catch (error) {
+            console.error('Eroare la obținerea topului studenților:', error);
+            return [];
+        }
+    }
+
+    // Funcție pentru a afișa topul studenților în leaderboard
+    async function afiseazaTopStudents() {
+        const topStudents = await getTopStudents();
+
+        // Selectăm containerul leaderboard
+        const leaderboardContainer = document.querySelector('.leaderboard .list-top5');
+
+        // Verificăm dacă există containerul și dacă avem date despre topul studenților
+        if (leaderboardContainer && topStudents.length > 0) {
+            // Parcurgem fiecare element din topStudents și actualizăm afișarea în interfața utilizatorului
+            topStudents.forEach((student, index) => {
+                const studentElement = document.getElementById(`top-student-${index + 1}`);
+                if (studentElement && index < topStudents.length) {
+                    // Actualizăm numele și numărul de probleme rezolvate pentru fiecare student
+                    studentElement.querySelector('h5').textContent = `${student.nume} ${student.prenume}`;
+                    studentElement.querySelector('h4').textContent = student.solved_count;
+                    studentElement.style.display = 'flex'; // Asigurăm că elementul este vizibil
+                }
+            });
+        }
+
+        console.log(topStudents)
+    }
+
+    // Apelezăm funcția pentru a afișa topul studenților când pagina se încarcă
+    await afiseazaTopStudents();
 
 });
 

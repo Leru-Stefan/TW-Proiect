@@ -4,7 +4,7 @@ function afiseazaDropdown(element) {
     dropdown.classList.toggle("show");
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
 
     const logoutButton = document.getElementById('gotologout');
     const problemeButton = document.getElementById('gotoprobleme');
@@ -187,5 +187,50 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     document.addEventListener('click', hidePopup);
+
+     // Funcție pentru a obține topul studenților
+     async function getTopStudents() {
+        try {
+            const response = await fetch('./PHP/getTopStudents.php');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const topStudents = await response.json();
+            if (!Array.isArray(topStudents)) {
+                throw new Error('Răspunsul nu este în format JSON valid');
+            }
+            return topStudents;
+        } catch (error) {
+            console.error('Eroare la obținerea topului studenților:', error);
+            return [];
+        }
+    }
+
+    // Funcție pentru a afișa topul studenților în leaderboard
+    async function afiseazaTopStudents() {
+        const topStudents = await getTopStudents();
+
+        // Selectăm containerul leaderboard
+        const leaderboardContainer = document.querySelector('.leaderboard .list-top5');
+
+        // Verificăm dacă există containerul și dacă avem date despre topul studenților
+        if (leaderboardContainer && topStudents.length > 0) {
+            // Parcurgem fiecare element din topStudents și actualizăm afișarea în interfața utilizatorului
+            topStudents.forEach((student, index) => {
+                const studentElement = document.getElementById(`top-student-${index + 1}`);
+                if (studentElement && index < topStudents.length) {
+                    // Actualizăm numele și numărul de probleme rezolvate pentru fiecare student
+                    studentElement.querySelector('h5').textContent = `${student.nume} ${student.prenume}`;
+                    studentElement.querySelector('h4').textContent = student.solved_count;
+                    studentElement.style.display = 'flex'; // Asigurăm că elementul este vizibil
+                }
+            });
+        }
+
+        console.log(topStudents)
+    }
+
+    // Apelezăm funcția pentru a afișa topul studenților când pagina se încarcă
+    await afiseazaTopStudents();
     
 });

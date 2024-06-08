@@ -51,7 +51,7 @@
 
             <div class="greeting">
                 <div class="text-box">
-                    <h3>Buna, <?php echo htmlspecialchars($_SESSION['user']); ?>!</h3>
+                    <h3>Buna, <?php echo htmlspecialchars($_SESSION['prenume']); ?>!</h3>
                     <p>Din aceasta pagina poti sa urmaresti ce probleme ai adaugat tu! Totodata, poti sa si stergi problemele care le consideri invechite</p>
                     <img src="./Images/Profile images/admin.svg" alt="admin" class="greeting-img">
                 </div>
@@ -79,83 +79,26 @@
                         <img src="./Images/Icons-white/add.svg" alt="">
                         <p>Adauga problema</p>
                     </div>
-                    <div class="card" id="prbm-1">
-                        <div class="name-delete" >
-                            <h5>Problema 1</h5>
-                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
-                            <div class="dropdown-content">
-                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
-                                    alt="delete icon"></span>Sterge</a>
-                            </div>
+                    <?php if (empty($addedProblems)): ?>
+                        <div class="card">
+                            <h5>Mesaj</h5>
+                            <p>Nu ai adaugat nicio problemă până acum. Începe să rezolvi probleme pentru a deveni un expert!</p>
                         </div>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-2">
-                        <div class="name-delete" >
-                            <h5>Problema 2</h5>
-                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
-                            <div class="dropdown-content">
-                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
-                                    alt="delete icon"></span>Sterge</a>
+                    <?php else: ?>
+                        <?php foreach ($addedProblems as $problem): ?>
+                            <div class="card" id="prbm-<?php echo $problem['question_id']; ?>">
+                                <div class="name-delete" >
+                                    <h5>Problema <?php echo $problem['question_id']; ?></h5>
+                                    <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
+                                    <div class="dropdown-content">
+                                        <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
+                                            alt="delete icon"></span>Sterge</a>
+                                    </div>
+                                </div>
+                                <p><?php echo htmlspecialchars($problem['question']); ?></p>
                             </div>
-                        </div>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-3">
-                        <div class="name-delete" >
-                            <h5>Problema 3</h5>
-                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
-                            <div class="dropdown-content">
-                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
-                                    alt="delete icon"></span>Sterge</a>
-                            </div>
-                        </div>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-4">
-                        <div class="name-delete" >
-                            <h5>Problema 4</h5>
-                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
-                            <div class="dropdown-content">
-                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
-                                    alt="delete icon"></span>Sterge</a>
-                            </div>
-                        </div>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-5">
-                        <div class="name-delete" >
-                            <h5>Problema 5</h5>
-                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
-                            <div class="dropdown-content">
-                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
-                                    alt="delete icon"></span>Sterge</a>
-                            </div>
-                        </div>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-6">
-                        <div class="name-delete" >
-                            <h5>Problema 6</h5>
-                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
-                            <div class="dropdown-content">
-                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
-                                    alt="delete icon"></span>Sterge</a>
-                            </div>
-                        </div>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-7">
-                        <div class="name-delete" >
-                            <h5>Problema 7</h5>
-                            <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
-                            <div class="dropdown-content">
-                                <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
-                                    alt="delete icon"></span>Sterge</a>
-                            </div>
-                        </div>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul. Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
                     
             </div>
@@ -165,6 +108,7 @@
                 <div class="grid-problems-admin">
                     <?php if (empty($solvedProblems)): ?>
                         <div class="card">
+                            <h5>Mesaj</h5>
                             <p>Nu ai rezolvat nicio problemă până acum. Începe să rezolvi probleme pentru a deveni un expert!</p>
                         </div>
                     <?php else: ?>
@@ -175,30 +119,6 @@
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
-                    <!-- <div class="card" id="prbm-1">
-                        <h5>Problema 1</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-2">
-                        <h5>Problema 2</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-3">
-                        <h5>Problema 3</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-4">
-                        <h5>Problema 4</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-5">
-                        <h5>Problema 5</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-6">
-                        <h5>Problema 6</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div> -->
                 </div>
                     
             </div>
@@ -215,40 +135,40 @@
                     </p>
                 </div>
                 <div class="list-top5">
-                    <div class="top-student winner" id="top-student-1">
+                    <div id="top-student-1" class="top-student winner">
                         <div class="user-data">
                             <img src="./Images/Icons-white/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>118</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-2">
+                    <div id="top-student-2" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>116</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-3">
+                    <div id="top-student-3" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>114</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-4">
+                    <div id="top-student-4" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>113</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-5">
+                    <div id="top-student-5" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>110</h4>
+                        <h4></h4>
                     </div>
                 </div>
             </div>

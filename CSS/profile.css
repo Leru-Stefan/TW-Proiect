@@ -387,6 +387,16 @@ body.fade-out {
     height: 160px;
 }
 
+.card p {
+    margin: 0;
+    height: 120px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* numărul de linii dorit */
+    -webkit-box-orient: vertical;
+}
+
 .card h5 {
     margin-bottom: 20px;
 }

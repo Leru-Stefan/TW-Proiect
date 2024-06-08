@@ -113,40 +113,40 @@
                     </p>
                 </div>
                 <div class="list-top5">
-                    <div class="top-student winner" id="top-student-1">
+                    <div id="top-student-1" class="top-student winner">
                         <div class="user-data">
                             <img src="./Images/Icons-white/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>118</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-2">
+                    <div id="top-student-2" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>116</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-3">
+                    <div id="top-student-3" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>114</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-4">
+                    <div id="top-student-4" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>113</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-5">
+                    <div id="top-student-5" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>110</h4>
+                        <h4></h4>
                     </div>
                 </div>
             </div>

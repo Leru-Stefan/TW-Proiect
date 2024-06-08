@@ -30,10 +30,13 @@ class ProfileController extends BaseController {
 
         // Obținem problemele rezolvate de utilizator
         $solvedProblems = $userModel->getSolvedProblems($userId);
+        
+        // Obținem problemele adaugate de utilizator
+        $addedProblems = $userModel->getAddedProblems($userId);
 
 
         // Rendăm pagina de profil și transmitem datele pentru afișare
-        $this->render('profile', ['solvedProblemsCount' => $solvedProblemsCount, 'addedProblemsCount' => $addedProblemsCount, 'accuracy' => $accuarcy, 'solvedProblems' => $solvedProblems, 'fullname' => $_SESSION['fullname']]);
+        $this->render('profile', ['solvedProblemsCount' => $solvedProblemsCount, 'addedProblemsCount' => $addedProblemsCount, 'accuracy' => $accuarcy, 'solvedProblems' => $solvedProblems, 'addedProblems' => $addedProblems]);
 
     }
 

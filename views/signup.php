@@ -17,8 +17,18 @@
                 <p>Ai deja un account? <a id="goToLoginLink">Login</a></p>
             </div>
             <form action="index.php?page=signup&action=register" method="post">
-                <label>Nume</label>
-                <input type="text" name="fullname" placeholder="Stirbu Ion" required>
+                <div class="name-forms">
+                    <div class="name">
+                        <label>Nume</label>
+                        <input type="text" name="nume" placeholder="Stirbu" required>
+                    </div>
+
+                    <div class="prenume">
+                        <label>Prenume</label>
+                        <input type="text" name="prenume" placeholder="Ion" required>
+                    </div>
+                </div>
+               
                 <label>Email</label>
                 <input type="email" name="email" placeholder="stirbu.ion@mail.com" required>
                 <label>Parola</label>

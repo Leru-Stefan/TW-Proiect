@@ -16,4 +16,6 @@ signupButton.addEventListener('click', () => {
 connectButton.addEventListener ('click', () => {
   window.location.href = 'index.php?page=login';
 })
+
+
 }); 

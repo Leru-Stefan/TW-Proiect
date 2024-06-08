@@ -15,11 +15,11 @@ class LoginController extends BaseController {
         $password = $_POST['password'];
         
         $userModel = new UserModel();
+        $userDetails = $userModel->authenticate($email, $password);
         
-        
-        if ($userModel->authenticate($email, $password)) {
+        if ($userDetails) {
             $_SESSION['user'] = $email; // Sau un ID de utilizator pentru a fi mai sigur
-            $_SESSION['fullname'] = $userDetails['fullname'];
+            $_SESSION['prenume'] = $userDetails['prenume'];
             header("Location: index.php?page=probleme");
             exit;
         } else {

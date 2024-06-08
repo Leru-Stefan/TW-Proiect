@@ -19,11 +19,14 @@ class AdminController extends BaseController {
         // Obținem accuratetea utilizatorului
         $accuarcy = $userModel->getAccuracy($userId);
 
-          // Obținem problemele rezolvate de utilizator
-          $solvedProblems = $userModel->getSolvedProblems($userId);
+        // Obținem problemele rezolvate de utilizator
+        $solvedProblems = $userModel->getSolvedProblems($userId);
+
+        // Obținem problemele adaugate de utilizator
+        $addedProblems = $userModel->getAddedProblems($userId);
 
         // Rendăm pagina de profil și transmitem datele pentru afișare
-        $this->render('admin', ['solvedProblemsCount' => $solvedProblemsCount, 'addedProblemsCount' => $addedProblemsCount, 'accuracy' => $accuarcy, 'solvedProblems' => $solvedProblems]);
+        $this->render('admin', ['solvedProblemsCount' => $solvedProblemsCount, 'addedProblemsCount' => $addedProblemsCount, 'accuracy' => $accuarcy, 'solvedProblems' => $solvedProblems, 'addedProblems' => $addedProblems]);
 
     }
 }

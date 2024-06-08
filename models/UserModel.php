@@ -3,7 +3,8 @@
 require_once 'Database.php';
 
 class UserModel {
-    public $fullname;
+    public $nume;
+    public $prenume;
     public $email;
     public $password;
     public $role;
@@ -12,8 +13,8 @@ class UserModel {
     public function save() {
         $db = Database::getConnection();
 
-        $stmt = $db->prepare("INSERT INTO users (fullname, email, password, role) VALUES (?, ?, ?, 'student')");
-        $stmt->bind_param("sss", $this->fullname, $this->email, $this->password);
+        $stmt = $db->prepare("INSERT INTO users (nume, prenume,  email, password, role) VALUES (?, ?, ?, ?, 'student')");
+        $stmt->bind_param("ssss", $this->nume, $this->prenume, $this->email, $this->password);
 
         return $stmt->execute();
     }
@@ -31,16 +32,16 @@ class UserModel {
     
     public function authenticate($email, $password) {
         $db = Database::getConnection();
-
-        $stmt = $db->prepare("SELECT password FROM users WHERE email = ?");
+    
+        $stmt = $db->prepare("SELECT user_id, prenume, password FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
-        $stmt->bind_result($hashedPassword);
+        $stmt->bind_result($userId, $prenume, $hashedPassword);
         $stmt->fetch();
         $stmt->close();
-
+    
         if ($hashedPassword && password_verify($password, $hashedPassword)) {
-            return ['user_id' => $userId, 'fullname' => $fullname];
+            return ['user_id' => $userId, 'prenume' => $prenume];
         } else {
             return false;
         }
@@ -87,7 +88,7 @@ class UserModel {
     public function getAddedProblemsCount($userId) {
         $db = Database::getConnection();
     
-        $stmt = $db->prepare("SELECT COUNT(*) AS added_count FROM User_Uploaded_Questions WHERE user_id = ?");
+        $stmt = $db->prepare("SELECT COUNT(*) AS added_count FROM user_questions WHERE user_id = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $stmt->bind_result($addedCount);
@@ -145,7 +146,70 @@ class UserModel {
     
         return $solvedProblems;
     }
+
+    public function getAddedProblems($userId) {
+        $db = Database::getConnection();
     
+        $stmt = $db->prepare("
+            SELECT q.question_id, q.question_title, q.description, q.correct_query
+            FROM questions q
+            INNER JOIN user_questions uq ON q.question_id = uq.question_id
+            WHERE uq.user_id = ?
+        ");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $addedProblems = [];
+        while ($row = $result->fetch_assoc()) {
+            $addedProblems[] = $row;
+        }
+        $stmt->close();
+    
+        return $addedProblems;
+    }
+    
+    public function getTopStudents($limit = null) {
+        $db = Database::getConnection();
+
+        if ($limit === null) {
+            $limit = 5; // Setăm o limită implicită de 5
+        } 
+
+        $stmt = $db->prepare("
+            SELECT u.user_id, u.nume, u.prenume, COUNT(DISTINCT ua.question_id) AS solved_count
+            FROM users u
+            INNER JOIN User_Answers ua ON u.user_id = ua.user_id
+            WHERE ua.is_correct = 1
+            GROUP BY u.user_id
+            ORDER BY solved_count DESC
+            LIMIT ?
+        ");
+        $stmt->bind_param("i", $limit);
+
+        if (!$stmt->execute()) {
+            echo json_encode(['error' => 'Error executing query']);
+            return [];
+        }
+        $result = $stmt->get_result();
+        
+    
+        $topStudents = [];
+        while ($row = $result->fetch_assoc()) {
+            $topStudents[] = $row;
+        }
+
+        // Verificăm dacă $topStudents nu este gol
+        if (!empty($topStudents)) {
+            // Returnăm rezultatul doar o dată, nu ne mai trebuie echo aici
+            $stmt->close();
+            return $topStudents;
+        } else {
+            // Dacă $topStudents este gol, returnăm un mesaj de eroare
+            $stmt->close();
+            return ['error' => 'No data found'];
+        }
+    }
 }
 ?>
 

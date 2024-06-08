@@ -30,6 +30,25 @@ class ProblemModel {
         
         return $result->fetch_assoc();
     }
+
+    public function saveProblem($title, $content, $correct_answer) {
+        $sql = "INSERT INTO questions (title, content, correct_answer) VALUES (?, ?, ?)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bind_param("sss", $title, $content, $correct_answer);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function importProblemsFromJson($jsonFilePath) {
+        $json = file_get_contents($jsonFilePath);
+        $problems = json_decode($json, true);
+
+        foreach ($problems as $problem) {
+            $this->saveProblem($problem['title'], $problem['content'], $problem['correct_answer']);
+        }
+
+        return true; // sau un rezultat relevant
+    }
 }
 ?>
 

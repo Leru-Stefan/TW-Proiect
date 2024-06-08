@@ -51,8 +51,8 @@
         <div class="column main-content">
             <div class="greeting">
                 <div class="text-box">
-                    <h3>Buna,  !</h3>
-                    <p>Ai rezolvat doar 3 probleme. Mai avem multe de rezolvat, deci hai să trecem la treabă!</p>
+                    <h3>Buna, <?php echo htmlspecialchars($_SESSION['prenume']); ?>!</h3>
+                    <p>Până acum ai rezolvat <?php echo $solvedProblemsCount; ?> probleme. Să vedem câte mai poți adăuga la acest număr!</p>
                 </div>
                 <img src="./Images/Profile%20images/learning-animate%201.svg" class="greeting-img" alt="">
             </div>
@@ -77,30 +77,20 @@
                         <img src="./Images/Icons-white/add.svg" alt="">
                         <p>Adauga problema</p>
                     </div>
-                    <div class="card" id="prbm-1">
-                        <h5>Problema 1</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-2">
-                        <h5>Problema 2</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-3">
-                        <h5>Problema 3</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-4">
-                        <h5>Problema 4</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-5">
-                        <h5>Problema 5</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-6">
-                        <h5>Problema 6</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
+                    <?php if (empty($addedProblems)): ?>
+                        <div class="card">
+                            <h5>Mesaj</h5>
+                            <p>Nu ai adaugat nicio problemă până acum. Începe să rezolvi probleme pentru a deveni un expert!</p>
+                        </div>
+                    <?php else: ?>
+                        <?php foreach ($addedProblems as $problem): ?>
+                            <div class="card" id="prbm-<?php echo $problem['question_id']; ?>">
+                                <h5>Problema <?php echo $problem['question_id']; ?></h5>
+                                <p><?php echo htmlspecialchars($problem['question']); ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    
                 </div>
                     
             </div>
@@ -108,30 +98,20 @@
             <div class="problemele-mele">
                 <h4>Problemele rezolvate</h4>
                 <div class="grid-problems-admin">
-                    <div class="card" id="prbm-1">
-                        <h5>Problema 1</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-2">
-                        <h5>Problema 2</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-3">
-                        <h5>Problema 3</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-4">
-                        <h5>Problema 4</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-5">
-                        <h5>Problema 5</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
-                    <div class="card" id="prbm-6">
-                        <h5>Problema 6</h5>
-                        <p>Aici ar trebui sa fie continul unei probleme pe care a adaugat-o utilizatorul</p>
-                    </div>
+
+                <?php if (empty($solvedProblems)): ?>
+                        <div class="card">
+                            <h5>Mesaj</h5>
+                            <p>Nu ai rezolvat nicio problemă până acum. Începe să rezolvi probleme pentru a deveni un expert!</p>
+                        </div>
+                    <?php else: ?>
+                        <?php foreach ($solvedProblems as $problem): ?>
+                            <div class="card" id="prbm-<?php echo htmlspecialchars($problem['question_id']); ?>">
+                                <h5>Problema <?php echo htmlspecialchars($problem['question_id']); ?></h5>
+                                <p><?php echo htmlspecialchars($problem['description']); ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
                     
             </div>
@@ -147,40 +127,40 @@
 
                 </div>
                 <div class="list-top5">
-                    <div class="top-student winner" id="top-student-1">
+                    <div id="top-student-1" class="top-student winner">
                         <div class="user-data">
                             <img src="./Images/Icons-white/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>118</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-2">
+                    <div id="top-student-2" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>116</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-3">
+                    <div id="top-student-3" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>114</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-4">
+                    <div id="top-student-4" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>113</h4>
+                        <h4></h4>
                     </div>
-                    <div class="top-student " id="top-student-5">
+                    <div id="top-student-5" class="top-student">
                         <div class="user-data">
                             <img src="./Images/Icons-black/fi-rr-user.svg" alt="">
-                            <h5>Nume prenume</h5>
+                            <h5></h5>
                         </div>
-                        <h4>110</h4>
+                        <h4></h4>
                     </div>
                 </div>
             </div>
