@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,13 +38,16 @@
             </form>
             <div id="response">
                 <?php
-                if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                if (isset($_SESSION['signup_errors']) && !empty($_SESSION['signup_errors'])) {
                     echo '<ul>';
-                    foreach ($_SESSION['errors'] as $error) {
+                    foreach ($_SESSION['signup_errors'] as $error) {
                         echo '<li>' . htmlspecialchars($error) . '</li>';
                     }
                     echo '</ul>';
-                    unset($_SESSION['errors']);
+                    unset($_SESSION['signup_errors']);
                 }
                 ?>
             </div>

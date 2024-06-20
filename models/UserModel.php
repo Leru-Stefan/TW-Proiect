@@ -13,10 +13,19 @@ class UserModel {
     public function save() {
         $db = Database::getConnection();
 
-        $stmt = $db->prepare("INSERT INTO users (nume, prenume,  email, password, role) VALUES (?, ?, ?, ?, 'student')");
+        $stmt = $db->prepare("INSERT INTO users (nume, prenume, email, password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $this->nume, $this->prenume, $this->email, $this->password);
 
-        return $stmt->execute();
+        try {
+            $stmt->execute();
+            $stmt->close();
+            $db->close();
+            return true;
+        } catch (mysqli_sql_exception $e) {
+            $stmt->close();
+            $db->close();
+            throw new Exception("E-mail-ul există deja.");
+        }
     }
 
     public function emailExists($email) {
