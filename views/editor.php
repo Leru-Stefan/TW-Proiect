@@ -86,8 +86,6 @@
                 <div class="editor">
                     <div class="live-editor">
                         <textarea id="userInput" class="input" placeholder="Introdu aici rezolvarea ta"></textarea>
-                        <textarea id="result" class="result" placeholder="Aici va fi rezultatul interogarii tale"
-                            readonly></textarea>
                     </div>
                     <div class="buttons">
                         <a id="resetBtn" class="btn btn-secondary" href="#">Reseteaza</a>
@@ -103,8 +101,8 @@
                         <img src="./Images/Icons-black/fi-rr-badge.svg" alt="" class="leader-icon">
                         <h3>Leaderboard</h3>
                     </div>
-                    <p>Vezi cine a rezolvat cele mai multe probleme si apuca-te de invatat ca sa ti vezi si numele
-                        tau aici.
+                    <p>Vrei numele tău pe lista celor care rezolvă cele mai multe probleme? Începe să înveți și să
+                        rezolvi!
                     </p>
                 </div>
                 <div class="list-top5">
@@ -145,7 +143,7 @@
                     </div>
                 </div>
             </div>
-            <div class="quote" id="quote-container"></div>
+            <div id="quote-container"></div>
         </div>
     </div>
     <div class="glass-effect-div" id="glassSolvedTrue" style="display: none;">

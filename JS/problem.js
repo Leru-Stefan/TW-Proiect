@@ -68,17 +68,17 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Functie pentru a obtine numarul de probleme rezolvate
     async function numarProblemeRezolvate() {
         try {
-            const response = await fetch('getSolvedProblemsCount.php');
+            const response = await fetch('./PHP/getSolvedProblemsCount.php');
             const data = await response.json();
-            if (data.solvedCount !== undefined) {
-                return data.solvedCount;
+            if (data.solvedCount !== undefined && data.role !== undefined) {
+                return data;
             } else {
-                console.error('Error fetching solved problems count:', data.error);
-                return 0;
+                console.error('Error fetching solved problems and role:', data.error);
+                return { solvedCount: 0, role: 'student' };
             }
         } catch (error) {
-            console.error('Error fetching solved problems count:', error);
-            return 0;
+            console.error('Error fetching solved problems and role:', error);
+            return { solvedCount: 0, role: 'student' };
         }
     }
 
@@ -91,9 +91,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         glassAddTrue.style.display = 'none';
         glassAddFalse.style.display = 'none';
 
-        // Verifica numarul de probleme rezolvate
-        const problemeRezolvate = await numarProblemeRezolvate();
-        if (problemeRezolvate > 0 && problemeRezolvate % 20 === 0) {
+        // Get the number of solved problems and user's role
+        const { solvedCount, role } = await numarProblemeRezolvate();
+        if (role === 'admin') {
+            glassAddTrue.style.display = 'flex';
+        } else if (solvedCount > 0 && solvedCount % 20 === 0) {
             glassAddTrue.style.display = 'flex';
         } else {
             glassAddFalse.style.display = 'flex';

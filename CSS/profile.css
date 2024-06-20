@@ -105,24 +105,23 @@ body.fade-out {
 }
 
 .column {
-    margin: 16px;
-    padding: 20px;
+    margin-top: 32px;
 }
+
 .column:nth-child(1) {
     width: 220px;
-    padding: 0;
+    padding: 16px;
 } 
 
 .column:nth-child(2) {
     width: 100%;
-    margin-left: 252px;
-    margin-right: 382px;
+    margin-left: 248px;
 }
 
 .column:nth-child(3) {
-    width: 350px;
-    padding: 16px 0;
+    margin: 32px 16px;
 }
+
 
 .btn{
     padding: 14px 32px;
@@ -152,16 +151,20 @@ body.fade-out {
 
 /* -------------SIDEBAR------------------------ */
 .side-bar {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     height: 100%;
+    gap: 40px;
 }
 .nav {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 .menu-link {
     display: flex;
     flex-direction: row;
-    width: 100%;
     border-radius: 8px;
     padding-left: 16px;
     padding-top: 18px;
@@ -205,22 +208,18 @@ body.fade-out {
 
 .logo-nav {
     height: 50px;
-    margin-bottom: 40px;
-    margin-left: 12px;
-    margin-top: 20px;
 }
 
 .logo-small {
     display: none;
     height: 50px;
-    margin-bottom: 40px;
-    margin-left: 8px;
-    margin-top: 16px;
 }
 /* --------------------------MAIN-------------------------- */
 
 .main-content {
-    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
     height: 100%;
 }
 
@@ -246,13 +245,15 @@ body.fade-out {
     border-radius: 20px;
     margin-bottom: 24px;
     position: relative;
-    margin-top: 40px;
+    margin-top: 20px;
 }
+
 .greeting .text-box {
-    /* position: relative; */
     margin: 32px;
-    text-wrap: wrap;
+    height: auto;
+    flex-grow: 1;
 }
+
 .greeting .text-box h3{
     color: var(--heading-on-blue);
     margin-bottom: 24px;
@@ -273,13 +274,16 @@ body.fade-out {
     bottom: 10px;
 }
 .statistics {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     flex-direction: row;
     gap: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }
 
 .statistics .stat {
+    display: flex;
+    flex-direction: column;
     padding: 28px;
     text-align: center;
     background-color: var(--section-login-color);
@@ -303,7 +307,7 @@ body.fade-out {
     margin-top: 40px;
 }
 .grid-problems-admin {
-    margin-top: 40px;
+    margin-top: 20px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
     display: grid;
@@ -404,14 +408,14 @@ body.fade-out {
 
 /* ----------------------------Right side--------------------- */
 .right-side {
-    position: fixed;
+    display: flex;
+    position: relative;
+    flex-direction: column;
     align-items: center;
-    right: 0;
-    height: 100%;
-    overflow-y: hidden;
-    z-index: 1;
+    max-width: 350px;
 }
 .leaderboard {
+    position: sticky;
     border: 1px solid var(--border-color);
     height: fit-content;
     border-radius: 20px;
@@ -467,15 +471,19 @@ body.fade-out {
 }
 
 .text-box {
+    /* display: flex;
+    flex-direction: column; */
     margin-bottom: 28px;
 }
 
 .leader-icon {
     width: 24px;
 }
-.quote-container {
+.quote{
+    display: flex;
+    flex-direction: column;
     background-color: var(--accent-color);
-    padding: 28px;
+    padding: 20px;
     border-radius: 20px;
     text-align: center;
 }
@@ -496,6 +504,7 @@ body.fade-out {
     .column:nth-child(2) {
         margin-left: 88px;
     }
+
     .logo-nav {
         display: none;
     }
@@ -535,6 +544,10 @@ body.fade-out {
     }
     .column:nth-child(3) {
         display: none;
+    }
+
+    .greeting {
+        margin-top: 28px;
     }
 
     .logo-nav {
@@ -578,6 +591,9 @@ body.fade-out {
         height: 120%;
         right: 20px;
         bottom: 10px;
+    }
+    .statistics {
+        grid-template-columns: 1fr;
     }
     .right-side {
         display: none;

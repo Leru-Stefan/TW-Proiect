@@ -65,7 +65,7 @@ fetchQuotes();
     // Functie pentru a obtine numarul de probleme rezolvate
     async function numarProblemeRezolvate() {
         try {
-            const response = await fetch('getSolvedProblemsCount.php');
+            const response = await fetch('./PHP/getSolvedProblemsCount.php');
             const data = await response.json();
             if (data.solvedCount !== undefined) {
                 return data.solvedCount;

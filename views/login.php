@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="right-half">
+        <div class="right-half ">
             <div class="upper-text">
                 <cap-text>
                     Incepe calatoria

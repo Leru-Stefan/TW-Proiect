@@ -20,6 +20,7 @@ class LoginController extends BaseController {
         if ($userDetails) {
             $_SESSION['user'] = $email; // Sau un ID de utilizator pentru a fi mai sigur
             $_SESSION['prenume'] = $userDetails['prenume'];
+            $_SESSION['user_id'] = $userDetails['user_id'];
             header("Location: index.php?page=probleme");
             exit;
         } else {

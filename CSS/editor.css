@@ -244,9 +244,6 @@ body {
     padding: 28px;
     background-color: var(--section-login-color);
     border-radius: 20px;
-    margin-bottom: 24px;
-    /* max-width: 1000px; */
-        /* min-width: 100%; */
 }
 
 .denumire-dropdown {
@@ -320,8 +317,8 @@ textarea {
     max-height: 60vh;
 }
 
-.input, .result {
-    width:  50%;
+.input{
+    width:  100%;
     padding: 20px;
     font-size: 16px;
     border: 1px solid var(--border-color);
@@ -332,15 +329,7 @@ textarea {
     line-height: 1.5;
     overflow: auto;
     vertical-align: top;
-}
-
-.input {
-    border-radius: 20px 0 0 20px ;
-}
-
-.result {
-    border-radius: 0 20px 20px 0;
-    background-color: #e9ecef;
+    border-radius: 20px;
 }
 .buttons {
     display: flex;
@@ -443,7 +432,7 @@ textarea {
     align-items: center;
     right: 0;
     height: 100%;
-    overflow-y: auto;
+    overflow-y: hidden;
     z-index: 1;
 }
 .leaderboard {
@@ -510,7 +499,7 @@ textarea {
 }
 .quote {
     background-color: var(--accent-color);
-    padding: 28px;
+    padding: 20px;
     border-radius: 20px;
     text-align: center;
 }
@@ -569,7 +558,7 @@ textarea {
         margin-right: 324px;
     }
     .column:nth-child(3) {
-        width: 300px;
+        display: none;
     }
 
     .logo-nav {

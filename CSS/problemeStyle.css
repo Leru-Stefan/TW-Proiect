@@ -106,23 +106,21 @@ body {
 }
 
 .column {
-    margin: 16px;
-    padding: 20px;
+    margin-top: 32px;
 }
+
 .column:nth-child(1) {
     width: 220px;
-    padding: 0;
+    padding: 16px;
 } 
 
 .column:nth-child(2) {
     width: 100%;
-    margin-left: 252px;
-    margin-right: 382px;
+    margin-left: 248px;
 }
 
 .column:nth-child(3) {
-    width: 350px;
-    padding: 16px 0;
+    margin: 32px 16px;
 }
 
 .btn{
@@ -163,16 +161,20 @@ body {
 
 /* -------------SIDEBAR------------------------ */
 .side-bar {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     height: 100%;
+    gap: 40px;
 }
 .nav {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 .menu-link {
     display: flex;
     flex-direction: row;
-    width: 100%;
     border-radius: 8px;
     padding-left: 16px;
     padding-top: 18px;
@@ -217,17 +219,12 @@ body {
 
 .logo-nav {
     height: 50px;
-    margin-bottom: 40px;
-    margin-left: 12px;
-    margin-top: 20px;
 }
 
 .logo-small {
     display: none;
     height: 50px;
-    margin-bottom: 40px;
-    margin-left: 8px;
-    margin-top: 16px;
+
 }
 
 /* --------------------------MAIN-------------------------- */
@@ -237,7 +234,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
 }
 
 .search {
@@ -278,6 +275,7 @@ body {
 }
 
 .popup-add {
+    position: fixed;
     display: flex;
     flex-direction: column;
     padding: 24px;
@@ -286,6 +284,60 @@ body {
     align-items: center;
     width: 50%;
     text-align: center;
+}
+
+.problem-form{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    width: 80%;
+}
+
+.problem-form textarea {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    height: 140px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+label {
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form .btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+input.btn.btn-secondary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: transparent;
+    transition: 0.3s ease;
+}
+
+input.btn.btn-secondary:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.button-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 32px;
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
 .image-popup {
     width: 70%;
@@ -350,7 +402,7 @@ body {
 .cards-probleme {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
 }
 
 .card {
@@ -429,17 +481,15 @@ body {
 }
 /* ----------------------------Right side--------------------- */
 .right-side {
-    position: fixed;
-    align-items: center;
-    right: 0;
-    height: 100%;
-    overflow-y: auto;
-    z-index: 1;
     display: flex;
-    align-items: center;
+    position: relative;
     flex-direction: column;
+    align-items: center;
+    max-width: 350px;
 }
 .leaderboard {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
     border: 1px solid var(--border-color);
     height: fit-content;
     border-radius: 20px;
@@ -510,17 +560,16 @@ body {
     width: 24px;
     color: var(--accent-color);
 }
-.quote-container {
+.quote{
+    display: flex;
+    flex-direction: column;
     background-color: var(--accent-color);
-    padding: 28px;
+    padding: 20px;
     border-radius: 20px;
     text-align: center;
-    margin-bottom: 20px;
-    max-height: 180px;
-
 }
 
-.quote-container h5 {
+.quote h5 {
     color: var(--heading-on-blue);
     font-size: 16px;
 }
@@ -572,10 +621,9 @@ body {
     small-body-text {font-size: 10px;}
     .column:nth-child(2) {
         margin-left: 74px;
-        margin-right: 324px;
     }
     .column:nth-child(3) {
-        width: 300px;
+        display: none;
     }
 
     .logo-nav {
@@ -615,6 +663,7 @@ body {
     p {font-size: 14px;}
     small-body-text {font-size: 10px;}
     a {font-size: 16px;}
+    label {font-size: 16px;}
 
     .column:nth-child(2) {
         margin-right: 0;
@@ -623,6 +672,22 @@ body {
     .right-side {
         display: none;
     }
+
+    .popup-add{
+        width: 70%;
+        padding: 20px;
+    }
+
+    .popup-add h2 {
+        margin-bottom: 4px;
+    }
+
+    .button-wrapper {
+        margin-top: 8px;
+        gap: 20px;
+    }
+
+
 
 }
 
@@ -643,6 +708,14 @@ body {
         width: 20px;
     }
    
+    .popup-add {
+        width: 80%;
+        padding: 18px;
+    }
+
+    .problem-form {
+        width: 90%;
+    }
 
 }
 

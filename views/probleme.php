@@ -150,7 +150,7 @@
                     </div>
                 </div>
             </div>
-            <div class="quote-container" id="quote-container"></div>
+            <div id="quote-container"></div>
 
         </div>
     </div>
@@ -158,14 +158,22 @@
 
     <div class="glass-effect-div" id="glassAddTrue" style="display: none;">
         <div class="popup-add" id="addTrue">
-            <img class="image-popup" src="./Images/Profile images/celebration.svg" alt="Congrats">
+            <!-- <img class="image-popup" src="./Images/Profile%20images/upload.svg" alt="Congrats"> -->
             <div class="text-wrapper">
-                <h2>Felicitari!</h2>
-                <p>Ai rezolvat cu succes 20 de probleme. Te rugăm să încarci problema ta pe platforma noastră în format
-                    JSON.</p>
+                <h2>Incarca problema!</h2>
+                <p>Va rugam sa adaugati problema intr un format JSON sau sa completati formularul de mai jos.</p>
             </div>
-            <a class="btn btn-primary" id="importJsonButton">Import JSON</a>
-            <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
+            <form action="./controllers/ImportController.php" method="post" id="problem_import" class="problem-form" enctype="multipart/form-data">
+                <label for="descriere">Descriere</label>
+                <textarea type="text" placeholder="Continutul problemei in 2-3 enunturi" id="descriere"></textarea> 
+                <label for="rezolvare">Rezolvare</label>
+                <textarea type="text" placeholder="Rezolvarea corecta a problemei" id="rezolvare"></textarea>
+                <div class="button-wrapper">
+                    <input type="submit" class="btn btn-secondary" id="createJsonButton" value="Trimite"></input>
+                    <a class="btn btn-primary" id="importJsonButton">Import JSON</a>
+                    <input type="file" name="jsonFile" id="jsonFileInput" accept=".json" style="display: none;">
+                </div>
+            </form>
         </div>
     </div>
 

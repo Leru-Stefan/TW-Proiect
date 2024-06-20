@@ -86,7 +86,7 @@
                         <?php foreach ($addedProblems as $problem): ?>
                             <div class="card" id="prbm-<?php echo $problem['question_id']; ?>">
                                 <h5>Problema <?php echo $problem['question_id']; ?></h5>
-                                <p><?php echo htmlspecialchars($problem['question']); ?></p>
+                                <p><?php echo htmlspecialchars($problem['description']); ?></p>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -123,7 +123,9 @@
                         <img src="./Images/Icons-black/fi-rr-badge.svg" alt="" class="leader-icon">
                         <h3>Leaderboard</h3>
                     </div>
-                    <p>Vrei numele tău pe lista celor care rezolvă cele mai multe probleme? Începe să înveți și să rezolvi!
+                    <p>Vrei numele tău pe lista celor care rezolvă cele mai multe probleme? Începe să înveți și să
+                        rezolvi!
+                    </p>
 
                 </div>
                 <div class="list-top5">
@@ -164,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="quote-container" id="quote-container"></div>
+            <div id="quote-container"></div>
 
         </div>
     </div>

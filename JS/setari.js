@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const userId = document.getElementById('userId').value;
+    console.log('User ID:', userId); // Linie de debug
     const logoutButton = document.getElementById('gotologout');
     const problemeButton = document.getElementById('gotoprobleme');
     const profilButton = document.getElementById('gotoprofil');
@@ -39,12 +41,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById("confirm").addEventListener("click", function() {
-        // Aici poți face o cerere către server pentru a executa acțiunea de ștergere a contului
-        // După ce operația este completă cu succes, poți redirecționa utilizatorul către o altă pagină sau să afișezi un mesaj de confirmare
-        // În caz contrar, poți afișa un mesaj de eroare sau să închizi popup-ul de confirmare
-        // Pentru scopul demo, închidem doar popup-ul de confirmare
+        const params = new URLSearchParams();
+        params.append('user_id', userId);
+        
+        fetch('./PHP/deleteUser.php', {
+            method: 'POST',
+            body: params
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Eroare de rețea sau server');
+            }
+            return response.text();
+        })
+        .then(message => {
+            if (message.trim() === '') {
+                throw new Error('Mesajul este gol');
+            }
+            alert(message);
+        })
+        .catch(error => {
+            alert(`Eroare la ștergerea contului utilizatorului: ${error}`);
+        })
+        .finally(() => {
+            window.location.href = './index.php?page=login';
+        });
+    
         document.getElementById("glassDelete").style.display = "none";
     });
+    
+    
+    
 
     // Functie pentru a afisa popup-ul corespunzator
     function afiseazaPopup() {

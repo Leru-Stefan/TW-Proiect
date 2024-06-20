@@ -95,7 +95,7 @@
                                             alt="delete icon"></span>Sterge</a>
                                     </div>
                                 </div>
-                                <p><?php echo htmlspecialchars($problem['question']); ?></p>
+                                <p><?php echo htmlspecialchars($problem['description']); ?></p>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -130,8 +130,8 @@
                         <img src="./Images/Icons-black/fi-rr-badge.svg" alt="" class="leader-icon">
                         <h3>Leaderboard</h3>
                     </div>
-                    <p>Vezi cine a rezolvat cele mai multe probleme si apuca-te de invatat ca sa ti vezi si numele
-                        tau aici.
+                    <p>Vrei numele tău pe lista celor care rezolvă cele mai multe probleme? Începe să înveți și să
+                        rezolvi!
                     </p>
                 </div>
                 <div class="list-top5">
@@ -172,19 +172,28 @@
                     </div>
                 </div>
             </div>
-            <div class="quote-container" id="quote-container"></div>
+            <div id="quote-container"></div>
 
         </div>
     </div>
     <div class="glass-effect-div" id="glassAddTrue" style="display: none;">
         <div class="popup-add" id="addTrue">
-            <img class="image-popup" src="./Images/Profile%20images/upload.svg" alt="Congrats">
+            <!-- <img class="image-popup" src="./Images/Profile%20images/upload.svg" alt="Congrats"> -->
             <div class="text-wrapper">
                 <h2>Incarca problema!</h2>
-                <p>Va rugam sa adaugati problema intr un format JSON</p>
+                <p>Va rugam sa adaugati problema intr un format JSON sau sa completati formularul de mai jos.</p>
             </div>
-            <a class="btn btn-primary" id="importJsonButton">Import JSON</a>
-            <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
+            <form action="" method="post" id="problem_import" class="problem-form">
+                <label for="descriere">Descriere</label>
+                <textarea type="text" placeholder="Continutul problemei in 2-3 enunturi" id="descriere" required></textarea> 
+                <label for="rezolvare">Rezolvare</label>
+                <textarea type="text" placeholder="Rezolvarea corecta a problemei" id="rezolvare" required></textarea>
+                <div class="button-wrapper">
+                    <input type="submit" class="btn btn-secondary" id="createJsonButton"></input>
+                    <a class="btn btn-primary" id="importJsonButton">Import JSON</a>
+                    <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
+                </div>
+            </form>
         </div>
     </div>
 

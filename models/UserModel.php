@@ -201,15 +201,76 @@ class UserModel {
 
         // Verificăm dacă $topStudents nu este gol
         if (!empty($topStudents)) {
-            // Returnăm rezultatul doar o dată, nu ne mai trebuie echo aici
             $stmt->close();
             return $topStudents;
         } else {
-            // Dacă $topStudents este gol, returnăm un mesaj de eroare
             $stmt->close();
             return ['error' => 'No data found'];
         }
     }
+
+    public function deleteUserKeepProblems($userId) {
+        $db = Database::getConnection();
+
+        // Începe o tranzacție pentru a asigura integritatea datelor
+        $db->begin_transaction();
+    
+        try {
+        // Șterge toate răspunsurile utilizatorului
+        $stmt = $db->prepare("DELETE FROM User_Answers WHERE user_id = ?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $stmt->close();
+
+         // Șterge toate răspunsurile utilizatorului
+         $stmt = $db->prepare("DELETE FROM Comments WHERE user_id = ?");
+         $stmt->bind_param("i", $userId);
+         $stmt->execute();
+         $stmt->close();
+    
+        // Șterge utilizatorul
+        $stmt = $db->prepare("DELETE FROM users WHERE user_id = ?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $stmt->close();
+
+        // Confirmă tranzacția
+        $db->commit();
+    } catch (Exception $e) {
+        // Dacă există o eroare, anulează tranzacția
+        $db->rollback();
+        error_log("Eroare la ștergerea utilizatorului: " . $e->getMessage());
+        throw $e; // Aruncă din nou excepția pentru a putea fi gestionată mai departe
+    }
+    }
+
+    public function getUserRole($userId) {
+        $db = Database::getConnection();
+        
+        $stmt = $db->prepare("
+            SELECT role
+            FROM Users
+            WHERE user_id = ?
+        ");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $role = $result->fetch_assoc()['role'];
+        $stmt->close();
+        
+        return $role;
+    }
+
+    public function getSolvedProblemsCountAndRole($userId) {
+        $solvedProblems = $this->getSolvedProblems($userId);
+        $role = $this->getUserRole($userId);
+        return [
+            'solvedCount' => count($solvedProblems),
+            'role' => $role
+        ];
+    }
+    
+    
 }
 ?>
 

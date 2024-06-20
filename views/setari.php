@@ -1,3 +1,11 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+?>
+
 <!DOCTYPE html>
 <html lang="ro">
 
@@ -86,24 +94,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="setting-item-functions">
-                    <h4>Setarile limbii</h4>
-                    <div class="setting-preferences">
-                        <div class="settings-item-function-container">
-                            <div class="setting-option-line">
-                                <div>Afiseaza limba</div>
-                                <a class="button-change-language" >Schimba limba</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         
     </div>
 
     <div class="glass-effect-div" id="glassDelete" style="display: none;">
-
+    <input type="hidden" id="userId" value="<?php echo $userId !== null ? htmlspecialchars($userId, ENT_QUOTES, 'UTF-8') : ''; ?>">
         <div class="popup-add" id="deletePopup">
             <img class="image-popup" src="./Images/Profile images/ohno.svg" alt="Sad">
             <div class="text-wrapper">
@@ -112,7 +109,7 @@
             </div>
             <div class="buttons-wrapper">
                 <a class="btn btn-secondary" id="cancel">Cancel</a>
-                <a class="btn btn-primary" id="confirm">Confirm</a>
+                <a class="btn btn-primary" id="confirm" value="<?php echo $userId ?>">Confirm </a>
             </div>
         </div>
     </div>

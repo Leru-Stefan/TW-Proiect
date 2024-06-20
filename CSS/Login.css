@@ -214,6 +214,7 @@ input[type="text"], input[type="password"] {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
+    margin-top: 10px;
 }
 
 input[type="submit"] {
@@ -258,7 +259,7 @@ p a:hover {
     }
 
     .left-half {
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -287,7 +288,7 @@ p a:hover {
         margin-top: 28px;
     }
     .right-half {
-        display: none;
+        display: flex;
     }
 
     input[type="text"], input[type="password"] {
@@ -327,7 +328,7 @@ p a:hover {
     }
 
     .left-half {
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -356,6 +357,6 @@ p a:hover {
         margin-top: 28px;
     }
     .right-half {
-        display: none;
+        display: flex;
     }
 }

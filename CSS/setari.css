@@ -106,24 +106,23 @@ body {
 }
 
 .column {
-    margin: 16px;
-    padding: 20px;
+    margin-top: 32px;
 }
 
 .column:nth-child(1) {
     width: 220px;
-    padding: 0;
-}
+    padding: 16px;
+} 
 
 .column:nth-child(2) {
     width: 100%;
-    margin-left: 252px;
-    margin-right: 382px;
+    margin-left: 268px;
+    margin-right: 398px;
 }
 
 .column:nth-child(3) {
     width: 350px;
-    padding: 16px 0;
+    padding-right: 16px;
 }
 
 .btn {
@@ -159,18 +158,20 @@ body {
 
 /* -------------SIDEBAR------------------------ */
 .side-bar {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     height: 100%;
+    gap: 40px;
 }
-
 .nav {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
-
 .menu-link {
     display: flex;
     flex-direction: row;
-    width: 100%;
     border-radius: 8px;
     padding-left: 16px;
     padding-top: 18px;
@@ -183,7 +184,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .icon-menu {
     width: 24px;
     margin-right: 12px;
@@ -197,7 +197,7 @@ body {
     color: var(--accent-color);
 }
 
-.menu-link:not(.active) .icon-menu {
+.menu-link:not(.active) .icon-menu{
     color: var(--accent-color);
 }
 
@@ -216,24 +216,19 @@ body {
 
 .logo-nav {
     height: 50px;
-    margin-bottom: 40px;
-    margin-left: 12px;
-    margin-top: 20px;
 }
 
 .logo-small {
     display: none;
     height: 50px;
-    margin-bottom: 40px;
-    margin-left: 8px;
-    margin-top: 16px;
+
 }
 
 /* --------------------------MAIN-------------------------- */
 
 .main-content-setari {
     width: auto;
-    padding: 0 32px;
+    padding: 16px 32px;
     height: 100%;
 }
 
