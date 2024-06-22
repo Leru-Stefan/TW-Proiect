@@ -2,7 +2,9 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 ?>
 
@@ -90,6 +92,9 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                                 </form>
                                 </div>
                                 <div id="message-container"></div>
+                                <?php
+
+                                ?>
                             </div>
                             <div class="setting-option-line">
                                 <div  class="setting-item">Sterge profilul</div>

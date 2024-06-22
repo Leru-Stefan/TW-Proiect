@@ -148,6 +148,7 @@ form.addEventListener('submit', function(event) {
         }
     })
     .catch(error => {
+        console.error('Eroare în fetch:', error); // Afișează erorile din fetch în consolă
         displayMessage('A apărut o eroare. Te rugăm să încerci din nou.', 'error');
     });
 });

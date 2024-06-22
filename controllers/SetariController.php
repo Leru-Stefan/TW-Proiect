@@ -17,8 +17,8 @@ class SetariController extends BaseController {
         $this->checkAuthentication();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $currentPassword = $_POST['curr_password'] ?? null;
-            $newPassword = $_POST['new_password'] ?? null;
+            $currentPassword = $_POST['curr-password'] ?? null;
+            $newPassword = $_POST['new-password'] ?? null;
             $userId = $_SESSION['user_id'];
 
             error_log("Parola curenta: " . $currentPassword);
@@ -30,18 +30,22 @@ class SetariController extends BaseController {
 
                 try {
                     $userModel->changePassword($userId, $currentPassword, $newPassword);
-                    echo 'Parola a fost schimbată cu succes.';
+                    echo json_encode(array('success' => true, 'message' => 'Parola a fost schimbată cu succes.'));
+                    return;
                 } catch (Exception $e) {
                     error_log("Eroare la schimbarea parolei: " . $e->getMessage());
-                    echo 'Eroare: ' . $e->getMessage();
+                    echo json_encode(array('success' => false, 'error' => 'Eroare: ' . $e->getMessage()));
+                    return;
                 }
             } else {
                 error_log("Toate câmpurile sunt obligatorii.");
-                echo 'Toate câmpurile sunt obligatorii.';
+                echo json_encode(array('success' => false, 'error' => 'Toate câmpurile sunt obligatorii.'));
+                return;
             }
         } else {
             error_log("Cerere invalidă.");
-            echo 'Cerere invalidă.';
+            echo json_encode(array('success' => false, 'error' => 'Cerere invalidă.'));
+            return;
         }
     }
 }

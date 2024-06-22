@@ -290,8 +290,7 @@ class UserModel {
         $stmt->fetch();
         $stmt->close();
     
-        $hashedPass = password_hash($currentPassword, PASSWORD_BCRYPT);
-        if (!password_verify($hashedPass, $hashedPassword)) {
+        if (!password_verify($currentPassword, $hashedPassword)) {
             throw new Exception("Parola curentă este incorectă.");
         }
     
