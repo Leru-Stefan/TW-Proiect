@@ -149,6 +149,14 @@ body.fade-out {
     color: var(--heading-on-blue);
 }
 
+button {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex: 1;
+}
+
 /* -------------SIDEBAR------------------------ */
 .side-bar {
     display: flex;
@@ -362,6 +370,113 @@ body.fade-out {
     text-align: center;
     width: 50%;
 }
+.problem-form{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    width: 80%;
+    gap: 4px;
+}
+
+.problem-form textarea {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    height: 100px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form .btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.importJs{
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    margin-top: 8px;
+}
+
+.problem-form p {
+    margin: 0;
+    align-self: center;
+}
+
+.popup-add h3 {
+    text-align: left;
+    align-self: flex-start;
+}
+
+form input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 16px;
+}
+
+select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    color: var(--headings-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    width: fit-content;
+    margin-bottom: px;
+}
+
+.categories select {
+    display: flex;
+    flex: 1;
+}
+
+.problem-form .categories {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 0;
+    width: 100%;
+    margin-bottom: 12px;
+    gap:24px;
+}
+
+input.btn.btn-secondary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: transparent;
+    transition: 0.3s ease;
+}
+
+input.btn.btn-secondary:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.button-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
 .image-popup {
     width: 70%;
 }

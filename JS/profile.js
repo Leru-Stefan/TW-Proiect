@@ -4,6 +4,7 @@ const logoutButton = document.getElementById('gotologout');
 const problemeButton = document.getElementById('gotoprobleme');
 const profilButton = document.getElementById('gotoprofil');
 const setariButton = document.getElementById('gotosetari');
+const ajutorButton = document.getElementById('gotoajutor');
 
 if (logoutButton) {
     logoutButton.addEventListener('click', () => {
@@ -26,6 +27,12 @@ if (profilButton) {
 if (setariButton) {
     setariButton.addEventListener('click', () => {
         window.location.href = 'index.php?page=setari';
+    });
+}
+
+if (ajutorButton) {
+    ajutorButton.addEventListener('click', () => {
+        window.location.href = 'index.php?page=ajutor';
     });
 }
 
@@ -67,17 +74,18 @@ fetchQuotes();
         try {
             const response = await fetch('./PHP/getSolvedProblemsCount.php');
             const data = await response.json();
-            if (data.solvedCount !== undefined) {
-                return data.solvedCount;
+            if (data.solvedCount !== undefined && data.role !== undefined && data.addedCount !== undefined) {
+                return data;
             } else {
-                console.error('Error fetching solved problems count:', data.error);
-                return 0;
+                console.error('Error fetching solved problems and role:', data.error);
+                return { solvedCount: 0, addedCount: 0, role: 'student' };
             }
         } catch (error) {
-            console.error('Error fetching solved problems count:', error);
-            return 0;
+            console.error('Error fetching solved problems and role:', error);
+            return { solvedCount: 0,addedCount: 0 ,role: 'student' };
         }
     }
+
 
     // Functie pentru a afisa popup-ul corespunzator
     async function afiseazaPopup() {
@@ -88,12 +96,24 @@ fetchQuotes();
         glassAddTrue.style.display = 'none';
         glassAddFalse.style.display = 'none';
 
-        // Verifica numarul de probleme rezolvate
-        const problemeRezolvate = await numarProblemeRezolvate();
-        if (problemeRezolvate > 0 && problemeRezolvate % 20 === 0) {
+        // Get the number of solved problems and user's role
+        const { solvedCount, role, addedCount } = await numarProblemeRezolvate();
+
+        if (role === 'admin') {
             glassAddTrue.style.display = 'flex';
         } else {
-            glassAddFalse.style.display = 'flex';
+            const allowedAdds = Math.floor(solvedCount / 20); // Calculate how many problems can be added
+            if (solvedCount > 0 && addedCount < allowedAdds) {
+                glassAddTrue.style.display = 'flex';
+                glassAddFalse.style.display = 'none';
+            } else {
+                glassAddTrue.style.display = 'none';
+                glassAddFalse.style.display = 'flex';
+            }
+
+            console.log(allowedAdds);
+            console.log(addedCount);
+            console.log(solvedCount);
         }
     }
 

@@ -48,7 +48,12 @@
                             <a id="gotosetari">Setari</a>
                         </div>
                     </li>
-
+                    <li>
+                        <div class="menu-link" id="gotoajutor">
+                            <img src="./Images/Icons-black/fi-rr-hand-holding-heart.svg" alt="" class="icon-menu">
+                            <a id="gotoajutor">Ajutor</a>
+                        </div>
+                    </li>
                     <li>
                         <div class="menu-link" id="gotologout">
                             <img src="./Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">

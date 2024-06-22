@@ -1,6 +1,10 @@
 <?php
 // models/User.php
 require_once 'Database.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 class UserModel {
     public $nume;
@@ -97,7 +101,7 @@ class UserModel {
     public function getAddedProblemsCount($userId) {
         $db = Database::getConnection();
     
-        $stmt = $db->prepare("SELECT COUNT(*) AS added_count FROM user_questions WHERE user_id = ?");
+        $stmt = $db->prepare("SELECT COUNT(*) AS added_count FROM questions WHERE user_id = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $stmt->bind_result($addedCount);
@@ -160,10 +164,9 @@ class UserModel {
         $db = Database::getConnection();
     
         $stmt = $db->prepare("
-            SELECT q.question_id, q.question_title, q.description, q.correct_query
+            SELECT q.question_id, q.question_title, q.description
             FROM questions q
-            INNER JOIN user_questions uq ON q.question_id = uq.question_id
-            WHERE uq.user_id = ?
+            WHERE q.user_id = ?
         ");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
@@ -178,13 +181,8 @@ class UserModel {
         return $addedProblems;
     }
     
-    public function getTopStudents($limit = null) {
+    public function getTopStudents($limit = 5) {
         $db = Database::getConnection();
-
-        if ($limit === null) {
-            $limit = 5; // Setăm o limită implicită de 5
-        } 
-
         $stmt = $db->prepare("
             SELECT u.user_id, u.nume, u.prenume, COUNT(DISTINCT ua.question_id) AS solved_count
             FROM users u
@@ -194,29 +192,24 @@ class UserModel {
             ORDER BY solved_count DESC
             LIMIT ?
         ");
-        $stmt->bind_param("i", $limit);
-
+        $stmt->bind_param("i", $limitParam);
+        $limitParam = $limit;
+    
         if (!$stmt->execute()) {
-            echo json_encode(['error' => 'Error executing query']);
-            return [];
+            return ['error' => 'Error executing query'];
         }
+    
         $result = $stmt->get_result();
-        
     
         $topStudents = [];
         while ($row = $result->fetch_assoc()) {
             $topStudents[] = $row;
         }
-
-        // Verificăm dacă $topStudents nu este gol
-        if (!empty($topStudents)) {
-            $stmt->close();
-            return $topStudents;
-        } else {
-            $stmt->close();
-            return ['error' => 'No data found'];
-        }
+    
+        $stmt->close();
+        return $topStudents;
     }
+    
 
     public function deleteUserKeepProblems($userId) {
         $db = Database::getConnection();
@@ -271,12 +264,51 @@ class UserModel {
     }
 
     public function getSolvedProblemsCountAndRole($userId) {
+        $addedProblems = $this->getAddedProblems($userId);
         $solvedProblems = $this->getSolvedProblems($userId);
         $role = $this->getUserRole($userId);
         return [
             'solvedCount' => count($solvedProblems),
+            'addedCount' => count($addedProblems),
             'role' => $role
         ];
+    }
+    
+    public function changePassword($userId, $currentPassword, $newPassword) {
+        $db = Database::getConnection();
+    
+        // Verifică dacă parola curentă este corectă
+        $stmt = $db->prepare("SELECT password FROM users WHERE user_id = ?");
+        if (!$stmt) {
+            error_log("Eroare la pregătirea interogării: " . $db->error);
+            throw new Exception("Eroare la pregătirea interogării.");
+        }
+        // Verifică dacă parola curentă este corectă
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $stmt->bind_result($hashedPassword);
+        $stmt->fetch();
+        $stmt->close();
+    
+        $hashedPass = password_hash($currentPassword, PASSWORD_BCRYPT);
+        if (!password_verify($hashedPass, $hashedPassword)) {
+            throw new Exception("Parola curentă este incorectă.");
+        }
+    
+        // Hash-ează noua parolă
+        $newHashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+    
+        // Actualizează parola în baza de date
+        $stmt = $db->prepare("UPDATE users SET password = ? WHERE user_id = ?");
+        if (!$stmt) {
+            error_log("Eroare la pregătirea interogării de actualizare: " . $db->error);
+            throw new Exception("Eroare la pregătirea interogării de actualizare.");
+        }
+        $stmt->bind_param("si", $newHashedPassword, $userId);
+        $stmt->execute();
+        $stmt->close();
+    
+        return true;
     }
     
     

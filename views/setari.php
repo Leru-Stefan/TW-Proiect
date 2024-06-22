@@ -44,6 +44,12 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                         </div>
                     </li>
                     <li>
+                        <div class="menu-link" id="gotoajutor">
+                            <img src="./Images/Icons-black/fi-rr-hand-holding-heart.svg" alt="" class="icon-menu">
+                            <a id="gotoajutor">Ajutor</a>
+                        </div>
+                    </li>
+                    <li>
                         <div class="menu-link" id="gotologout">
                             <img src="./Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
                             <a id="gotologout">Log out</a>
@@ -69,23 +75,21 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                             </div>
                             <div class="reset-password-container" style="display: none;">
                                 <div class="setting-option-line input-forms-password">
-                                    <form class="password-input-reset">
-                                        <label for="current-password">Parola curenta</label>
-                                        <input type="password" id="curr-password" name="password">
-                                    </form>
-                                    <form class="password-input-reset">
-                                        <label for="new-password">Parola noua</label>
-                                        <input type="password" id="new-password" name="password">
-                                    </form>
+                                <form class="password-input-reset" id="passwordResetForm" method="post" action="index.php?page=setari&action=changePassword">
+                                        <div class="col">
+                                            <label for="current-password">Parola curenta</label>
+                                            <input type="password" id="curr-password" name="curr-password">
+                                        </div>
+                                        <div class="col">
+                                            <label for="new-password">Parola noua</label>
+                                            <input type="password" id="new-password" name="new-password">
+                                        </div>
+                                        <div class="setting-option-line">
+                                            <button type="submit" class="button-change-password" id="savePassBtn">Salveaza parola</a>
+                                        </div>
+                                </form>
                                 </div>
-                                <div class="setting-option-line">
-                                    <div class="reset-password-line-link">Nu iti amintesti parola? 
-                                        <a class="link-to-reset-page" >Resteaza parola</a>
-                                    </div>
-                                </div>
-                                <div class="setting-option-line">
-                                    <a class="button-change-password">Salveaza parola</a>
-                                </div>
+                                <div id="message-container"></div>
                             </div>
                             <div class="setting-option-line">
                                 <div  class="setting-item">Sterge profilul</div>

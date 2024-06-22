@@ -40,6 +40,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
+    if (ajutorButton) {
+        ajutorButton.addEventListener('click', () => {
+            window.location.href = 'index.php?page=ajutor';
+        });
+    }
+
     window.afiseazaDropdown = function (dropdownButton) {
         // Ascunde toate celelalte meniuri derulante
         document.querySelectorAll('.dropdown-content').forEach(function (dropdownContent) {
@@ -70,15 +76,15 @@ document.addEventListener('DOMContentLoaded', async function () {
         try {
             const response = await fetch('./PHP/getSolvedProblemsCount.php');
             const data = await response.json();
-            if (data.solvedCount !== undefined && data.role !== undefined) {
+            if (data.solvedCount !== undefined && data.role !== undefined && data.addedCount !== undefined) {
                 return data;
             } else {
                 console.error('Error fetching solved problems and role:', data.error);
-                return { solvedCount: 0, role: 'student' };
+                return { solvedCount: 0, addedCount: 0, role: 'student' };
             }
         } catch (error) {
             console.error('Error fetching solved problems and role:', error);
-            return { solvedCount: 0, role: 'student' };
+            return { solvedCount: 0,addedCount: 0 ,role: 'student' };
         }
     }
 
@@ -91,32 +97,33 @@ document.addEventListener('DOMContentLoaded', async function () {
         glassAddTrue.style.display = 'none';
         glassAddFalse.style.display = 'none';
 
-        // Get the number of solved problems and user's role
-        const { solvedCount, role } = await numarProblemeRezolvate();
-        if (role === 'admin') {
+    // Get the number of solved problems and user's role
+    const { solvedCount, role, addedCount } = await numarProblemeRezolvate();
+
+    if (role === 'admin') {
+        glassAddTrue.style.display = 'flex';
+    } else {
+        const allowedAdds = Math.floor(solvedCount / 20); // Calculate how many problems can be added
+        if (solvedCount > 0 && addedCount < allowedAdds) {
             glassAddTrue.style.display = 'flex';
-        } else if (solvedCount > 0 && solvedCount % 20 === 0) {
-            glassAddTrue.style.display = 'flex';
+            glassAddFalse.style.display = 'none';
         } else {
+            glassAddTrue.style.display = 'none';
             glassAddFalse.style.display = 'flex';
         }
+
+        console.log(allowedAdds);
+        console.log(addedCount);
+        console.log(solvedCount);
+    }
+
+
     }
 
     // Adauga eveniment pentru div-ul add-problem
     const addProblemDiv = document.getElementById('add-problem');
     if (addProblemDiv) {
         addProblemDiv.addEventListener('click', afiseazaPopup);
-    }
-
-    // Adauga eveniment pentru butonul de import JSON
-    const importJsonButton = document.getElementById('importJsonButton');
-    if (importJsonButton) {
-        importJsonButton.addEventListener('click', function () {
-            const jsonFileInput = document.getElementById('jsonFileInput');
-            if (jsonFileInput) {
-                jsonFileInput.click();
-            }
-        });
     }
 
     function hidePopup(event) {

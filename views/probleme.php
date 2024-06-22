@@ -12,7 +12,6 @@
             var fileName = 'Problema_' + id + '.' + format;
             var url = 'index.php?page=download&format=' + format + '&id=' + id;
         
-            // Deschide URL-ul într-o nouă fereastră sau filă
             var link = document.createElement('a');
             link.href = url;
             link.download = fileName;
@@ -47,7 +46,12 @@
                             <a id="gotosetari">Setari</a>
                         </div>
                     </li>
-
+                    <li>
+                        <div class="menu-link" id="gotoajutor">
+                            <img src="./Images/Icons-black/fi-rr-hand-holding-heart.svg" alt="" class="icon-menu">
+                            <a id="gotoajutor">Ajutor</a>
+                        </div>
+                    </li>
                     <li>
                         <div class="menu-link" id="gotologout">
                             <img src="./Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
@@ -55,8 +59,11 @@
                         </div>
                     </li>
                 </ul>
-
             </nav>
+            <nav class="mobile-nav">
+                
+            </nav>
+
         </div>
         <div class="column main-content">
             <div class="search">
@@ -69,8 +76,40 @@
                     <p>Adauga o problema</p>
                 </div>
             </div>
+            <div class="filter">
+                <h5>Filtru:</h5>
+                <form method="GET" action="<?php echo $_SERVER['PHP_SELF'];?>" class="categories">
+                    <input type="hidden" name="page" value="probleme">
+
+                    <select name="chapter" id="chapter">
+                        <option value="">Selectează un capitol</option>
+                        <option value="<?php echo urlencode('SELECT Basics'); ?>">SELECT Basics</option>
+                        <option value="<?php echo urlencode('JOINs'); ?>">JOINs</option>
+                        <option value="<?php echo urlencode('GROUP BY'); ?>">GROUP BY</option>
+                        <option value="<?php echo urlencode('Subinterogări'); ?>">Subinterogări</option>
+                        <option value="<?php echo rawurlencode('Manipularea Datelor'); ?>">Manipularea Datelor</option>
+                    </select>
+
+                    <select name="difficulty" id="difficulty">
+                        <option value="">Selecteaza o dificultate</option>
+                        <option value="<?php echo urlencode('easy'); ?>">Usor</option>
+                        <option value="<?php echo urlencode('medium'); ?>">Mediu</option>
+                        <option value="<?php echo urlencode('hard'); ?>">Dificil</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-primary">Cauta</button>
+                </form>
+            </div>
 
             <div class="cards-probleme" id="cards-probleme">
+            <?php
+            $chapter = isset($_GET['chapter']) ? urldecode($_GET['chapter']) : '';
+            $difficulty = isset($_GET['difficulty']) ? urldecode($_GET['difficulty']) : '';
+            
+            $model = new ProblemModel();
+            $problems = $model->getFilteredProblems($chapter, $difficulty);
+
+            ?>
                 <?php if (!empty($problems)): ?>
                      <?php foreach ($problems as $problem): ?>
                         <div class="card" id="problema-<?php echo $problem['question_id']; ?>">
@@ -161,18 +200,35 @@
             <!-- <img class="image-popup" src="./Images/Profile%20images/upload.svg" alt="Congrats"> -->
             <div class="text-wrapper">
                 <h2>Incarca problema!</h2>
-                <p>Va rugam sa adaugati problema intr un format JSON sau sa completati formularul de mai jos.</p>
+                <p>Va rugam sa completati campurile de mai jos pentru a putea adauga o problema pe platforma noastra.</p>
             </div>
-            <form action="./controllers/ImportController.php" method="post" id="problem_import" class="problem-form" enctype="multipart/form-data">
+            <form action="index.php?page=probleme&&action=addOrImport" method="post" id="problem_import" class="problem-form" enctype="multipart/form-data">
+                <label for="question_title">Titlu</label>
+                <input type="text" id="question_title" name="question_title" placeholder="Titlul problemei" required>
                 <label for="descriere">Descriere</label>
-                <textarea type="text" placeholder="Continutul problemei in 2-3 enunturi" id="descriere"></textarea> 
+                <textarea type="text" placeholder="Continutul problemei in 2-3 enunturi" id="description" name="description" required></textarea> 
                 <label for="rezolvare">Rezolvare</label>
-                <textarea type="text" placeholder="Rezolvarea corecta a problemei" id="rezolvare"></textarea>
-                <div class="button-wrapper">
-                    <input type="submit" class="btn btn-secondary" id="createJsonButton" value="Trimite"></input>
-                    <a class="btn btn-primary" id="importJsonButton">Import JSON</a>
-                    <input type="file" name="jsonFile" id="jsonFileInput" accept=".json" style="display: none;">
+                <textarea type="text" placeholder="Rezolvarea corecta a problemei" id="rezolvare" name="correct_query" required></textarea>
+                <label for="chapter">Capitol si dificultate</label>
+                <div class="categories">
+                    <select id="chapter" name="chapter" required>
+                        <option value="">Selectează un capitol</option>
+                        <option value="SELECT Basics">SELECT Basics</option>
+                        <option value="JOINs">JOINs</option>
+                        <option value="GROUP BY">GROUP BY</option>
+                        <option value="Subinterogări">Subinterogări</option>
+                        <option value="Manipularea Datelor">Manipularea Datelor</option>
+                    </select>
+
+                    <select name="difficulty" id="difficulty">
+                        <option value="">Selecteaza o dificultate</option>
+                        <option value="easy">Usor</option>
+                        <option value="medium">Mediu</option>
+                        <option value="hard">Dificil</option>
+                    </select>
+
                 </div>
+                <input type="submit" class="btn btn-secondary" id="createJsonButton" name="action" value="Trimite"></input>
             </form>
         </div>
     </div>

@@ -1,10 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     const userId = document.getElementById('userId').value;
     console.log('User ID:', userId); // Linie de debug
     const logoutButton = document.getElementById('gotologout');
     const problemeButton = document.getElementById('gotoprobleme');
     const profilButton = document.getElementById('gotoprofil');
     const setariButton = document.getElementById('gotosetari');
+    const ajutorButton = document.getElementById('gotoajutor');
 
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
@@ -27,6 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (setariButton) {
         setariButton.addEventListener('click', () => {
             window.location.href = 'index.php?page=setari';
+        });
+    }
+
+    if (ajutorButton) {
+        ajutorButton.addEventListener('click', () => {
+            window.location.href = 'index.php?page=ajutor';
         });
     }
 
@@ -98,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adăugăm un ascultător de eveniment pentru clic pe buton
     changePassBtn.addEventListener('click', function() {
         // Verificăm dacă container-ul este afișat sau nu
-        console.log("Click pe change");
         if (resetPasswordContainer.style.display === 'none' || resetPasswordContainer.style.display === '') {
             // Dacă este ascuns sau nu are setat niciun stil de afișare, îl facem vizibil
             resetPasswordContainer.style.display = 'flex';
@@ -108,4 +114,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    const form = document.getElementById('passwordResetForm');
+const messageContainer = document.getElementById('message-container');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const currPassword = formData.get('curr-password');
+    const newPassword = formData.get('new-password');
+
+    console.log('Parola curenta:', currPassword);
+    console.log('Parola noua:', newPassword);
+
+    // Validare simplă
+    if (!currPassword || !newPassword) {
+        displayMessage('Toate câmpurile sunt obligatorii.', 'error');
+        return;
+    }
+
+    fetch('index.php?page=setari&action=changePassword', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // Adăugați acest log pentru a vedea răspunsul de la server
+        if (data.success) {
+            displayMessage(data.message, 'success');
+            form.reset();
+        } else {
+            displayMessage(data.error, 'error');
+        }
+    })
+    .catch(error => {
+        displayMessage('A apărut o eroare. Te rugăm să încerci din nou.', 'error');
+    });
+});
+
+function displayMessage(message, type) {
+    messageContainer.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+}
 });

@@ -37,7 +37,12 @@
                             <a id="gotosetari">Setari</a>
                         </div>
                     </li>
-                
+                    <li>
+                        <div class="menu-link" id="gotoajutor">
+                            <img src="./Images/Icons-black/fi-rr-hand-holding-heart.svg" alt="" class="icon-menu">
+                            <a id="gotoajutor">Ajutor</a>
+                        </div>
+                    </li>
                     <li>
                         <div class="menu-link" id="gotologout">
                             <img src="./Images/Icons-black/fi-rr-sign-out.svg" alt="" class="icon-menu">
@@ -85,7 +90,7 @@
                     <?php else: ?>
                         <?php foreach ($addedProblems as $problem): ?>
                             <div class="card" id="prbm-<?php echo $problem['question_id']; ?>">
-                                <h5>Problema <?php echo $problem['question_id']; ?></h5>
+                                <h5><?php echo $problem['question_title']; ?></h5>
                                 <p><?php echo htmlspecialchars($problem['description']); ?></p>
                             </div>
                         <?php endforeach; ?>
@@ -172,13 +177,39 @@
     </div>
     <div class="glass-effect-div" id="glassAddTrue" style="display: none;">
         <div class="popup-add" id="addTrue">
-            <img class="image-popup" src="./Images/Profile images/celebration.svg" alt="Congrats">
+            <!-- <img class="image-popup" src="./Images/Profile%20images/upload.svg" alt="Congrats"> -->
             <div class="text-wrapper">
-                <h2>Felicitari!</h2>
-                <p>Ai rezolvat cu succes 20 de probleme. Te rugăm să încarci problema ta pe platforma noastră în format JSON.</p>
+                <h2>Incarca problema!</h2>
+                <p>Va rugam sa completati campurile de mai jos pentru a putea adauga o problema pe platforma noastra.</p>
             </div>
-            <a class="btn btn-primary" id="importJsonButton">Import JSON</a>
-            <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
+            <form action="index.php?page=probleme&&action=addOrImport" method="post" id="problem_import" class="problem-form" enctype="multipart/form-data">
+                <label for="question_title">Titlu</label>
+                <input type="text" id="question_title" name="question_title" placeholder="Titlul problemei" required>
+                <label for="descriere">Descriere</label>
+                <textarea type="text" placeholder="Continutul problemei in 2-3 enunturi" id="description" name="description" required></textarea> 
+                <label for="rezolvare">Rezolvare</label>
+                <textarea type="text" placeholder="Rezolvarea corecta a problemei" id="rezolvare" name="correct_query" required></textarea>
+                <label for="chapter">Capitol si dificultate</label>
+                <div class="categories">
+                    <select id="chapter" name="chapter" required>
+                        <option value="">Selectează un capitol</option>
+                        <option value="SELECT Basics">SELECT Basics</option>
+                        <option value="JOINs">JOINs</option>
+                        <option value="GROUP BY">GROUP BY</option>
+                        <option value="Subinterogări">Subinterogări</option>
+                        <option value="Manipularea Datelor">Manipularea Datelor</option>
+                    </select>
+
+                    <select name="difficulty" id="difficulty">
+                        <option value="">Selecteaza o dificultate</option>
+                        <option value="<?php echo urlencode('easy'); ?>">Usor</option>
+                        <option value="<?php echo urlencode('medium'); ?>">Mediu</option>
+                        <option value="<?php echo urlencode('hard'); ?>">Dificil</option>
+                    </select>
+
+                </div>
+                <input type="submit" class="btn btn-secondary" id="createJsonButton" name="action" value="Trimite"></input>
+            </form>
         </div>
     </div>
 

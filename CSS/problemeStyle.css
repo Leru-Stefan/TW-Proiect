@@ -103,6 +103,7 @@ body {
 .grid-container{
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .column {
@@ -157,6 +158,14 @@ body {
 
 .btn-primary:hover{
     background-color: var(--dark-accent);
+}
+
+button {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex: 1;
 }
 
 /* -------------SIDEBAR------------------------ */
@@ -259,6 +268,35 @@ body {
     
 } */
 
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+}
+
+.categories select {
+    display: flex;
+    flex: 1;
+}
+
+.problem-form .categories {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 0;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
 .glass-effect-div {
     top: 0;
     left: 0;
@@ -291,22 +329,22 @@ body {
     flex-direction: column;
     align-items:flex-start;
     width: 80%;
+    gap: 4px;
 }
 
 .problem-form textarea {
     display: flex;
     font-family: 'Montserrat', sans-serif;
-    height: 140px;
+    height: 100px;
     width: 100%;
-    margin-bottom: 20px;
-    padding: 16px;
+    padding: 8px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     box-sizing: border-box;
+    margin-bottom: 16px;
 }
 
 label {
-    margin-bottom: 12px;
     font-size: 20px;
     font-weight: 500;
 }
@@ -316,6 +354,45 @@ form .btn {
     flex-direction: row;
     justify-content: center;
     flex-grow: 1;
+}
+
+.importJs{
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    margin-top: 8px;
+}
+
+.problem-form p {
+    margin: 0;
+    align-self: center;
+}
+
+.popup-add h3 {
+    text-align: left;
+    align-self: flex-start;
+}
+
+form input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 16px;
+}
+
+select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    color: var(--headings-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    width: fit-content;
+    margin-bottom: px;
 }
 
 input.btn.btn-secondary {
@@ -335,8 +412,7 @@ input.btn.btn-secondary:hover {
     display: flex;
     flex-direction: row;
     width: 100%;
-    gap: 32px;
-    margin-top: 20px;
+    margin-top: 10px;
     flex-wrap: wrap;
 }
 .image-popup {
@@ -347,7 +423,6 @@ input.btn.btn-secondary:hover {
     width: 80%;
     display: flex;
     flex-direction: column;
-    margin-top: 24px;
     margin-bottom: 12px;
 }
 
@@ -488,8 +563,6 @@ input.btn.btn-secondary:hover {
     max-width: 350px;
 }
 .leaderboard {
-    position: -webkit-sticky; /* For Safari */
-    position: sticky;
     border: 1px solid var(--border-color);
     height: fit-content;
     border-radius: 20px;
@@ -596,6 +669,7 @@ input.btn.btn-secondary:hover {
 
     .side-bar {
         width: min-content;
+        overflow-y: auto;
     }
     .menu-link {
         cursor: pointer;
@@ -682,12 +756,11 @@ input.btn.btn-secondary:hover {
         margin-bottom: 4px;
     }
 
-    .button-wrapper {
-        margin-top: 8px;
-        gap: 20px;
+    .categories {
+        flex-wrap: wrap;
+        gap: 16px;
+        min-width: 0;
     }
-
-
 
 }
 
@@ -703,6 +776,7 @@ input.btn.btn-secondary:hover {
     .card .download-button {
         width: 20px;
     }
+
 
     .dd-icon {
         width: 20px;

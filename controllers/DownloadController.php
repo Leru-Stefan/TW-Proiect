@@ -20,8 +20,8 @@ class DownloadController extends BaseController {
 
         // Extragem doar titlul și conținutul problemei
         $filteredProblem = [
-            'title' => $problem['question_title'],
-            'content' => $problem['description']
+            'question_title' => $problem['question_title'],
+            'description' => $problem['description']
         ];
 
         if ($format == 'json') {

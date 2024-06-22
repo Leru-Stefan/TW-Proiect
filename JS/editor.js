@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const problemeButton = document.getElementById('gotoprobleme');
     const profilButton = document.getElementById('gotoprofil');
     const setariButton = document.getElementById('gotosetari');
-
+    const ajutorButton = document.getElementById('gotoajutor');
     const userInput = document.getElementById('userInput');
     const result = document.getElementById('result');
     const downloadJson = document.getElementById('downloadJSON');
@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     if (setariButton) {
         setariButton.addEventListener('click', () => {
             window.location.href = 'index.php?page=setari';
+        });
+    }
+    if (ajutorButton) {
+        ajutorButton.addEventListener('click', () => {
+            window.location.href = 'index.php?page=ajutor';
         });
     }
 
