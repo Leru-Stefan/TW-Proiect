@@ -105,7 +105,28 @@
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-                    
+            </div>
+            <div class="problemele-mele">
+                <h4>Problemele in asteptare</h4>
+                <div class="grid-problems-admin">
+                    <?php //if (empty($solvedProblems)): ?>
+                        <!-- <div class="card">
+                            <h5>Mesaj</h5>
+                            <p>Nu sunt probleme recent adaugate care necesita aprobarea ta!</p>
+                        </div> -->
+                    <!-- <?php //else: ?> -->
+                        <!-- <?php //foreach ($solvedProblems as $problem): ?> -->
+                            <div class="card-accept" id="prbm-<?php echo htmlspecialchars($problem['question_id']); ?>">
+                                <h5>Problema <?php echo htmlspecialchars($problem['question_id']); ?></h5>
+                                <p><?php echo htmlspecialchars($problem['description']); ?></p>
+                                <div class="buttons-wrapper">
+                                    <button class="btn btn-secondary">Refuza</button>
+                                    <button class="btn btn-primary">Accepta</button>
+                                </div>
+                            </div>
+                        <!-- <?php //endforeach; ?> -->
+                    <!-- <?php //endif; ?> -->
+                </div>
             </div>
 
             <div class="problemele-mele">
@@ -119,7 +140,7 @@
                     <?php else: ?>
                         <?php foreach ($solvedProblems as $problem): ?>
                             <div class="card" id="prbm-<?php echo htmlspecialchars($problem['question_id']); ?>">
-                                <h5>Problema <?php echo htmlspecialchars($problem['question_id']); ?></h5>
+                                <h5><?php echo htmlspecialchars($problem['question_title']); ?></h5>
                                 <p><?php echo htmlspecialchars($problem['description']); ?></p>
                             </div>
                         <?php endforeach; ?>

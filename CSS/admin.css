@@ -149,7 +149,7 @@ body.fade-out {
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
     transition: ease 0.4s;
-    background-color: transparent;
+    background-color: white;
 }
 
 .btn-secondary:hover {
@@ -566,6 +566,40 @@ input.btn.btn-secondary:hover {
     gap: 10px;
     overflow: hidden;
     position: relative;
+}
+
+.card-accept {
+    padding: 20px;
+    background-color: var(--section-login-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    gap: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-accept p {
+    margin: 0;
+    height: 120px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* numărul de linii dorit */
+    -webkit-box-orient: vertical;
+}
+
+.buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.buttons-wrapper button {
+    flex: 1;
+    padding: 12px 20px;
 }
 
 .card p {

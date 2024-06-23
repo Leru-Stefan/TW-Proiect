@@ -162,7 +162,6 @@
                 <button class="dificultate-button" data-dificultate="usor">Ușor</button>
                 <button class="dificultate-button" data-dificultate="mediu">Mediu</button>
                 <button class="dificultate-button" data-dificultate="greu">Greu</button>
-                <button class="dificultate-button" data-dificultate="gresit">Greșit</button>
             </div>
         </div>
     </div>
