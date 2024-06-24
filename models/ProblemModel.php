@@ -219,5 +219,30 @@ class ProblemModel {
             }
         }
     }
+
+    public function deleteProblem($problemId) {
+        $db = Database::getConnection();
+
+        // Șterge mai întâi rândurile din question_statistics care depind de problem_id
+        $sql = "DELETE FROM question_statistics WHERE question_id = ?";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("i", $problemId);
+        $stmt->execute();
+        $stmt->close();
+
+        // Acum poți șterge rândul din questions
+        $sql = "DELETE FROM questions WHERE question_id = ?";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("i", $problemId);
+
+        try {
+            $stmt->execute();
+            $stmt->close();
+            return true;
+        } catch (mysqli_sql_exception $e) {
+            $stmt->close();
+            throw new Exception("Failed to delete problem: " . $e->getMessage());
+        }
+    }
 }
 ?>
