@@ -137,6 +137,33 @@ class ProblemModel {
     
         return $problems;
     }
+
+    public function updateOrInsertDifficulty($question_id, $difficulty) {
+        $db = Database::getConnection();
+
+        // Verificăm dacă există deja o înregistrare pentru această problemă în question_statistics
+        $stmt = $db->prepare("SELECT * FROM question_statistics WHERE question_id = ?");
+        $stmt->bind_param("i", $question_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+
+        if ($result->num_rows > 0) {
+            // Dacă există, actualizăm înregistrarea existentă
+            $stmt = $db->prepare("UPDATE question_statistics SET times_attempted = times_attempted + 1, difficulty_votes = difficulty_votes + 1 WHERE question_id = ?");
+            $stmt->bind_param("i", $question_id);
+            $stmt->execute();
+            $stmt->close();
+        } else {
+            // Dacă nu există, inserăm o nouă înregistrare
+            $stmt = $db->prepare("INSERT INTO question_statistics (question_id, times_attempted, difficulty_votes) VALUES (?, 1, 1)");
+            $stmt->bind_param("i", $question_id);
+            $stmt->execute();
+            $stmt->close();
+        }
+
+        return true; // Întoarcem true dacă operația a avut succes
+    }
     
    
 }

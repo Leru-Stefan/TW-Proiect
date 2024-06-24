@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     console.log(glassSolvedFalse); // Ar trebui să vezi elementul în consolă
-    verifyBtn.addEventListener('click', function (event) {
+   /* verifyBtn.addEventListener('click', function (event) {
         event.stopPropagation(); // Oprim propagarea evenimentului pentru a preveni ascunderea imediată
         console.log('Verificare apăsată');
         const raspunsCorect = true; // Presupunem că este un răspuns greșit pentru testare
@@ -85,10 +85,11 @@ document.addEventListener('DOMContentLoaded', async function () {
             glassSolvedFalse.style.display = 'flex';
             console.log('Afișare popup greșit');
         }
-    });
+    });*/
 
     resetBtn.addEventListener('click', function () {
         console.log('Resetare apăsată');
+        userInput.value = ''; // Golește conținutul din userInput
         glassSolvedTrue.style.display = 'none';
         glassSolvedFalse.style.display = 'none';
     });
