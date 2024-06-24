@@ -175,32 +175,40 @@
     </div>
     <!-- Include the updated script at the end of the body -->
 <script>
-document.getElementById('verifyBtn').addEventListener('click', function() {
-    var userInput = document.getElementById('userInput').value;
-    var questionId = <?php echo $problem['question_id']; ?>;
-    
-    fetch('index.php?page=editor&action=verifyQuery', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'query=' + encodeURIComponent(userInput) + '&question_id=' + questionId
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.error) {
-            console.error('Error:', data.error);
-            alert('A apărut o eroare: ' + data.error); // Sau afişează eroarea în alt mod pe pagina ta
-        } else if (data.correct) {
-            document.getElementById('glassSolvedTrue').style.display = 'block';
-            document.getElementById('glassSolvedFalse').style.display = 'none';
-        } else {
-            document.getElementById('glassSolvedFalse').style.display = 'block';
-            document.getElementById('glassSolvedTrue').style.display = 'none';
-        }
-    })
+    document.getElementById('verifyBtn').addEventListener('click', function() {
+        var userInput = document.getElementById('userInput').value;
+        var questionId = <?php echo $problem['question_id']; ?>;
+        
+        fetch('index.php?page=editor&action=verifyQuery', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'query=' + encodeURIComponent(userInput) + '&question_id=' + questionId
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error:', data.error);
+                alert('A apărut o eroare: ' + data.error); // Sau afişează eroarea în alt mod pe pagina ta
+            } else if (data.correct) {
+                document.getElementById('glassSolvedTrue').style.display = 'flex';
+                document.getElementById('glassSolvedFalse').style.display = 'none';
+            } else {
+                document.getElementById('glassSolvedFalse').style.display = 'flex';
+                document.getElementById('glassSolvedTrue').style.display = 'none';
+                if (glassSolvedFalse.style.display === 'flex' && !document.getElementById('popupGresit').contains(event.target)) {
+                    glassSolvedFalse.style.display = 'none';
+                    console.log('Popup greșit ascuns');
+                }
+            }
+        })
     .catch(error => console.error('Fetch Error:', error));
+
+    
 });
+
+
 
 </script>
 
