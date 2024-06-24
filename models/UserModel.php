@@ -142,8 +142,8 @@ class UserModel {
         $db = Database::getConnection();
     
         $stmt = $db->prepare("
-            SELECT q.question_id, q.description
-            FROM Questions q
+            SELECT distinct q.question_id, q.question_title, q.description
+            FROM questions q
             INNER JOIN User_Answers ua ON q.question_id = ua.question_id
             WHERE ua.user_id = ? AND ua.is_correct = 1
         ");

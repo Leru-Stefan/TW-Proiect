@@ -87,13 +87,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     });*/
 
-    resetBtn.addEventListener('click', function () {
-        console.log('Resetare apăsată');
-        userInput.value = ''; // Golește conținutul din userInput
-        glassSolvedTrue.style.display = 'none';
-        glassSolvedFalse.style.display = 'none';
-    });
-
     var dificultateButtons = document.querySelectorAll('#popupCorect .dificultate-button');
     dificultateButtons.forEach(function (button) {
         button.addEventListener('click', function () {
@@ -186,6 +179,38 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Apelezăm funcția pentru a afișa topul studenților când pagina se încarcă
     await afiseazaTopStudents();
 
+    document.querySelectorAll('.dificultate-button').forEach(button => {
+        button.addEventListener('click', function() {
+            var selectedDifficulty = this.getAttribute('data-dificultate');
+            fetch('./PHP/getDifficulty.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ difficulty: selectedDifficulty })
+            })
+            .then(response => {
+                // Check if the response is JSON
+                if (response.headers.get('content-type').includes('application/json')) {
+                    return response.json();
+                } else {
+                    return response.text().then(text => { throw new Error(text) });
+                }
+            })
+            .then(data => {
+                if (data.success) {
+                    console.log('Difficulty saved successfully');
+                } else {
+                    console.error('Error:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Fetch Error:', error);
+            });
+            
+        });
+    });
+    
 });
 
 

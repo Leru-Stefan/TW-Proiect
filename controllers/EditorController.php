@@ -1,8 +1,14 @@
 <?php
+ if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'BaseController.php';
 require_once 'models/ProblemModel.php';
 require_once 'models/BD.php';
 require_once 'models/Database.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 class EditorController extends BaseController {
     public function indexAction() {
@@ -13,6 +19,7 @@ class EditorController extends BaseController {
         }
 
         $question_id = $_GET['id'];
+        $_SESSION['question_id'] = $question_id; // Set session variable
 
         $model = new ProblemModel();
         $problem = $model->getProblemById($question_id);
@@ -23,6 +30,7 @@ class EditorController extends BaseController {
 
         $this->render('editor', ['problem' => $problem]);
     }
+
     public function verifyQueryAction() {
         $this->checkAuthentication();
         
@@ -83,32 +91,35 @@ class EditorController extends BaseController {
     }
     
     
-
     public function saveDifficultyAction() {
-        // Verificăm dacă s-au primit date prin POST sub formă de JSON
+    try {
         $data = json_decode(file_get_contents('php://input'), true);
 
-        if (isset($data['difficulty']) && isset($_SESSION['question_id'])) {
-            $difficulty = $data['difficulty'];
-            $question_id = $_SESSION['question_id']; // Presupunând că aveți question_id disponibil în sesiune
-
-            try {
-                // Actualizăm tabela question_statistics
-                $model = new ProblemModel();
-                $success = $model->updateOrInsertDifficulty($question_id, $difficulty);
-
-                if ($success) {
-                    echo json_encode(['success' => true]);
-                } else {
-                    echo json_encode(['error' => 'Failed to update difficulty']);
-                }
-            } catch (Exception $e) {
-                echo json_encode(['error' => $e->getMessage()]);
-            }
-        } else {
-            echo json_encode(['error' => 'Invalid request']);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new Exception('Invalid JSON input');
         }
+
+        if (!isset($data['difficulty']) || !isset($_SESSION['question_id'])) {
+            throw new Exception('Invalid request');
+        }
+
+        $difficulty = $data['difficulty'];
+        $question_id = $_SESSION['question_id'];
+
+        $model = new ProblemModel();
+        $success = $model->updateOrInsertDifficulty($question_id, $difficulty);
+
+        if ($success) {
+            echo json_encode(['success' => true]);
+        } else {
+            throw new Exception('Failed to update difficulty');
+        }
+    } catch (Exception $e) {
+        echo json_encode(['error' => $e->getMessage()]);
     }
+}
+
+    
     
     
 }

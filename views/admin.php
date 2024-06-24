@@ -140,7 +140,7 @@
                     <?php else: ?>
                         <?php foreach ($solvedProblems as $problem): ?>
                             <div class="card" id="prbm-<?php echo htmlspecialchars($problem['question_id']); ?>">
-                                <h5><?php echo htmlspecialchars($problem['question_title']); ?></h5>
+                                <h5><?php echo $problem['question_title']; ?></h5>
                                 <p><?php echo htmlspecialchars($problem['description']); ?></p>
                             </div>
                         <?php endforeach; ?>
