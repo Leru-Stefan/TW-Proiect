@@ -187,7 +187,7 @@ class UserModel {
             SELECT u.user_id, u.nume, u.prenume, COUNT(DISTINCT ua.question_id) AS solved_count
             FROM users u
             INNER JOIN User_Answers ua ON u.user_id = ua.user_id
-            WHERE ua.is_correct = 1
+            WHERE ua.is_correct = 1 and u.role = 'student'
             GROUP BY u.user_id
             ORDER BY solved_count DESC
             LIMIT ?

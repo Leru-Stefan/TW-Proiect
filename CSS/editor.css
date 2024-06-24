@@ -347,10 +347,11 @@ textarea {
     gap:16px;
     width: auto;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .buttons .btn {
-    width: 50%;
+    flex: 1;
 }
 
 .glass-effect-div {

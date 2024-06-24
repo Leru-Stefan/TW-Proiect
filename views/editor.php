@@ -194,7 +194,10 @@
         editor.setTheme("ace/theme/eclipse");
         editor.session.setMode("ace/mode/sql");
         editor.setOptions({
-            fontSize: "14px"
+            fontSize: "14px",
+            wrap: true,
+            wrapBehavioursEnabled: true, 
+            indentedSoftWrap: false 
         });
 
         // Event listener pentru dropdown-ul de selectare a temei
