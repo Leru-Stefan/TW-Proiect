@@ -7,8 +7,9 @@ require_once 'models/ProblemModel.php';
 require_once 'models/BD.php';
 require_once 'models/Database.php';
 
-error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 class EditorController extends BaseController {
     public function indexAction() {
@@ -92,35 +93,32 @@ class EditorController extends BaseController {
     
     
     public function saveDifficultyAction() {
-    try {
-        $data = json_decode(file_get_contents('php://input'), true);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new Exception('Invalid JSON input');
+        try {
+            $data = json_decode(file_get_contents('php://input'), true);
+    
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new Exception('Invalid JSON input');
+            }
+    
+            if (!isset($data['difficulty']) || !isset($_SESSION['question_id'])) {
+                throw new Exception('Invalid request');
+            }
+    
+            $difficulty = $data['difficulty'];
+            $question_id = $_SESSION['question_id'];
+    
+            $model = new ProblemModel();
+            $success = $model->updateOrInsertDifficulty($question_id, $difficulty);
+    
+            if ($success) {
+                echo json_encode(['success' => true]);
+            } else {
+                throw new Exception('Failed to update difficulty');
+            }
+        } catch (Exception $e) {
+            echo json_encode(['error' => $e->getMessage()]);
         }
-
-        if (!isset($data['difficulty']) || !isset($_SESSION['question_id'])) {
-            throw new Exception('Invalid request');
-        }
-
-        $difficulty = $data['difficulty'];
-        $question_id = $_SESSION['question_id'];
-
-        $model = new ProblemModel();
-        $success = $model->updateOrInsertDifficulty($question_id, $difficulty);
-
-        if ($success) {
-            echo json_encode(['success' => true]);
-        } else {
-            throw new Exception('Failed to update difficulty');
-        }
-    } catch (Exception $e) {
-        echo json_encode(['error' => $e->getMessage()]);
     }
-}
-
-    
-    
     
 }
 ?>

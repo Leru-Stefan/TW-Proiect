@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.log('Document click event');
         if (glassSolvedFalse.style.display === 'flex' && !document.getElementById('popupGresit').contains(event.target)) {
             glassSolvedFalse.style.display = 'none';
-            console.log('Popup greșit ascuns');
         }
     }); 
 
@@ -172,8 +171,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
             });
         }
-
-        console.log(topStudents)
     }
 
     // Apelezăm funcția pentru a afișa topul studenților când pagina se încarcă
@@ -182,34 +179,45 @@ document.addEventListener('DOMContentLoaded', async function () {
     document.querySelectorAll('.dificultate-button').forEach(button => {
         button.addEventListener('click', function() {
             var selectedDifficulty = this.getAttribute('data-dificultate');
-            fetch('./PHP/getDifficulty.php', {
+            // Maparea valorilor din română în engleză
+            var difficultyMap = {
+                'usor': 'easy',
+                'mediu': 'medium',
+                'greu': 'hard'
+            };
+            var mappedDifficulty = difficultyMap[selectedDifficulty];
+            
+            fetch('index.php?page=editor&action=saveDifficulty', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ difficulty: selectedDifficulty })
+                body: JSON.stringify({ difficulty: mappedDifficulty })
             })
             .then(response => {
-                // Check if the response is JSON
-                if (response.headers.get('content-type').includes('application/json')) {
+                if (response.ok) {
                     return response.json();
                 } else {
-                    return response.text().then(text => { throw new Error(text) });
+                    throw new Error('Network response was not ok');
                 }
             })
             .then(data => {
-                if (data.success) {
+                if (data && data.success) {
                     console.log('Difficulty saved successfully');
-                } else {
+                } else if (data && data.error) {
                     console.error('Error:', data.error);
+                } else {
+                    console.error('Unknown error');
                 }
             })
             .catch(error => {
                 console.error('Fetch Error:', error);
             });
-            
         });
     });
+    
+    
+    
     
 });
 

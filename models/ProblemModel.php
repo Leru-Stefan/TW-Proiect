@@ -2,8 +2,9 @@
 require_once 'Database.php';
 require_once 'UserModel.php';
 
-error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 class ProblemModel {
     public $user_id;
@@ -143,63 +144,80 @@ class ProblemModel {
 
     public function updateOrInsertDifficulty($question_id, $difficulty) {
         $db = Database::getConnection();
-
+    
         // Obțineți datele actuale din baza de date
-        $query = $db->prepare("SELECT difficulty_votes FROM question_statistics WHERE question_id = ?");
+        $stmt = $db->prepare("SELECT difficulty_votes FROM question_statistics WHERE question_id = ?");
         $stmt->bind_param("i", $question_id);
         $stmt->execute();
         $stmt->bind_result($result);
         $stmt->fetch();
         $stmt->close();
-
+    
         if ($result) {
             // Dacă există deja un rând, actualizați-l
-            $difficulty_votes = json_decode($result['difficulty_votes'], true);
+            $difficulty_votes = json_decode($result, true);
             $difficulty_votes[] = $difficulty;
             $difficulty_votes_json = json_encode($difficulty_votes);
-
+    
             $updateQuery = $db->prepare("UPDATE question_statistics SET difficulty_votes = ? WHERE question_id = ?");
-            $success = $updateQuery->execute([$difficulty_votes_json, $question_id]);
+            $updateQuery->bind_param("si", $difficulty_votes_json, $question_id);
+            $success = $updateQuery->execute();
         } else {
             // Dacă nu există un rând, inserați unul nou
-            $difficulty_votes = json_encode([$difficulty]);
-
+            $difficulty_votes = [$difficulty]; // Inițializăm array-ul cu dificultatea curentă
+            $difficulty_votes_json = json_encode($difficulty_votes);
+    
             $insertQuery = $db->prepare("INSERT INTO question_statistics (question_id, difficulty_votes) VALUES (?, ?)");
-            $success = $insertQuery->execute([$question_id, $difficulty_votes]);
+            $insertQuery->bind_param("is", $question_id, $difficulty_votes_json);
+            $success = $insertQuery->execute();
         }
-
+    
         if ($success) {
             $this->updateQuestionDifficulty($question_id);
         }
-
+    
         return $success;
     }
-
+    
     public function updateQuestionDifficulty($question_id) {
         $db = Database::getConnection();
-
+    
         // Obțineți datele actuale din baza de date
-        $query = $db->prepare("SELECT difficulty_votes FROM question_statistics WHERE question_id = ?");
+        $stmt = $db->prepare("SELECT difficulty_votes FROM question_statistics WHERE question_id = ?");
         $stmt->bind_param("i", $question_id);
         $stmt->execute();
-        $stmt->bind_result($result);
+        $stmt->bind_result($difficulty_votes_json);
         $stmt->fetch();
         $stmt->close();
-
-        if ($result) {
-            $difficulty_votes = json_decode($result['difficulty_votes'], true);
-
+    
+        if ($difficulty_votes_json) {
+            $difficulty_votes = json_decode($difficulty_votes_json, true);
+    
             // Calculați dificultatea predominantă
             $difficulty_count = array_count_values($difficulty_votes);
             arsort($difficulty_count);
             $predominant_difficulty = array_key_first($difficulty_count);
-
-            // Actualizați câmpul difficulty în tabela questions
-            $updateQuery = $db->prepare("UPDATE questions SET difficulty = ? WHERE question_id = ?");
-            $updateQuery->execute([$predominant_difficulty, $question_id]);
+    
+            // Maparea dificultății din română în engleză
+            $difficultyMap = [
+                'usor' => 'easy',
+                'mediu' => 'medium',
+                'greu' => 'hard'
+            ];
+            $mapped_difficulty = isset($difficultyMap[$predominant_difficulty]) ? $difficultyMap[$predominant_difficulty] : $predominant_difficulty;
+    
+            // Verifică dacă dificultatea predominantă este una validă
+            $valid_difficulties = ['easy', 'medium', 'hard'];
+            if (in_array($mapped_difficulty, $valid_difficulties)) {
+                // Actualizați câmpul difficulty în tabela questions
+                $updateQuery = $db->prepare("UPDATE questions SET difficulty = ? WHERE question_id = ?");
+                $updateQuery->bind_param("si", $mapped_difficulty, $question_id);
+                $updateQuery->execute();
+                $updateQuery->close();
+            } else {
+                throw new Exception("Dificultatea calculată nu este validă: $predominant_difficulty");
+            }
         }
     }
-    
-   
 }
 ?>
