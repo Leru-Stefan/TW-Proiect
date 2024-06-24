@@ -116,9 +116,9 @@
                         </div> -->
                     <!-- <?php //else: ?> -->
                         <!-- <?php //foreach ($solvedProblems as $problem): ?> -->
-                            <div class="card-accept" id="prbm-<?php echo htmlspecialchars($problem['question_id']); ?>">
-                                <h5>Problema <?php echo htmlspecialchars($problem['question_id']); ?></h5>
-                                <p><?php echo htmlspecialchars($problem['description']); ?></p>
+                            <div class="card-accept" id="prbm-1">
+                                <h5>Problema 1</h5>
+                                <p>Aici ar trebui sa fie continutul</p>
                                 <div class="buttons-wrapper">
                                     <button class="btn btn-secondary">Refuza</button>
                                     <button class="btn btn-primary">Accepta</button>

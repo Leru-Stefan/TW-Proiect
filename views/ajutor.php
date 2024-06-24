@@ -68,11 +68,13 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
                 <section>
                     <h3>Despre baza de date</h3>
-                    <p>Baza de date utilizată în această aplicație este un sistem de gestionare a bazei de date relațional (RDBMS). Ea conține tabele care reflectă diferite aspecte ale unui sistem de management, cum ar fi utilizatori, întrebări, răspunsuri, etc.</p>
+                    <p>Baza de date utilizată în această aplicație este un sistem de gestionare a bazei de date relațional (RDBMS). Ea conține tabele care reflectă diferite aspecte ale unui sistem de management academic, cum ar fi studenți, cursuri, note, profesori, etc.</p>
                     <ul>
-                        <li><strong>users</strong>: Conține informații despre utilizatori (ID, nume, prenume, email, etc.)</li>
-                        <li><strong>questions</strong>: Conține informații despre întrebările disponibile în aplicație (ID, titlu, descriere, capitol, dificultate, etc.)</li>
-                        <li><strong>user_answers</strong>: Înregistrează răspunsurile utilizatorilor la întrebări, indicând dacă răspunsul a fost corect sau nu.</li>
+                        <li><strong>studenti</strong>: Conține informații despre studenți (nr_matricol, nume, prenume, an, grupa, bursa, data_nastere).</li>
+                        <li><strong>cursuri</strong>: Conține informații despre cursuri (id_curs, titlu_curs, an, semestru, credite).</li>
+                        <li><strong>note</strong>: Înregistrează notele studenților la cursuri (nr_matricol, id_curs, valoare, data_notare).</li>
+                        <li><strong>profesori</strong>: Conține informații despre profesori (id_prof, nume, prenume, grad_didactic).</li>
+                        <li><strong>didactic</strong>: Conține informații despre profesorii care predau cursuri (id_prof, id_curs).</li>
                     </ul>
                 </section>
 

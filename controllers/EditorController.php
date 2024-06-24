@@ -59,9 +59,21 @@ class EditorController extends BaseController {
             $correctRows = $correctResult->fetch_all(MYSQLI_ASSOC);
     
             if ($userRows == $correctRows) {
+                $stmt = $db->prepare("INSERT INTO user_answers (user_id, question_id, submitted_query, is_correct) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("iisi", $_SESSION['user_id'], $question_id, $query, 1);
+                $stmt->execute();
+                $stmt->close();
                 echo json_encode(['correct' => true]);
+                //de salvat in baza de date in tablea user_answers
+                
+                
             } else {
+                $stmt = $db->prepare("INSERT INTO user_answers (user_id, question_id, submitted_query, is_correct) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("iisi", $_SESSION['user_id'], $question_id, $query, 0);
+                $stmt->execute();
+                $stmt->close();
                 echo json_encode(['correct' => false]);
+                
             }
     
         
