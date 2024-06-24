@@ -1,9 +1,3 @@
-
-function afiseazaDropdown(element) {
-    var dropdown = element.nextElementSibling;
-    dropdown.classList.toggle("show");
-}
-
 document.addEventListener('DOMContentLoaded', async function () {
 
     const logoutButton = document.getElementById('gotologout');
@@ -45,29 +39,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // const dropdownTriggers = document.querySelectorAll('.delete-dots');
-    
-    // if (dropdownTriggers) {
-    //     dropdownTriggers.forEach(trigger => {
-    //         trigger.addEventListener('click', function() {
-    //             afiseazaDropdown(this); // 'this' reprezintă elementul pe care s-a făcut clic
-    //         });
-    //     });
-    // }
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.delete-dots')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-
     if (deleteBtn) {
         deleteBtn.addEventListener('click', function(event) {
             event.preventDefault();
@@ -82,9 +53,45 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.delete-dots')) {
+    function afiseazaDropdown(element) {
+        var dropdown = element.nextElementSibling;
+        dropdown.classList.toggle("show");
+    }
+
+    // Event delegation for the delete buttons
+    document.body.addEventListener('click', async function (event) {
+        if (event.target.matches('.deleteBtn')) {
+            event.preventDefault();
+            var problemId = event.target.getAttribute('data-id');
+            var problemCard = document.getElementById('prbm-' + problemId);
+
+            if (confirm('Ești sigur că vrei să ștergi această problemă?')) {
+                try {
+                    let response = await fetch('./PHP/deleteProblem.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `problem_id=${problemId}`
+                    });
+
+                    let result = await response.json();
+
+                    if (result.success) {
+                        problemCard.remove();
+                        alert('Problema a fost ștearsă cu succes.');
+                    } else {
+                        alert('A apărut o eroare: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Eroare la ștergerea problemei:', error);
+                    alert('A apărut o eroare la comunicarea cu serverul.');
+                }
+            }
+        } else if (event.target.matches('.delete-dots')) {
+            afiseazaDropdown(event.target);
+        } else {
+            // Close all dropdowns if clicked outside
             var dropdowns = document.getElementsByClassName("dropdown-content");
             for (var i = 0; i < dropdowns.length; i++) {
                 var openDropdown = dropdowns[i];
@@ -93,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
             }
         }
-    }
+    });
 
     
 

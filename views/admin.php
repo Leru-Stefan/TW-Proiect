@@ -92,12 +92,11 @@
                     <?php else: ?>
                         <?php foreach ($addedProblems as $problem): ?>
                             <div class="card" id="prbm-<?php echo $problem['question_id']; ?>">
-                                <div class="name-delete" >
+                                <div class="name-delete">
                                     <h5><?php echo $problem['question_title']; ?></h5>
-                                    <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots"  onclick="afiseazaDropdown(this)">
+                                    <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots" data-id="<?php echo $problem['question_id']; ?>" onclick="afiseazaDropdown(this)">
                                     <div class="dropdown-content">
-                                        <a href="#" id="deleteBtn"><span><img src="./Images/Icons-black/fi-rr-trash.svg"
-                                            alt="delete icon"></span>Sterge</a>
+                                        <a href="#" class="deleteBtn" data-id="<?php echo $problem['question_id']; ?>"><span><img src="./Images/Icons-black/fi-rr-trash.svg" alt="delete icon"></span>Sterge</a>
                                     </div>
                                 </div>
                                 <p><?php echo htmlspecialchars($problem['description']); ?></p>
@@ -106,6 +105,7 @@
                     <?php endif; ?>
                 </div>
             </div>
+
             <div class="problemele-mele">
                 <h4>Problemele in asteptare</h4>
                 <div class="grid-problems-admin">
