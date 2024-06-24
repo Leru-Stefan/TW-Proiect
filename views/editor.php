@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> SQL-Two | Editor problema </title>
     <link rel="stylesheet" href="./CSS/editor.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js"></script>
     <script defer src="./JS/editor.js"></script>
     <script>
         function downloadProblem(id, format) {
@@ -20,6 +21,8 @@
             link.click();
         }
     </script>
+    
+
 </head>
 
 <body>
@@ -88,9 +91,20 @@
                         <p id="problem-description"><?php echo htmlspecialchars($problem['description']); ?></p>
                     </div>
                 </div>
+                <div>
+                    <label for="themeSelector">Selectează tema: </label>
+                    <select id="themeSelector">
+                        <option value="ace/theme/eclipse">Eclipse</option>
+                        <option value="ace/theme/chrome">Chrome</option>
+                        <option value="ace/theme/sqlserver">SQL Server</option>
+                        <option value="ace/theme/monokai">Monokai</option>
+                        <option value="ace/theme/dracula">Dracula</option>
+                        <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+                    </select>
+                </div>
                 <div class="editor">
                     <div class="live-editor">
-                        <textarea id="userInput" class="input" placeholder="Introdu aici rezolvarea ta"></textarea>
+                        <div id="editor" class="input">Introdu aici rezolvarea ta...</div>
                     </div>
                     <div class="buttons">
                         <a id="resetBtn" class="btn btn-secondary" href="#">Reseteaza</a>
@@ -175,46 +189,59 @@
     </div>
     <!-- Include the updated script at the end of the body -->
 <script>
-    document.getElementById('verifyBtn').addEventListener('click', function() {
-    var userInput = document.getElementById('userInput').value;
-    var questionId = <?php echo $problem['question_id']; ?>;
-    
-    fetch('index.php?page=editor&action=verifyQuery', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'query=' + encodeURIComponent(userInput) + '&question_id=' + questionId
-    })
-    .then(response => response.text())  // Change this to .text() to log raw response
-    .then(responseText => {
-        console.log('Raw response from server:', responseText);  // Log the raw response
-        try {
-            const data = JSON.parse(responseText);  // Parse the response as JSON
-            if (data.error) {
-                console.error('Error:', data.error);
-                alert('A apărut o eroare: ' + data.error); // Sau afişează eroarea în alt mod pe pagina ta
-            } else if (data.correct) {
-                document.getElementById('glassSolvedTrue').style.display = 'flex';
-                document.getElementById('glassSolvedFalse').style.display = 'none';
-            } else {
-                document.getElementById('glassSolvedFalse').style.display = 'flex';
-                document.getElementById('glassSolvedTrue').style.display = 'none';
-                
-                if (glassSolvedFalse.style.display === 'flex' && !document.getElementById('popupGresit').contains(event.target)) {
-                    glassSolvedFalse.style.display = 'none';
-                    console.log('Popup greșit ascuns');
+    document.addEventListener("DOMContentLoaded", function() {
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/eclipse");
+        editor.session.setMode("ace/mode/sql");
+        editor.setOptions({
+            fontSize: "14px"
+        });
+
+        // Event listener pentru dropdown-ul de selectare a temei
+        document.getElementById('themeSelector').addEventListener('change', function() {
+            var theme = this.value;
+            editor.setTheme(theme);
+        });
+
+        // Event listener pentru butonul de reset
+        document.getElementById('resetBtn').addEventListener('click', function(e) {
+            e.preventDefault(); // Evită comportamentul implicit al link-urilor
+            editor.setValue(''); // Resetarea conținutului editorului
+        });
+
+        document.getElementById('verifyBtn').addEventListener('click', function() {
+            var userInput = editor.getValue();
+            var questionId = <?php echo $problem['question_id']; ?>;
+            
+            fetch('index.php?page=editor&action=verifyQuery', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'query=' + encodeURIComponent(userInput) + '&question_id=' + questionId
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                console.log('Raw response from server:', responseText);
+                try {
+                    const data = JSON.parse(responseText);
+                    if (data.error) {
+                        console.error('Error:', data.error);
+                        alert('A apărut o eroare: ' + data.error);
+                    } else if (data.correct) {
+                        document.getElementById('glassSolvedTrue').style.display = 'flex';
+                        document.getElementById('glassSolvedFalse').style.display = 'none';
+                    } else {
+                        document.getElementById('glassSolvedFalse').style.display = 'flex';
+                        document.getElementById('glassSolvedTrue').style.display = 'none';
+                    }
+                } catch (e) {
+                    console.error('Failed to parse JSON:', e);
                 }
-            }
-        } catch (e) {
-            console.error('Failed to parse JSON:', e);
-        }
-    })
-    .catch(error => console.error('Fetch Error:', error));
-});
-
-
-
+            })
+            .catch(error => console.error('Fetch Error:', error));
+        });
+    });
 </script>
 
 
