@@ -176,18 +176,21 @@
     <!-- Include the updated script at the end of the body -->
 <script>
     document.getElementById('verifyBtn').addEventListener('click', function() {
-        var userInput = document.getElementById('userInput').value;
-        var questionId = <?php echo $problem['question_id']; ?>;
-        
-        fetch('index.php?page=editor&action=verifyQuery', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'query=' + encodeURIComponent(userInput) + '&question_id=' + questionId
-        })
-        .then(response => response.json())
-        .then(data => {
+    var userInput = document.getElementById('userInput').value;
+    var questionId = <?php echo $problem['question_id']; ?>;
+    
+    fetch('index.php?page=editor&action=verifyQuery', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'query=' + encodeURIComponent(userInput) + '&question_id=' + questionId
+    })
+    .then(response => response.text())  // Change this to .text() to log raw response
+    .then(responseText => {
+        console.log('Raw response from server:', responseText);  // Log the raw response
+        try {
+            const data = JSON.parse(responseText);  // Parse the response as JSON
             if (data.error) {
                 console.error('Error:', data.error);
                 alert('A apărut o eroare: ' + data.error); // Sau afişează eroarea în alt mod pe pagina ta
@@ -197,15 +200,17 @@
             } else {
                 document.getElementById('glassSolvedFalse').style.display = 'flex';
                 document.getElementById('glassSolvedTrue').style.display = 'none';
+                
                 if (glassSolvedFalse.style.display === 'flex' && !document.getElementById('popupGresit').contains(event.target)) {
                     glassSolvedFalse.style.display = 'none';
                     console.log('Popup greșit ascuns');
                 }
             }
-        })
+        } catch (e) {
+            console.error('Failed to parse JSON:', e);
+        }
+    })
     .catch(error => console.error('Fetch Error:', error));
-
-    
 });
 
 

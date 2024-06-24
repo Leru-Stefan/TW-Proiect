@@ -2,6 +2,7 @@
 require_once 'BaseController.php';
 require_once 'models/ProblemModel.php';
 require_once 'models/BD.php';
+require_once 'models/Database.php';
 
 class EditorController extends BaseController {
     public function indexAction() {
@@ -22,13 +23,12 @@ class EditorController extends BaseController {
 
         $this->render('editor', ['problem' => $problem]);
     }
-
     public function verifyQueryAction() {
         $this->checkAuthentication();
         
         header('Content-Type: application/json'); // Asigură-te că răspunsul este JSON
         
-        
+        try {
             if (!isset($_POST['query']) || !isset($_POST['question_id'])) {
                 throw new Exception("Query-ul sau ID-ul problemei nu a fost specificat.");
             }
@@ -45,7 +45,7 @@ class EditorController extends BaseController {
     
             $correctQuery = $problem['correct_query'];
     
-            // Conectarea la baza de date și executarea interogărilor
+            // Conectarea la baza de date principală și executarea interogărilor
             $db = BD::getConnection(); 
             $userResult = $db->query($query);
             $correctResult = $db->query($correctQuery);
@@ -57,27 +57,32 @@ class EditorController extends BaseController {
             // Compararea rezultatelor interogărilor
             $userRows = $userResult->fetch_all(MYSQLI_ASSOC);
             $correctRows = $correctResult->fetch_all(MYSQLI_ASSOC);
+            
+            $isCorrect = ($userRows == $correctRows);
     
-            if ($userRows == $correctRows) {
-                $stmt = $db->prepare("INSERT INTO user_answers (user_id, question_id, submitted_query, is_correct) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("iisi", $_SESSION['user_id'], $question_id, $query, 1);
-                $stmt->execute();
-                $stmt->close();
-                echo json_encode(['correct' => true]);
-                //de salvat in baza de date in tablea user_answers
-                
-                
-            } else {
-                $stmt = $db->prepare("INSERT INTO user_answers (user_id, question_id, submitted_query, is_correct) VALUES (?, ?, ?, ?)");
-                $stmt->bind_param("iisi", $_SESSION['user_id'], $question_id, $query, 0);
-                $stmt->execute();
-                $stmt->close();
-                echo json_encode(['correct' => false]);
-                
+            // Conectarea la o altă bază de date
+            $db2 = Database::getConnection();
+    
+            // Pregătirea și executarea interogării de inserare
+            $stmt = $db2->prepare("INSERT INTO user_answers (user_id, question_id, submitted_query, is_correct) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param('iisi', $_SESSION["user_id"], $question_id, $query, $isCorrect);
+            
+            if (!$stmt->execute()) {
+                throw new Exception("Eroare la inserarea datelor: " . $stmt->error);
             }
     
-        
+            // Închiderea conexiunii la baza de date secundară
+            $stmt->close();
+            $db2->close();
+    
+            echo json_encode(['correct' => $isCorrect]);
+    
+        } catch (Exception $e) {
+            echo json_encode(['error' => $e->getMessage()]);
+        }
     }
+    
+    
 
     public function saveDifficultyAction() {
         // Verificăm dacă s-au primit date prin POST sub formă de JSON
