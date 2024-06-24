@@ -114,7 +114,7 @@ class UserModel {
         $db = Database::getConnection();
     
         // Obținem numărul de întrebări corect rezolvate
-        $stmt = $db->prepare("SELECT COUNT(DISTINCT question_id) AS solved_count FROM User_Answers WHERE user_id = ? AND is_correct = 1");
+        $stmt = $db->prepare("SELECT COUNT(*) AS solved_count FROM User_Answers WHERE user_id = ? AND is_correct = 1");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $stmt->bind_result($solvedCount);
@@ -122,7 +122,7 @@ class UserModel {
         $stmt->close();
     
         // Obținem numărul total de întrebări încercate
-        $stmt = $db->prepare("SELECT COUNT(DISTINCT question_id) AS solved_total_count FROM User_Answers WHERE user_id = ?");
+        $stmt = $db->prepare("SELECT COUNT(*) AS solved_total_count FROM User_Answers WHERE user_id = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $stmt->bind_result($solvedTotalCount);
@@ -132,7 +132,7 @@ class UserModel {
         $accuracy = 0;
     
         if ($solvedTotalCount != 0) {
-            $accuracy = ($solvedCount / $solvedTotalCount) * 100;
+            $accuracy = ($solvedCount * 100) / $solvedTotalCount;
         }
     
         return $accuracy;
