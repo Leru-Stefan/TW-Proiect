@@ -806,8 +806,18 @@ input.btn.btn-secondary:hover {
         width: 18px;
     }
 
+    .inner-content {
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .dd-icon {
         width: 18px;
+    }
+
+    .side-bar {
+        gap: 12px;
     }
     
 }

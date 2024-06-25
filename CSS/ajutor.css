@@ -431,6 +431,9 @@ section {
 }
 
 @media (max-width: 480px) {
+    .side-bar {
+        gap: 12px;
+    }
     h1 {
         font-size: 24px;
     }

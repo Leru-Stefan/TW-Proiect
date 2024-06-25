@@ -766,4 +766,8 @@ input.btn.btn-secondary:hover {
         grid-template-columns: 1fr;
     }
 
+    .side-bar {
+        gap: 12px;
+    }
+
 }

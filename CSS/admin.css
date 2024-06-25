@@ -870,4 +870,8 @@ input.btn.btn-secondary:hover {
     a {font-size: 14px;}
     small-body-text {font-size: 10px;}
 
+    .side-bar {
+        gap: 12px;
+    }
+
 }

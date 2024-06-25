@@ -20,6 +20,13 @@ class SignupController extends BaseController {
             exit;
         }
 
+        $password_pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/';
+        if (!preg_match($password_pattern, $password)) {
+            $_SESSION['signup_errors'] = ['Parola trebuie să aibă cel puțin 8 caractere, să conțină litere mari, litere mici și cifre.'];
+            header("Location: index.php?page=signup");
+            exit;
+        }
+
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
         $userModel = new UserModel();

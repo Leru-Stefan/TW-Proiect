@@ -668,6 +668,7 @@ textarea {
 }
 
 @media (max-width: 480px) {
+    
     h1 {font-size: 24px;}
     h2 {font-size: 22px;}
     h3 {font-size: 20px;}
@@ -675,6 +676,9 @@ textarea {
     p {font-size: 14px;}
     a {font-size: 14px;}
     small-body-text {font-size: 10px;}
+    .side-bar {
+        gap: 12px;
+    }
 
     .card .download-button {
         width: 18px;

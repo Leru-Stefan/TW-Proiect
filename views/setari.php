@@ -78,13 +78,15 @@ $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                             <div class="reset-password-container" style="display: none;">
                                 <div class="setting-option-line input-forms-password">
                                 <form class="password-input-reset" id="passwordResetForm" method="post" action="index.php?page=setari&action=changePassword">
-                                        <div class="col">
-                                            <label for="current-password">Parola curenta</label>
-                                            <input type="password" id="curr-password" name="curr-password">
-                                        </div>
-                                        <div class="col">
-                                            <label for="new-password">Parola noua</label>
-                                            <input type="password" id="new-password" name="new-password">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="current-password">Parola curenta</label>
+                                                <input type="password" id="curr-password" name="curr-password">
+                                            </div>
+                                            <div class="col">
+                                                <label for="new-password">Parola noua</label>
+                                                <input type="password" id="new-password" name="new-password">
+                                            </div>
                                         </div>
                                         <div class="setting-option-line">
                                             <button type="submit" class="button-change-password" id="savePassBtn">Salveaza parola</a>
