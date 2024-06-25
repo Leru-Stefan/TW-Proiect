@@ -230,6 +230,12 @@ class ProblemModel {
         $stmt->execute();
         $stmt->close();
 
+        $sql = "DELETE FROM user_answers WHERE question_id = ?";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("i", $problemId);
+        $stmt->execute();
+        $stmt->close();
+
         // Acum poți șterge rândul din questions
         $sql = "DELETE FROM questions WHERE question_id = ?";
         $stmt = $db->prepare($sql);

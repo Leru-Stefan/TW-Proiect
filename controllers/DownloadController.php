@@ -15,6 +15,9 @@ class DownloadController extends BaseController {
         $problem = $model->getProblemById($question_id);
 
         if (!$problem) {
+            http_response_code(404);
+            echo "Problem not found.";
+            exit;
             die("Problema nu a fost găsită.");
         }
 

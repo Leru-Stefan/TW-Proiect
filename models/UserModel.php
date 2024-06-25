@@ -133,9 +133,14 @@ class UserModel {
     
         if ($solvedTotalCount != 0) {
             $accuracy = ($solvedCount * 100) / $solvedTotalCount;
+            if ($accuracy == 100) {
+                $formattedAccuracy = '100';
+            } else {
+                $formattedAccuracy = number_format($accuracy, 1);
+            }
         }
     
-        return $accuracy;
+        return $formattedAccuracy;
     }
 
     public function getSolvedProblems($userId) {

@@ -1,5 +1,7 @@
 <?php
-require 'Database.php'; // Include the database connection file
+require '../models/ProblemModel.php';
+error_reporting(0);
+@ini_set('display_errors', 0);
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -12,15 +14,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($problemId)) {
         try {
             $problemModel->deleteProblem($problemId);
-            echo json_encode(['success' => true]);
+            $response = ['success' => true];
         } catch (Exception $e) {
-            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+            $response = ['success' => false, 'message' => $e->getMessage()];
         }
     } else {
-        echo json_encode(['success' => false, 'message' => 'Invalid problem ID']);
+        $response = ['success' => false, 'message' => 'Invalid problem ID'];
     }
-} else {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
-}
 
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
+} else {
+    $response = ['success' => false, 'message' => 'Invalid request method'];
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
+}
 ?>

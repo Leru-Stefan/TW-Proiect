@@ -94,7 +94,7 @@
                             <div class="card" id="prbm-<?php echo $problem['question_id']; ?>">
                                 <div class="name-delete">
                                     <h5><?php echo $problem['question_title']; ?></h5>
-                                    <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots" data-id="<?php echo $problem['question_id']; ?>" onclick="afiseazaDropdown(this)">
+                                    <img src="./Images/Icons-black/fi-rr-menu-dots.svg" alt="" class="delete-dots" data-id="<?php echo $problem['question_id']; ?>">
                                     <div class="dropdown-content">
                                         <a href="#" class="deleteBtn" data-id="<?php echo $problem['question_id']; ?>"><span><img src="./Images/Icons-black/fi-rr-trash.svg" alt="delete icon"></span>Sterge</a>
                                     </div>

@@ -111,10 +111,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             glassAddTrue.style.display = 'none';
             glassAddFalse.style.display = 'flex';
         }
-
-        console.log(allowedAdds);
-        console.log(addedCount);
-        console.log(solvedCount);
     }
 
 
